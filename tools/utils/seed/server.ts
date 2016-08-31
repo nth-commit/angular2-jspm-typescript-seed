@@ -1,77 +1,60 @@
 import * as express from 'express';
-import * as fallback from 'express-history-api-fallback';
 import * as openResource from 'open';
 import { resolve } from 'path';
 import * as serveStatic from 'serve-static';
-
-import * as codeChangeTool from './code_change_tools';
-import { APP_BASE, COVERAGE_PORT, DOCS_DEST, DOCS_PORT, PORT, PROD_DEST } from '../../config';
-
-/**
- * Serves the Single Page Application. More specifically, calls the `listen` method, which itself launches BrowserSync.
- */
-export function serveSPA() {
-  codeChangeTool.listen();
-}
+import * as serveIndex from 'serve-index';
+import * as history from 'connect-history-api-fallback';
+import * as chalk from 'chalk';
+import * as util from 'gulp-util';
+import { TEST_REPORTS_DIR, TEST_REPORTS_PORT, APP_BASE, CLIENT_SRC, E2E_PORT, DIST_DIR } from '../../config';
 
 /**
- * This utility method is used to notify that a file change has happened and subsequently calls the `changed` method,
- * which itself initiates a BrowserSync reload.
- * @param {any} e - The file that has changed.
- */
-export function notifyLiveReload(e:any) {
-  let fileName = e.path;
-  codeChangeTool.changed(fileName);
-}
-
-/**
- * Starts a new `express` server, serving the static documentation files.
- */
-export function serveDocs() {
-  let server = express();
-
-  server.use(
-    APP_BASE,
-    serveStatic(resolve(process.cwd(), DOCS_DEST))
-  );
-
-  server.listen(DOCS_PORT, () =>
-    openResource('http://localhost:' + DOCS_PORT + APP_BASE)
-  );
-}
-
-/**
- * Starts a new `express` server, serving the static unit test code coverage report.
+ * Starts a new `express` server, serving the static unit test code coverage
+ * report.
  */
 export function serveCoverage() {
   let server = express();
-  let compression = require('compression');
-      server.use(compression());
+  let root = resolve(process.cwd(), TEST_REPORTS_DIR);
 
   server.use(
-    APP_BASE,
-    serveStatic(resolve(process.cwd(), 'coverage'))
+    '',
+    serveStatic(resolve(root))
   );
 
-  server.listen(COVERAGE_PORT, () =>
-    openResource('http://localhost:' + COVERAGE_PORT + APP_BASE)
+  server.use(
+    '',
+    serveIndex(resolve(root))
+  );
+
+  server.listen(TEST_REPORTS_PORT, () =>
+    openResource('http://localhost:' + TEST_REPORTS_PORT )
   );
 }
 
-/**
- * Starts a new `express` server, serving the built files from `dist/prod`.
- */
-export function serveProd() {
-  let root = resolve(process.cwd(), PROD_DEST);
-  let server = express();
-  let compression = require('compression');
-      server.use(compression());
+export class ProtractorDevServer {
+  server() {
+    let app = express();
+    app.use(history({ index: `${APP_BASE}index.html` }));
+    app.use(express.static(CLIENT_SRC));
+    util.log(chalk.yellow('Serving ./' + CLIENT_SRC));
+    return new Promise((resolve, reject) => {
+      let server = app.listen(E2E_PORT, () => {
+        resolve(server);
+      });
+    });
+  }
+}
 
-  server.use(APP_BASE, serveStatic(root));
-
-  server.use(fallback('index.html', { root }));
-
-  server.listen(PORT, () =>
-    openResource('http://localhost:' + PORT + APP_BASE)
-  );
-};
+export class ProtractorProdServer {
+  server() {
+    let app = express();
+    app.use(history({ index: `${APP_BASE}index.html` }));
+    app.use(express.static(DIST_DIR));
+    util.log(chalk.yellow('Serving ./' + DIST_DIR));
+    return new Promise((resolve, reject) => {
+      let server = app.listen(E2E_PORT, () => {
+        resolve(server);
+      });
+    });
+  }
+}

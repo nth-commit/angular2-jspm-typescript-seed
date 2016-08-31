@@ -1,39 +1,36 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import { join } from 'path';
+import * as jspm from 'jspm';
 
-import { TMP_DIR, TOOLS_DIR } from '../../config';
-import { makeTsProject, templateLocals } from '../../utils';
+import { PROJECT_ROOT_APP_SRC,
+  JS_PROD_APP_BUNDLE_MIN,
+  JSPM_CONFIG,
+  UNMINIFIED_JS_PROD_DEST,
+  BOOTSTRAP_MODULE,
+  JS_PROD_DEST_ROOT} from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
 
-const INLINE_OPTIONS = {
-  base: TMP_DIR,
-  useRelativePaths: true,
-  removeLineBreaks: true
-};
+export = (done: any) => {
 
-/**
- * Executes the build process, transpiling the TypeScript files for the production environment.
- */
+  let Builder = jspm.Builder;
+  let builder = new Builder(PROJECT_ROOT_APP_SRC, JSPM_CONFIG);
 
-export = () => {
-  let tsProject = makeTsProject();
-  let src = [
-    'typings/index.d.ts',
-    TOOLS_DIR + '/manual_typings/**/*.d.ts',
-    join(TMP_DIR, '**/*.ts')
-  ];
-  let result = gulp.src(src)
-    .pipe(plugins.plumber())
-    .pipe(plugins.inlineNg2Template(INLINE_OPTIONS))
-    .pipe(plugins.typescript(tsProject))
-    .once('error', function () {
-      this.once('finish', () => process.exit(1));
+  // https://github.com/systemjs/builder
+  builder.buildStatic(BOOTSTRAP_MODULE, UNMINIFIED_JS_PROD_DEST, {
+
+    // amd, cjs or es6
+    // format: 'es6',
+    sourceMaps: true
+  }).then(function() {
+      gulp.src(UNMINIFIED_JS_PROD_DEST)
+      /**
+       * mangle:true ( default ) breaks the angular2 app.
+       */
+        .pipe(plugins.uglify({mangle:false}))
+        .pipe(plugins.rename(JS_PROD_APP_BUNDLE_MIN))
+        .pipe(gulp.dest(JS_PROD_DEST_ROOT))
+        .on('finish', done);
     });
 
-
-  return result.js
-    .pipe(plugins.template(templateLocals()))
-    .pipe(gulp.dest(TMP_DIR));
 };

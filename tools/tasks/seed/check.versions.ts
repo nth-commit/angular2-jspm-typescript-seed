@@ -1,15 +1,10 @@
-import * as util from 'gulp-util';
 import { VERSION_NODE, VERSION_NPM } from '../../config';
 
 function reportError(message: string) {
-  console.error(util.colors.white.bgRed.bold(message));
+  console.error(require('chalk').white.bgRed.bold(message));
   process.exit(1);
 }
 
-/**
- * Executes the build process, verifying that the installed NodeJS and NPM version matches the required versions as
- * defined in the application configuration.
- */
 export = () => {
   let exec = require('child_process').exec;
   let semver = require('semver');

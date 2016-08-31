@@ -8,67 +8,164 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './',
-
+    basePath: './src/client',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
+    frameworks: ['jspm', 'jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [
-      // Polyfills.
-      'node_modules/core-js/client/shim.min.js',
+    jspm: {
+      stripExtension: false,
 
-      // System.js for module loading
-      'node_modules/systemjs/dist/system.src.js',
+      /**
+       * main config
+       */
+      config: 'jspm.config.js',
 
-      // Zone.js dependencies
-      'node_modules/zone.js/dist/zone.js',
-      'node_modules/zone.js/dist/jasmine-patch.js',
-      'node_modules/zone.js/dist/async-test.js',
-      'node_modules/zone.js/dist/fake-async-test.js',
+      /**
+       * dev jspm config.
+       */
+      dev: null,
 
-      // RxJs.
-      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
-      { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
+      /**
+       * node jspm config
+       */
+      node: null,
 
-      // paths loaded via module imports
-      // Angular itself
-      { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
+      /**
+       * browser jspm config.
+       */
+      browser: null,
 
-      { pattern: 'dist/dev/**/*.js', included: false, watched: true },
-      { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
-      { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
-      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
+      packages: 'jspm_packages',
 
-      // suppress annoying 404 warnings for resources, images, etc.
-      { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
+      /**
+       * Adapters do any preloading with systemJs before tests start,
+       * and impletent the karma.start method.
+       *
+       * 'angular2' is the only option for now.
+       * If not defined, a default adapter is used.
+       *
+       * @param path to adapter or 'angular2'
+       */
+      adapter: 'angular2',
 
-      'test-main.js'
-    ],
+
+      /**
+       * Files loaded by system js before app is loaded.
+       * They will load in same order provided.
+       *
+       * Default files are set for 'angular2' adapter.
+       * This property will override defaults if set.
+       */
+      // preloadBySystemJS: [
+      //   'zone.js/dist/zone.js',
+      //   '@angular/core/testing',
+      //   '@angular/platform-browser-dynamic/testing',
+      //   'zone.js/dist/jasmine-patch.js',
+      //   'zone.js/dist/async-test.js',
+      //   'zone.js/dist/fake-async-test.js'
+      // ],
+
+      /**
+       * Files may be provided in a object to
+       * configure specific serve options.
+       *
+       * Files will be put in an object similar to:
+       *
+       * {
+       *    pattern: 'someFile.js,
+       *    included: false,  // configurable
+       *    served: true,     // configurable
+       *    nocache: false,   // configurable
+       *    watched: true     // configurable
+       * };
+       *
+       * All options configured if provided in an object.
+       *
+       */
+      loadFiles: [
+        'app/**/*.spec.ts',
+        'testing/**/*.ts'
+      ],
+
+      /**
+       * Files will be put in an object EXACTLY with the options:
+       *
+       * {
+       *    pattern: 'someFile.js,
+       *    included: false,
+       *    served: true,
+       *    nocache: false,
+       *    watched: true
+       * };
+       */
+      serveFiles: [
+        'app/**/*!(*.spec|*.e2e-spec).ts',
+        'app/**/*.html',
+        'app/**/*.scss',
+        'assets/**/*.json'
+      ]
+    },
 
     // must go along with above, suppress annoying 404 warnings.
     proxies: {
-      '/assets/': '/base/dist/dev/assets/'
+      '/app/': '/base/app/',
+      '/assets/': '/base/assets/',
+      '/jspm_packages/': '/base/jspm_packages/',
+      '/scss/': '/base/scss/',
+      '/testing/': '/base/testing/'
     },
 
     // list of files to exclude
-    exclude: [
-      'node_modules/**/*spec.js'
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+      'app/**/!(*.spec).ts': ['jspm']
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha'],
+    // reporters: ['junit', 'coverage', 'spec'],
+    reporters: ['mocha', 'jspm'],
 
+    coverageReporter: {
+
+      // map coverage to source typescript or es6 files.
+      remap: true,
+
+      dir: process.cwd() + '/test-reports/unit',
+
+      subdir: function(directory) {
+        return directory.replace(/\s/g, '_');
+      },
+
+      reporters: [
+
+        // will generate html report
+        {type: 'html'},
+
+        // will generate json report file and this report is loaded to
+        // make sure failed coverage cause gulp to exit non-zero
+        {type: 'json', file: 'coverage-final.json'},
+
+        // will generate Icov report file and this report is published to coveralls
+        {type: 'lcov'},
+
+        // it does not generate any file but it will print coverage to console
+        // a summary of the coverage
+        // {type: 'text-summary'},
+
+        // it does not generate any file but it will print coverage to console
+        // a detail report of every file
+        {type: 'text'}
+      ]
+    },
 
     // web server port
     port: 9876,
@@ -80,8 +177,15 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
+    loggers: [{
+      "type": "file",
+      "filename": "./log_file.log",
+      "maxLogSize": 20480,
+      "backups": 3,
+      "category": "absolute-logger"
+    }],
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
@@ -93,6 +197,14 @@ module.exports = function(config) {
       'Chrome'
     ],
 
+    plugins: [
+      require('@uiuxengineering/karma-jspm'),
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-mocha-reporter',
+      'karma-ie-launcher',
+      'karma-phantomjs-launcher'
+    ],
 
     customLaunchers: {
       Chrome_travis_ci: {

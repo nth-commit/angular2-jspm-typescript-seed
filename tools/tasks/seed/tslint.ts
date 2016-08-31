@@ -2,17 +2,14 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 
-import { APP_SRC, CODELYZER_RULES, TOOLS_DIR } from '../../config';
+import { CODELYZER_RULES, TOOLS_DIR, APP_DIR } from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
 
-/**
- * Executes the build process, linting the TypeScript files using `codelyzer`.
- */
 export = () => {
   let src = [
-    join(APP_SRC, '**/*.ts'),
-    '!' + join(APP_SRC, '**/*.d.ts'),
+    join(APP_DIR, '**/*.ts'),
+    '!' + join(APP_DIR, '**/*.d.ts'),
     join(TOOLS_DIR, '**/*.ts'),
     '!' + join(TOOLS_DIR, '**/*.d.ts')
   ];

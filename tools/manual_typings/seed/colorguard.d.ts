@@ -3,7 +3,7 @@ declare module 'colorguard' {
   interface IOptions {
     ignore?: string[];
     threshold?: number;
-    whitelist?: [string, string][];
+    whitelist?: string[];
   }
 
   interface IColorguard {

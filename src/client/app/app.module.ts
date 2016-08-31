@@ -5,17 +5,37 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-
-import { AboutModule } from './about/about.module';
-import { HomeModule } from './home/home.module';
+import { AboutModule } from './+about/about.module';
+import { HomeModule } from './+home/home.module';
 import { SharedModule } from './shared/shared.module';
+
+/**
+ * Conditional import based on ~production flag in jspm.config:
+ *
+ *  "map": {
+ *      "./shared/config/prod.config": {
+ *        "~production": "./shared/config/dev.config"
+ *      }
+ *    }
+ *
+ *   gulp dev task will load ./shared/config/dev.config.
+ *   bulp prod task will load ./shared/config/prod.config
+ *
+ *   This is a feature driven by SystemJS, where the SystemJS
+ *   builder ( via JSPM ) builder.buildStatic method will
+ *   load the "./shared/config/prod.config" path.
+ *
+ *   For more info, see http://jspm.io/0.17-beta-guide/conditional-loading.html
+ */
+import {Config} from './shared/config/prod.config';
+
 
 @NgModule({
   imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), AboutModule, HomeModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
-    useValue: '<%= APP_BASE %>'
+    useValue: Config.BASE
   }],
   bootstrap: [AppComponent]
 

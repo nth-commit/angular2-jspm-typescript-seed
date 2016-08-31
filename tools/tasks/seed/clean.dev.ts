@@ -1,7 +1,13 @@
-import { DEV_DEST } from '../../config';
-import { clean } from '../../utils';
+import * as rimraf from 'rimraf';
+import { join, resolve } from 'path';
 
-/**
- * Executes the build process, cleaning all files within the `/dist/dev` directory.
- */
-export = clean(DEV_DEST);
+import { APP_SRC } from '../../config';
+
+export = (done: any) => {
+
+  let files = join(resolve( './' + APP_SRC), '**', '*.+(js|map|css)');
+
+  rimraf(files, function() {
+    done();
+  });
+};

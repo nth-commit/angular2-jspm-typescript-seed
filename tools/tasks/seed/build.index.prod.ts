@@ -5,34 +5,24 @@ import * as slash from 'slash';
 
 import {
   APP_BASE,
-  APP_DEST,
-  APP_SRC,
-  CSS_DEST,
-  CSS_PROD_BUNDLE,
-  JS_DEST,
-  JS_PROD_APP_BUNDLE,
-  JS_PROD_SHIMS_BUNDLE
+  PROD_DEST,
+  CLIENT_SRC,
+  JS_PROD_DIR,
+  JS_PROD_DEST,
+  JS_PROD_APP_BUNDLE_MIN
 } from '../../config';
 import { templateLocals } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
 
-/**
- * Executes the build process, injecting the JavaScript and CSS dependencies into the `index.html` for the production
- * environment.
- */
 export = () => {
-  return gulp.src(join(APP_SRC, 'index.html'))
+  return gulp.src(join(CLIENT_SRC, 'index.temp.html'))
     .pipe(injectJs())
-    .pipe(injectCss())
     .pipe(plugins.template(templateLocals()))
-    .pipe(gulp.dest(APP_DEST));
+    .pipe(plugins.rename('index.html'))
+    .pipe(gulp.dest(PROD_DEST));
 };
 
-/**
- * Injects the given file array and transforms the path of the files.
- * @param {Array<string>} files - The files to be injected.
- */
 function inject(...files: Array<string>) {
     return plugins.inject(gulp.src(files, { read: false }), {
         files,
@@ -40,34 +30,16 @@ function inject(...files: Array<string>) {
     });
 }
 
-/**
- * Injects the bundled JavaScript shims and application bundles for the production environment.
- */
 function injectJs() {
-  return inject(join(JS_DEST, JS_PROD_SHIMS_BUNDLE), join(JS_DEST, JS_PROD_APP_BUNDLE));
+  return inject(join(JS_PROD_DEST, JS_PROD_APP_BUNDLE_MIN));
 }
 
-/**
- * Injects the bundled CSS files for the production environment.
- */
-function injectCss() {
-  return inject(join(CSS_DEST, CSS_PROD_BUNDLE));
-}
-
-/**
- * Transform the path of a dependency to its location within the `dist` directory according to the applications
- * environment.
- */
 function transformPath() {
   return function(filepath: string) {
     let path: Array<string> = normalize(filepath).split(sep);
-    let slice_after = path.indexOf(APP_DEST);
-    if (slice_after>-1) {
-      slice_after++;
-    } else {
-      slice_after = 3;
-    }
-    arguments[0] = APP_BASE + path.slice(slice_after, path.length).join(sep) + `?${Date.now()}`;
+    let base = ( APP_BASE !== '/' ) ? APP_BASE : '';
+    base += JS_PROD_DIR + sep;
+    arguments[0] = base + path.slice(3, path.length).join(sep) + `?${Date.now()}`;
     return slash(plugins.inject.transform.apply(plugins.inject.transform, arguments));
   };
 }

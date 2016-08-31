@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import template from './toolbar.component.html!text';
+import styles from './toolbar.component.scss!';
 
 /**
  * This class represents the toolbar component.
@@ -6,8 +8,8 @@ import { Component } from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'sd-toolbar',
-  templateUrl: 'toolbar.component.html',
-  styleUrls: ['toolbar.component.css']
+  template: template,
+  styles: [styles]
 })
 
 export class ToolbarComponent {}

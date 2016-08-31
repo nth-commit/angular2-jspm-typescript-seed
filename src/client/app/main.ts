@@ -1,16 +1,18 @@
+import 'es6-shim';
+import 'core-js/client/shim.min.js';
+import 'zone.js/dist/zone.js';
+import 'reflect-metadata';
+
 /**
  * Bootstraps the application and makes the ROUTER_PROVIDERS and the APP_BASE_HREF available to it.
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 
-import { enableProdMode } from '@angular/core';
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // The app module
 import { AppModule } from './app.module';
-
-if ('<%= ENV %>' === 'prod') {  enableProdMode(); }
 
 // Compile and launch the module
 platformBrowserDynamic().bootstrapModule(AppModule);

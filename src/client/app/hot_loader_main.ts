@@ -1,14 +1,17 @@
-// Hot loading is temporary disabled
-//
-// import { HashLocationStrategy, HashLocationStrategy } from '@angular/common';
-// import { provide } from '@angular/core';
-// import { ROUTER_PROVIDERS } from '@angular/router';
-// import { AppComponent } from './app.component';
+import './main';
 
-// System.import('//localhost:<%= HOT_LOADER_PORT %>/ng2-hot-loader')
-//   .then(loader => {
-//     loader.ng2HotLoaderBootstrap(AppComponent, [
-//       ROUTER_PROVIDERS,
-//       provide(LocationStrategy, { useClass: HashLocationStrategy })
-//     ]);
-//   });
+var htmlTag = document.getElementsByTagName('html')[0];
+var noAngularDOM;
+
+//Start of hot-reloader
+System.trace = true;
+noAngularDOM = htmlTag.cloneNode(true);
+if ((!System.hotReloader)) {
+  System.import('systemjs-hot-reloader').then(HotReloader => {
+    System.hotReloader = new HotReloader.default('http://localhost:8081/');
+    System.hotReloader.on('change', function(name) {
+      console.log(name, 'changed');
+    });
+    console.log('systemjs-hot-reloader enabled');
+  });
+}
