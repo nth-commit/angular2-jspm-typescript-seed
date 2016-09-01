@@ -16,7 +16,7 @@
     "gulp": "gulp",
     "karma": "karma",
     "karma.start": "karma start",
-    "postinstall": "typings install && gulp check.versions && npm prune && node_modules/protractor/bin/webdriver-manager update && jspm install",
+    "postinstall": "typings install && gulp check.versions && npm prune  && gulp webdriver && jspm install",
     "reinstall": "npm cache clean && npm install && jspm install",
     "prod": "gulp prod",
     "serve.reports": "gulp serve.reports",
