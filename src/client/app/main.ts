@@ -1,3 +1,4 @@
+import 'jspm_packages/system-polyfills.js';
 import 'es6-shim';
 import 'core-js/client/shim.min.js';
 import 'zone.js/dist/zone.js';
