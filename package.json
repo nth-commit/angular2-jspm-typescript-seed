@@ -21,7 +21,7 @@
     "prod": "gulp prod",
     "serve.reports": "gulp serve.reports",
     "serve.prod": "gulp serve.prod --color",
-    "start": "gulp serve.dev --color",
+    "start": "gulp dev --color",
     "tasks.list": "gulp --tasks-simple --color",
     "test": "gulp test --color",
     "tests.all": "npm test && npm run e2e",
@@ -38,8 +38,10 @@
     "chokidar-socket-emitter": "^0.5.2",
     "codelyzer": "0.0.19",
     "colorguard": "^1.1.1",
+    "commitizen": "^2.8.6",
     "connect-history-api-fallback": "^1.2.0",
     "cssnano": "^3.5.2",
+    "cz-conventional-changelog": "^1.2.0",
     "doiuse": "^2.3.0",
     "event-stream": "^3.3.2",
     "express": "~4.13.4",
@@ -277,6 +279,11 @@
           "readline": "@empty"
         }
       }
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
