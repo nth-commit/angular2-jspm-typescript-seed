@@ -29,7 +29,7 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then nohup bash -c "webdriver-manager start 2>&1 &"; fi  # Protractor CI
 
 after_failure:
-  - cat /home/travis/build/UIUXEngineering/angular2-seed/npm-debug.log
+  - cat /home/travis/build/UIUXEngineering/angular2-jspm-typescript-seed/npm-debug.log
 
 branches:
   only: master
@@ -52,4 +52,4 @@ cache:
   directories: node_modules
 
 script:
-  - npm run tests.all
+  - npm test
