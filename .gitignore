@@ -25,6 +25,7 @@ build/Release
 /node_modules/
 /typings/
 /src/client/jspm_packages/
+/test-reports
 
 # Users Environment Variables
 .lock-wscript
