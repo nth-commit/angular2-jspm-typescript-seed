@@ -5,8 +5,8 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/7wtt9ba0kuwaotqr?svg=true)](https://ci.appveyor.com/project/jerryorta-dev/angular2-jspm-typescript-seed)
 [![Join the chat at https://gitter.im/UIUXEngineering/angular2-jspm-typescript-seed](https://badges.gitter.im/UIUXEngineering/angular2-jspm-typescript-seed.svg)](https://gitter.im/UIUXEngineering/angular2-jspm-typescript-seed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-[![Dependency Status](https://david-dm.org/mgechev/angular2-seed.svg)](https://david-dm.org/mgechev/angular2-seed)
-[![devDependency Status](https://david-dm.org/mgechev/angular2-seed/dev-status.svg)](https://david-dm.org/mgechev/angular2-seed#info=devDependencies)
+[![Dependency Status](https://david-dm.org/UIUXEngineering/angular2-jspm-typescript-seed.svg)](https://david-dm.org/UIUXEngineering/angular2-jspm-typescript-seed)
+[![devDependency Status](https://david-dm.org/UIUXEngineering/angular2-jspm-typescript-seed/dev-status.svg)](https://david-dm.org/UIUXEngineering/angular2-jspm-typescript-seed#info=devDependencies)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Provides fast, reliable and extensible starter for the development of Angular 2 projects.
