@@ -224,7 +224,6 @@ module.exports = function(config) {
   });
 
   if (process.env.APPVEYOR) {
-    config.frameworks = ['jasmine'];
     config.reporters = ['mocha'];
     config.browsers = ['IE'];
     config.singleRun = true;
