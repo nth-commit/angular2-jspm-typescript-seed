@@ -31,7 +31,7 @@
   "author": "Minko Gechev <mgechev>",
   "license": "MIT",
   "devDependencies": {
-    "@uiuxengineering/karma-jspm": "^2.2.14",
+    "@uiuxengineering/karma-jspm": "^2.2.15",
     "async": "^1.4.2",
     "browser-sync": "^2.12.8",
     "chalk": "^1.1.3",
