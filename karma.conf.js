@@ -1,8 +1,8 @@
 // Karma configuration
-// Generated on Wed Jul 15 2015 09:44:02 GMT+0200 (Romance Daylight Time)
 'use strict';
 
 var argv = require('yargs').argv;
+var chalk = require('chalk');
 
 module.exports = function(config) {
   config.set({
@@ -229,10 +229,15 @@ module.exports = function(config) {
     config.browsers = ['IE'];
     config.singleRun = true;
     config.browserNoActivityTimeout = 3000000; // Note: default value (10000) is not enough
-  }
-
-  if (process.env.TRAVIS || process.env.CIRCLECI) {
+    console.log(chalk.yellow.bgRed.bold('Karma Config: APPVEYOR'));
+  } else if (process.env.TRAVIS || process.env.CIRCLECI) {
+    config.reporters = ['mocha'];
     config.browsers = ['Chrome_travis_ci'];
     config.singleRun = true;
+    console.log(chalk.yellow.bgRed.bold('Karma Config: TRAVIS || CIRCLECI'));
+  } else {
+    console.log(chalk.yellow.bgRed.bold('Karma Config: LOCALHOST'));
   }
+
+  console.log(config);
 };

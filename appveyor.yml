@@ -1,9 +1,18 @@
 # AppVeyor file
 # http://www.appveyor.com/docs/appveyor-yml
-# This file: cloned from https://github.com/gruntjs/grunt/blob/master/appveyor.yml
 
 # Build version format
 version: "{build}"
+
+# you can use {branch} name in version format too
+# version: 1.0.{build}-{branch}
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+    - develop
 
 # Test against this version of Node.js
 environment:
