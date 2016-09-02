@@ -1,8 +1,8 @@
 # Introduction
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
-[![Build Status](https://travis-ci.org/UIUXEngineering/angular2-jspm-typescript-seed.svg?branch=master)](https://travis-ci.org/UIUXEngineering/angular2-jspm-typescript-seed)
-[![Build Status](https://ci.appveyor.com/api/projects/status/7wtt9ba0kuwaotqr?svg=true)](https://ci.appveyor.com/project/jerryorta-dev/angular2-jspm-typescript-seed)
+[![Build Status](https://travis-ci.org/UIUXEngineering/angular2-jspm-typescript-seed-advanced.svg?branch=master)](https://travis-ci.org/UIUXEngineering/angular2-jspm-typescript-seed-advanced.svg?branch=master)
+[![Build status](https://ci.appveyor.com/api/projects/status/jo1g16wgj9m36ids/branch/master?svg=true)](https://ci.appveyor.com/project/jerryorta-dev/angular2-jspm-typescript-seed-advanced/branch/master)
 [![Join the chat at https://gitter.im/UIUXEngineering/angular2-jspm-typescript-seed](https://badges.gitter.im/UIUXEngineering/angular2-jspm-typescript-seed.svg)](https://gitter.im/UIUXEngineering/angular2-jspm-typescript-seed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Dependency Status](https://david-dm.org/UIUXEngineering/angular2-jspm-typescript-seed.svg)](https://david-dm.org/UIUXEngineering/angular2-jspm-typescript-seed)
