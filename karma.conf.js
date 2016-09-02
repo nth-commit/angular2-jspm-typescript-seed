@@ -250,7 +250,7 @@ function chalkOptionList (config) {
 }
 
 function chalkHeader(msg) {
-  console.log(chalk.yellow.bgRed.bold(msg));
+  console.log('\n' + chalk.yellow.bgRed.bold(msg));
 }
 
 function chalkOption(option, prop) {
