@@ -229,15 +229,31 @@ module.exports = function(config) {
     config.browsers = ['IE'];
     config.singleRun = true;
     config.browserNoActivityTimeout = 3000000; // Note: default value (10000) is not enough
-    console.log(chalk.yellow.bgRed.bold('Karma Config: APPVEYOR'));
+    chalkHeader('Karma Config: APPVEYOR');
   } else if (process.env.TRAVIS || process.env.CIRCLECI) {
     config.reporters = ['mocha'];
     config.browsers = ['Chrome_travis_ci'];
     config.singleRun = true;
-    console.log(chalk.yellow.bgRed.bold('Karma Config: TRAVIS || CIRCLECI'));
+    chalkHeader('Karma Config: TRAVIS || CIRCLECI');
   } else {
-    console.log(chalk.yellow.bgRed.bold('Karma Config: LOCALHOST'));
+    chalkHeader('Karma Config: LOCALHOST');
   }
 
-  console.log(config);
+  chalkOptionList(config);
 };
+
+function chalkOptionList (config) {
+  chalkOption(config, 'frameworks');
+  chalkOption(config, 'reporters');
+  chalkOption(config, 'browsers');
+  chalkOption(config, 'singleRun');
+  chalkOption(config, 'browserNoActivityTimeout');
+}
+
+function chalkHeader(msg) {
+  console.log(chalk.yellow.bgRed.bold(msg));
+}
+
+function chalkOption(option, prop) {
+  console.log(chalk.yellow(prop + ": " + option[prop]));
+}
