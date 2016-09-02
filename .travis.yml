@@ -1,3 +1,5 @@
+# docs: https://docs.travis-ci.com/user/customizing-the-build/#Building-Specific-Branches
+
 language: node_js
 node_js:
   - 4
@@ -32,7 +34,9 @@ after_failure:
   - cat /home/travis/build/UIUXEngineering/angular2-jspm-typescript-seed/npm-debug.log
 
 branches:
-  only: master
+  only:
+    - master
+    - develop
 
 notifications:
   email: true
