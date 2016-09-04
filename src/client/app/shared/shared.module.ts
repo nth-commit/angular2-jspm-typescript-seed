@@ -15,7 +15,7 @@ import { NameListService } from './name-list/index';
   imports: [CommonModule, RouterModule],
   declarations: [ToolbarComponent, NavbarComponent],
   exports: [ToolbarComponent, NavbarComponent,
-    CommonModule, FormsModule]
+    CommonModule, FormsModule, RouterModule]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

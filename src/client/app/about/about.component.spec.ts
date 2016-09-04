@@ -1,22 +1,20 @@
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 import { Component } from '@angular/core';
 import {
   async,
   TestBed
 } from '@angular/core/testing';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
-
-import { AboutComponent } from './about.component';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+import { AboutModule } from './about.module';
 
 export function main() {
-   describe('About component', () => {
+  describe('About component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        providers: [disableDeprecatedForms(), provideForms()]
+        imports: [AboutModule]
       });
     });
 
@@ -28,15 +26,14 @@ export function main() {
             let fixture = TestBed.createComponent(TestComponent);
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-	          expect(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+            expect(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
           });
-        }));
-    });
+      }));
+  });
 }
 
 @Component({
   selector: 'test-cmp',
-  directives: [AboutComponent],
   template: '<sd-about></sd-about>'
 })
 class TestComponent {}

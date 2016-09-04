@@ -1,3 +1,97 @@
+if (window.__karma__) {
+
+  var releaseSemVer = '@2.0.0-rc.6';
+
+  var testConfig = {
+    baseURL: 'base'
+  };
+
+  var angularTestFiles = [
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/core",
+    "@angular/forms",
+    "@angular/http",
+    "@angular/platform-browser",
+    "@angular/platform-browser-dynamic",
+    "@angular/router"
+  ];
+
+  function addBundlePackage(testFramework) {
+
+    if (!testConfig.packages) {
+      testConfig.packages = {};
+    }
+
+    testConfig.packages[testFramework] = {
+      // "main": getMap(testFramework).main,
+      "defaultExtension": "js",
+      "format": "amd",
+      "meta": {
+        "*.js": {
+          // "loader": "plugin-babel"
+          "loader": "ts"
+        }
+      }
+    };
+
+    testConfig.packages[testFramework + '/testing'] = {
+      // "main": getMap(testFramework).testing,
+      "defaultExtension": "js",
+      "format": "amd",
+      "meta": {
+        "*.js": {
+          // "loader": "plugin-babel"
+          "loader": "ts"
+        }
+      }
+    };
+  }
+
+  function getMap(key) {
+    var map = {
+      main: '',
+      testing: ''
+    };
+    var keyParts = key.split('/');
+
+    if (keyParts[1] === 'router') {
+      map.main = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '.umd.js';
+      map.testing = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '-testing.umd.js';
+    } else {
+      map.main = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '.umd.js';
+      map.testing = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '-testing.umd.js';
+    }
+
+    return map;
+  }
+
+  function addMap(key) {
+    if (!testConfig.map) {
+      testConfig.map = {};
+    }
+
+    var keyParts = key.split('/');
+
+    if (keyParts[1] === 'router') {
+      testConfig.map[key + ''] = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '.umd.js';
+      testConfig.map[key + '/testing'] = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '-testing.umd.js';
+    } else {
+      testConfig.map[key + ''] = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '.umd.js';
+      testConfig.map[key + '/testing'] = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '-testing.umd.js';
+    }
+  }
+
+  for (var i = 0; i < angularTestFiles.length; i++) {
+
+    addBundlePackage(angularTestFiles[i]);
+    addMap(angularTestFiles[i])
+
+  }
+  // console.log(JSON.stringify(testConfig, null, 2));
+  System.config(testConfig);
+}
+
 SystemJS.config({
   browserConfig: {
     "paths": {
@@ -53,7 +147,7 @@ SystemJS.config({
   packages: {
     "testing": {
       "defaultExtension": "ts",
-      "format": "system",
+      "format": "commonjs",
       "meta": {
         "*.ts": {
           "loader": "ts"
@@ -63,7 +157,7 @@ SystemJS.config({
     "app": {
       "main": "@uiuxengineering/main",
       "defaultExtension": "ts",
-      "format": "system",
+      "format": "commonjs",
       "meta": {
         "*.js": {
           "loader": "plugin-babel"
@@ -104,14 +198,14 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
-    "@angular/common": "npm:@angular/common@2.0.0-rc.5",
-    "@angular/compiler": "npm:@angular/compiler@2.0.0-rc.5",
-    "@angular/core": "npm:@angular/core@2.0.0-rc.5",
-    "@angular/forms": "npm:@angular/forms@0.3.0",
-    "@angular/http": "npm:@angular/http@2.0.0-rc.5",
-    "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.5",
-    "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.5",
-    "@angular/router": "npm:@angular/router@3.0.0-rc.1",
+    // "@angular/common": "npm:@angular/common@2.0.0-rc.6",
+    // "@angular/compiler": "npm:@angular/compiler@2.0.0-rc.6",
+    // "@angular/core": "npm:@angular/core@2.0.0-rc.6",
+    // "@angular/forms": "npm:@angular/forms@2.0.0-rc.6",
+    // "@angular/http": "npm:@angular/http@2.0.0-rc.6",
+    // "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.6",
+    // "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.6",
+    // "@angular/router": "npm:@angular/router@3.0.0-rc.2",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
@@ -125,7 +219,7 @@ SystemJS.config({
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "reflect-metadata": "npm:reflect-metadata@0.1.8",
-    "rxjs": "npm:rxjs@5.0.0-beta.6",
+    "rxjs": "npm:rxjs@5.0.0-beta.11",
     "scss": "github:KevCJones/plugin-scss@0.2.11",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
@@ -133,7 +227,7 @@ SystemJS.config({
     "text": "github:systemjs/plugin-text@0.0.8",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
-    "zone.js": "npm:zone.js@0.6.13"
+    "zone.js": "npm:zone.js@0.6.17"
   },
   packages: {
     "github:KevCJones/plugin-scss@0.2.11": {
@@ -401,6 +495,11 @@ SystemJS.config({
         "process-nextick-args": "npm:process-nextick-args@1.0.7",
         "core-util-is": "npm:core-util-is@1.0.2",
         "buffer-shims": "npm:buffer-shims@1.0.0"
+      }
+    },
+    "npm:rxjs@5.0.0-beta.11": {
+      "map": {
+        "symbol-observable": "npm:symbol-observable@1.0.2"
       }
     }
   }
