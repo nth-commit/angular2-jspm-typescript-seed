@@ -141,7 +141,7 @@ The seed can generate a file `manifest.appcache` which lists all files included 
 The manifest is also annotated for use with `angular2-service-worker`. Some manual operations are currently required to enable this usage. The package must be installed, and `worker.js` manually copied into the project src directory:
 
 ```bash
-cp node_modules/angular2-service-worker/dist/worker.js src/client
+cp node_modules/angular2-service-worker/dist/worker.js src/browser
 ```
 
 In order to generate the manifest file run:

@@ -4,12 +4,12 @@ The refactor is so significant, and after seeing previous responses to JSPM requ
 
 At at high level, the refactor consists of:
 - remove most tasks that require a tmp or dev builds. SystemJS transpiles files for dev, tests, e2e, code coverage. Only HTML dev build tasks remain due to environment variables.
-- Use SystemJS for production build via [conditional loading](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/tree/master/src/client/app/shared/config).
+- Use SystemJS for production build via [conditional loading](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/tree/master/src/browser/app/shared/config).
 - No scraping the files system, App variables for production and development produced by SystemJS conditional loading.
 - BrowserSync has it’s own file watch feature, remove all file watch tasks. It also has
 - Optimize node rimraf to use Glob instead of the walk method.
 
-####For completeness of this dialogue, here are some notes on why I use JSPM.
+#### For completeness of this dialogue, here are some notes on why I use JSPM.
 
 To buy off on JSPM, one needs to understand the original intended goals of SystemJS proposed by @guybedford, the author of both SystemJS and JSPM. Guy researched Browserify, RequireJS, NPM, Bower, among other package managers and module loaders and set a goal to incorporate the best features of each, while improving the flaws of some. To maximize the benefits of SystemJS, JSPM becomes a powerful package mananger and systemjs configuration tool. Thus, setting up an environment maximizing these benefits requires a shift in principles and paradigm to how development environments are utilized.
 

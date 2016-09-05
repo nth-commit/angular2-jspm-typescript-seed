@@ -2,6 +2,8 @@
 
 Make the following changes:
 
+Run the command ```npm run clean.env```
+
 Rename the directory:
 ```
 ├── src                       
@@ -29,6 +31,11 @@ In the file ./package.json
 "directories": {
       "baseURL": "src/browser"
     },
+```
+- update ```clean.env``` npm script
+```
+"scripts": {
+    "clean.env": "rm -rf node_modules && rm -rf src/browser/jspm_packages",
 ```
 
 In the file ./.gitignore

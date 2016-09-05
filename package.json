@@ -6,7 +6,7 @@
     "url": "https://github.com/UIUXEngineering/angular2-jspm-typescript-seed"
   },
   "scripts": {
-    "clean.env": "rm -rf node_modules && rm -rf src/client/jspm_packages",
+    "clean.env": "rm -rf node_modules && rm -rf src/browser/jspm_packages",
     "clean.reports": "gulp clean.reports",
     "dev": "gulp dev --color",
     "build.prod": "gulp build.prod --color",
