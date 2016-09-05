@@ -3,7 +3,6 @@ import {
   async,
   TestBed
 } from '@angular/core/testing';
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { AboutModule } from './about.module';
 
 export function main() {

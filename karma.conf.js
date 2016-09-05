@@ -21,7 +21,7 @@ module.exports = function(config) {
       /**
        * main config
        */
-      config: 'jspm.config.js',
+      config: 'jspm.karma.config.js',
 
       /**
        * dev jspm config.

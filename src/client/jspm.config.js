@@ -1,97 +1,3 @@
-if (window.__karma__) {
-
-  var releaseSemVer = '@2.0.0-rc.6';
-
-  var testConfig = {
-    baseURL: 'base'
-  };
-
-  var angularTestFiles = [
-    "@angular/common",
-    "@angular/compiler",
-    "@angular/core",
-    "@angular/forms",
-    "@angular/http",
-    "@angular/platform-browser",
-    "@angular/platform-browser-dynamic",
-    "@angular/router"
-  ];
-
-  function addBundlePackage(testFramework) {
-
-    if (!testConfig.packages) {
-      testConfig.packages = {};
-    }
-
-    testConfig.packages[testFramework] = {
-      // "main": getMap(testFramework).main,
-      "defaultExtension": "js",
-      "format": "amd",
-      "meta": {
-        "*.js": {
-          // "loader": "plugin-babel"
-          "loader": "ts"
-        }
-      }
-    };
-
-    testConfig.packages[testFramework + '/testing'] = {
-      // "main": getMap(testFramework).testing,
-      "defaultExtension": "js",
-      "format": "amd",
-      "meta": {
-        "*.js": {
-          // "loader": "plugin-babel"
-          "loader": "ts"
-        }
-      }
-    };
-  }
-
-  function getMap(key) {
-    var map = {
-      main: '',
-      testing: ''
-    };
-    var keyParts = key.split('/');
-
-    if (keyParts[1] === 'router') {
-      map.main = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '.umd.js';
-      map.testing = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '-testing.umd.js';
-    } else {
-      map.main = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '.umd.js';
-      map.testing = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '-testing.umd.js';
-    }
-
-    return map;
-  }
-
-  function addMap(key) {
-    if (!testConfig.map) {
-      testConfig.map = {};
-    }
-
-    var keyParts = key.split('/');
-
-    if (keyParts[1] === 'router') {
-      testConfig.map[key + ''] = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '.umd.js';
-      testConfig.map[key + '/testing'] = 'npm:' + key + '@3.0.0-rc.2' + '/bundles/' + keyParts[1] + '-testing.umd.js';
-    } else {
-      testConfig.map[key + ''] = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '.umd.js';
-      testConfig.map[key + '/testing'] = 'npm:' + key + releaseSemVer + '/bundles/' + keyParts[1] + '-testing.umd.js';
-    }
-  }
-
-  for (var i = 0; i < angularTestFiles.length; i++) {
-
-    addBundlePackage(angularTestFiles[i]);
-    addMap(angularTestFiles[i])
-
-  }
-  // console.log(JSON.stringify(testConfig, null, 2));
-  System.config(testConfig);
-}
-
 SystemJS.config({
   browserConfig: {
     "paths": {
@@ -145,15 +51,6 @@ SystemJS.config({
     "noFallthroughCasesInSwitch": true
   },
   packages: {
-    "testing": {
-      "defaultExtension": "ts",
-      "format": "commonjs",
-      "meta": {
-        "*.ts": {
-          "loader": "ts"
-        }
-      }
-    },
     "app": {
       "main": "@uiuxengineering/main",
       "defaultExtension": "ts",
@@ -198,14 +95,14 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
-    // "@angular/common": "npm:@angular/common@2.0.0-rc.6",
-    // "@angular/compiler": "npm:@angular/compiler@2.0.0-rc.6",
-    // "@angular/core": "npm:@angular/core@2.0.0-rc.6",
-    // "@angular/forms": "npm:@angular/forms@2.0.0-rc.6",
-    // "@angular/http": "npm:@angular/http@2.0.0-rc.6",
-    // "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.6",
-    // "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.6",
-    // "@angular/router": "npm:@angular/router@3.0.0-rc.2",
+    "@angular/common": "npm:@angular/common@2.0.0-rc.6",
+    "@angular/compiler": "npm:@angular/compiler@2.0.0-rc.6",
+    "@angular/core": "npm:@angular/core@2.0.0-rc.6",
+    "@angular/forms": "npm:@angular/forms@2.0.0-rc.6",
+    "@angular/http": "npm:@angular/http@2.0.0-rc.6",
+    "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.6",
+    "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.6",
+    "@angular/router": "npm:@angular/router@3.0.0-rc.2",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",

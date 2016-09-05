@@ -41,6 +41,7 @@ gulp.task('prod', (done: any) =>
 // Test.
 gulp.task('test', (done: any) =>
   runSequence(
+    'build.jspm.test.config',
     'clean.unitTest.reports',
     'karma.start',
     done));

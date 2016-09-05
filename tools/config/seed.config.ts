@@ -199,6 +199,8 @@ export class SeedConfig {
    * path to jspm.config
    */
   JSPM_CONFIG = join(this.PROJECT_ROOT_APP_SRC, 'jspm.config');
+  JSPM_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.config.js');
+  JSPM_KARMA_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.karma.config.js');
 
   /**
    * The folder for the built JavaScript files.
