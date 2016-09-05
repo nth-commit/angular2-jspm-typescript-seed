@@ -39,7 +39,6 @@ build/Release
 
 /tools/**/*.js
 dist
-dev
 lib
 test
 tmp

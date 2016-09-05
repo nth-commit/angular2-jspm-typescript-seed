@@ -1,12 +1,16 @@
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
 
-import {PROJECT_TASKS_DIR, SEED_TASKS_DIR} from './tools/config';
+import {PROJECT_TASKS_DIR, DEV_TASKS_DIR, E2E_TASKS_DIR, PROD_TASKS_DIR, REPORTS_TASKS_DIR, UNIT_TESTS_TASKS_DIR} from './tools/config';
 import {loadTasks} from './tools/utils';
 
 
-loadTasks(SEED_TASKS_DIR);
+loadTasks(DEV_TASKS_DIR);
 loadTasks(PROJECT_TASKS_DIR);
+loadTasks(E2E_TASKS_DIR);
+loadTasks(PROD_TASKS_DIR);
+loadTasks(REPORTS_TASKS_DIR);
+loadTasks(UNIT_TESTS_TASKS_DIR);
 
 
 // --------------

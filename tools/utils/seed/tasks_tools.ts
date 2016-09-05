@@ -11,7 +11,7 @@ import * as tildify from 'tildify';
  * @param {string} path the path to load the tasks from
  */
 export function loadTasks(path: string): void {
-  util.log('Loading tasks folder', chalk.yellow(path));
+  util.log('Loading tasks folder', chalk.green(path.replace(process.cwd(), '.')));
   readDir(path, taskname => registerTask(taskname, path));
 }
 
@@ -22,7 +22,7 @@ export function loadTasks(path: string): void {
  */
 function registerTask(taskname: string, path: string): void {
   const TASK = join(path, taskname);
-  util.log('Registering task', chalk.yellow(tildify(TASK)));
+  util.log('Registering task', chalk.yellow(tildify(taskname)));
 
   gulp.task(taskname, (done: any) => {
     const task = require(TASK);

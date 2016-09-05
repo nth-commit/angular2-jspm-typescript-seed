@@ -3,7 +3,6 @@
  * by the seed.
  */
 export * from './seed/clean';
-export * from './seed/code_change_tools';
 export * from './seed/server';
 export * from './seed/tasks_tools';
 export * from './seed/template_locals';

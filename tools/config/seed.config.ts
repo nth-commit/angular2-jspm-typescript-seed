@@ -1,17 +1,7 @@
 import { join } from 'path';
 import { argv } from 'yargs';
 
-import { Environments, InjectableDependency } from './seed.config.interfaces';
-
-/**
- * The enumeration of available environments.
- * @type {Environments}
- */
-export const ENVIRONMENTS: Environments = {
-  DEVELOPMENT: 'dev',
-  PRODUCTION: 'prod',
-  TEST: 'test'
-};
+import { InjectableDependency } from './seed.config.interfaces';
 
 /**
  * This class represents the basic configuration of the seed.
@@ -41,13 +31,6 @@ export class SeedConfig {
   PROJECT_ROOT = join(__dirname, '../..');
 
   /**
-   * The current environment.
-   * The default environment is `dev`, which can be overriden by the `--env`
-   * flag when running `npm start`.
-   */
-  ENV = getEnvironment();
-
-  /**
    * The flag for the debug option of the application.
    * The default value is `false`, which can be overriden by the `--debug` flag
    * when running `npm start`.
@@ -71,14 +54,6 @@ export class SeedConfig {
    * @type {string}
    */
   APP_BASE = argv['base'] || '/';
-
-  /**
-   * The flag for the hot-loader option of the application.
-   * Per default the option is not set, but can be set by the `--hot-loader`
-   * flag when running `npm start`.
-   * @type {boolean}
-   */
-  ENABLE_HOT_LOADING = argv['hot-loader'];
 
   /**
    * TODO: deprecate
@@ -156,13 +131,11 @@ export class SeedConfig {
   /**
    * The directory of the tasks provided by the seed.
    */
-  SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'seed');
-
-  /**
-   * The destination folder for the generated documentation.
-   * @type {string}
-   */
-  DOCS_DEST = 'docs';
+  DEV_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'dev');
+  E2E_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'e2e');
+  PROD_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'prod');
+  REPORTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'reports');
+  UNIT_TESTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'unitTests');
 
   /**
    * The base folder for built files.
@@ -176,24 +149,12 @@ export class SeedConfig {
    */
   PROD_DEST = this.DIST_DIR;
 
-  /**
-   * TODO: Delete
-   * The folder for the built files in the `test` environment.
-   * @type {string}
-   */
-  TEST_DEST = `${this.DIST_DIR}/${ENVIRONMENTS.TEST}`;
 
   /**
    * Distribution assets directory
    * @type {string}
    */
   ASSETS_PROD = `${this.PROD_DEST}/assets`;
-
-  /**
-   * Distribution assets directory
-   * @type {string}
-   */
-  ASSETS_TEST = `${this.TEST_DEST}/assets`;
 
   /**
    * path to jspm.config
@@ -392,18 +353,4 @@ function appVersion(): number | string {
 function customRules(): string[] {
   var lintConf = require('../../tslint.json');
   return lintConf.rulesDirectory;
-}
-
-/**
- * Returns the environment of the application.
- */
-function getEnvironment() {
-  let base: string[] = argv['_'];
-  let prodKeyword = !!base.filter(o => o.indexOf(ENVIRONMENTS.PRODUCTION) >= 0).pop();
-  let env = (argv['env'] || '').toLowerCase();
-  if ((base && prodKeyword) || env === ENVIRONMENTS.PRODUCTION) {
-    return ENVIRONMENTS.PRODUCTION;
-  } else {
-    return ENVIRONMENTS.TEST;
-  }
 }
