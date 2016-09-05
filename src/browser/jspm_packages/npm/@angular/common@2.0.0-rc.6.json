@@ -1,0 +1,15 @@
+{
+  "main": "bundles/common.umd.js",
+  "meta": {
+    "src/*.js": {
+      "deps": [
+        "reflect-metadata",
+        "zone.js"
+      ]
+    }
+  },
+  "format": "cjs",
+  "map": {
+    "@angular/common": "."
+  }
+}

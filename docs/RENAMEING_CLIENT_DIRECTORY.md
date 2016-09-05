@@ -1,0 +1,32 @@
+# Renaming the client directory
+
+Make the following changes:
+
+Rename the directory:
+```
+├── src                       
+│   └── browser              <-- rename this folder.
+```
+
+In the File: ./tools/config/seed.config.ts
+- Update the CLIENT_SRC property.
+```
+ CLIENT_SRC = 'src/browser';
+```
+
+In the file: ./protractor.conf.js
+- Update the spec property
+```
+  specs: [
+    './src/browser/**/*.e2e-spec.ts'
+  ],
+  
+ ```
+
+In the file ./package.json
+- update jspm baseURL
+```
+"directories": {
+      "baseURL": "src/browser"
+    },
+```

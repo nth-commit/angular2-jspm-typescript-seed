@@ -1,11 +1,15 @@
 import * as gulp from 'gulp';
 import { protractor } from 'gulp-protractor';
 import { ProtractorProdServer } from '../../utils';
+import { CLIENT_SRC } from '../../config';
 
 export = (done: any) => {
   new ProtractorProdServer()
     .server()
     .then((server: any) => {
+
+      var src = './' + CLIENT_SRC + '/**/*.e2e-spec.js';
+
       gulp
 
       /**
@@ -13,7 +17,7 @@ export = (done: any) => {
        * memory, so gulp will still find js files
        * though not written to file system.
        */
-        .src('./src/client/**/*.e2e-spec.js')
+        .src(src)
         .pipe(protractor({ configFile: 'protractor.conf.js' }))
         .on('error', (error: string) => { throw error; })
         .on('end', () => { server.close(done); });

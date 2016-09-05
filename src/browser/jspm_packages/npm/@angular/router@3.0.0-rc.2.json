@@ -1,0 +1,90 @@
+{
+  "main": "bundles/router.umd.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "index.d.ts": {
+      "format": "esm"
+    },
+    "index.js": {
+      "format": "esm"
+    },
+    "src/apply_redirects.js": {
+      "format": "esm"
+    },
+    "src/config.js": {
+      "format": "esm"
+    },
+    "src/create_router_state.js": {
+      "format": "esm"
+    },
+    "src/create_url_tree.js": {
+      "format": "esm"
+    },
+    "src/directives/router_link.js": {
+      "format": "esm"
+    },
+    "src/directives/router_link_active.js": {
+      "format": "esm"
+    },
+    "src/directives/router_outlet.js": {
+      "format": "esm"
+    },
+    "src/index.d.ts": {
+      "format": "esm"
+    },
+    "src/index.js": {
+      "format": "esm"
+    },
+    "src/private_export.js": {
+      "format": "esm"
+    },
+    "src/recognize.js": {
+      "format": "esm"
+    },
+    "src/router.js": {
+      "format": "esm"
+    },
+    "src/router_config_loader.js": {
+      "format": "esm"
+    },
+    "src/router_module.js": {
+      "format": "esm"
+    },
+    "src/router_outlet_map.js": {
+      "format": "esm"
+    },
+    "src/router_state.js": {
+      "format": "esm"
+    },
+    "src/shared.js": {
+      "format": "esm"
+    },
+    "src/url_tree.js": {
+      "format": "esm"
+    },
+    "src/utils/collection.js": {
+      "format": "esm"
+    },
+    "src/utils/tree.js": {
+      "format": "esm"
+    },
+    "testing/index.d.ts": {
+      "format": "esm"
+    },
+    "testing/index.js": {
+      "format": "esm"
+    },
+    "testing/private_import_router.js": {
+      "format": "esm"
+    },
+    "testing/router_testing_module.js": {
+      "format": "esm"
+    }
+  },
+  "map": {
+    "@angular/router": "."
+  }
+}

@@ -3,12 +3,13 @@
 
 var argv = require('yargs').argv;
 var chalk = require('chalk');
+var projectConfig = require('./tools/config');
 
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './src/client',
+    basePath: './' + projectConfig.CLIENT_SRC,
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter

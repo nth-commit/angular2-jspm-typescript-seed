@@ -93,7 +93,7 @@ export class SeedConfig {
    * The base folder of the applications source files.
    * @type {string}
    */
-  CLIENT_SRC = 'src/client';
+  CLIENT_SRC = 'src/browser';
 
   /**
    * The base folder for the application typescript files.

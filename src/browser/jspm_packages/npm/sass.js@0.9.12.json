@@ -1,0 +1,12 @@
+{
+  "main": "dist/sass.sync.js",
+  "map": {
+    "ws": "@empty"
+  },
+  "meta": {
+    "dist/sass.worker.js": {
+      "format": "global"
+    }
+  },
+  "format": "cjs"
+}

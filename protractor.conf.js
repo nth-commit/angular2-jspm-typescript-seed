@@ -33,7 +33,7 @@ const config = {
   baseUrl: 'http://localhost:5555/',
 
   specs: [
-    './src/client/**/*.e2e-spec.ts'
+    './src/browser/**/*.e2e-spec.ts'
   ],
 
   exclude: [],

@@ -120,7 +120,7 @@
     "name": "@uiuxengineering/app",
     "main": "@uiuxengineering/main.ts",
     "directories": {
-      "baseURL": "src/client"
+      "baseURL": "src/browser"
     },
     "dependencies": {
       "@angular/forms": "npm:@angular/forms@2.0.0-rc.6",
