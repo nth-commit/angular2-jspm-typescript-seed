@@ -30,3 +30,10 @@ In the file ./package.json
       "baseURL": "src/browser"
     },
 ```
+
+In the file ./.gitignore
+- update ignore jspm_packages
+
+```
+/src/browser/jspm_packages/
+```
