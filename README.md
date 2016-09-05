@@ -10,8 +10,16 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Provides fast, reliable and extensible starter for the development of Angular 2 projects.
+This seed supports @angular 2.0.9-rc.6.
 
 This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed).
+
+# Additional research:
+- [ng2-test-seed](https://github.com/juliemr/ng2-test-seed)
+- [@uiuxengineering/karma-jspm](https://github.com/UIUXEngineering/karma-jspm)
+- [@guybedform's SystemJS, Mocha, Istanbul blog post](http://guybedford.com/systemjs-mocha-istanbul)
+- [angularjs.blogspot.com](http://angularjs.blogspot.com/)
+- [jspm 0.17 Beta Guide](http://jspm.io/0.17-beta-guide/index.html)
 
 # JSPM offers these features:
 - No intermediate transpilation of files to serve dev, unit tests, e2e, or code coverage.
@@ -34,6 +42,7 @@ This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](htt
 - Ready to go, statically typed build system using gulp for working with TypeScript.
 - Production and development builds.
 - Sample unit tests with Jasmine and Karma including code coverage via [istanbul](https://gotwarlost.github.io/istanbul/).
+- Coverage reports remapped to source files.
 - End-to-end tests with Protractor.
 - Development server with Livereload.
 - Following the [best practices](https://angular.io/styleguide).
