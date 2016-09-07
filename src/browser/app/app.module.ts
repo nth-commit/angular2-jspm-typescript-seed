@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
+import { FeatureModule } from './conditionalSubstitution/#{FEATURE}/feature.module';
 
 /**
  * Conditional import based on ~production flag in jspm.config:
@@ -32,7 +33,7 @@ import {Config} from './shared/config/prod.config';
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), AboutModule, HomeModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), AboutModule, HomeModule, SharedModule.forRoot(), FeatureModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
