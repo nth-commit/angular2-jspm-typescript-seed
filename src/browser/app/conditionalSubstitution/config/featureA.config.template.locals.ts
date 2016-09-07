@@ -1,5 +1,5 @@
-import { FeatureConfig } from './interfaces/FeatureConfig';
+import { IFeatureConfig } from './interfaces/FeatureConfig';
 
-export const Config: FeatureConfig = {
-  CONDITIONAL_FEATURE: 'featureA',
+export const FeatureConfig: IFeatureConfig = {
+  LOAD_COMPONENT: 'featureA',
 };

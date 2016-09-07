@@ -9,7 +9,7 @@ import { routes } from './app.routes';
 import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { FeatureModule } from './conditionalSubstitution/#{FEATURE}/feature.module';
+import { FeatureModule } from './conditionalSubstitution/#{FEATURE|FeatureConfig.LOAD_COMPONENT}/feature.module';
 
 /**
  * Conditional import based on ~production flag in jspm.config:

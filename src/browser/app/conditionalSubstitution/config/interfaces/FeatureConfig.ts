@@ -1,3 +1,3 @@
-export interface FeatureConfig {
-  CONDITIONAL_FEATURE: string;
+export interface IFeatureConfig {
+  LOAD_COMPONENT: string;
 }
