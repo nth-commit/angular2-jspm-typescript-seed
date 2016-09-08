@@ -1,5 +1,6 @@
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
+import { join } from 'path';
 
 import {PROJECT_TASKS_DIR, DEV_TASKS_DIR, E2E_TASKS_DIR, PROD_TASKS_DIR, REPORTS_TASKS_DIR, UNIT_TESTS_TASKS_DIR} from './tools/config';
 import {loadTasks} from './tools/utils';
@@ -12,6 +13,13 @@ loadTasks(PROD_TASKS_DIR);
 loadTasks(REPORTS_TASKS_DIR);
 loadTasks(UNIT_TESTS_TASKS_DIR);
 
+/**
+ * No config property since this is for demo
+ * purposes only. Either comment or remove
+ * when forking this repo.
+ */
+loadTasks(join(process.cwd(), 'tools', 'tasks', 'conditionalSubstitution'));
+
 
 // --------------
 // Build dev.
@@ -19,6 +27,20 @@ gulp.task('dev', (done: any) =>
   runSequence(
     'build.index.dev',
     'serve.dev',
+    done));
+
+// Feature A
+gulp.task('dev.featureA', (done: any) =>
+  runSequence(
+    'set.featureA',
+    'dev',
+    done));
+
+// Feature A
+gulp.task('dev.featureB', (done: any) =>
+  runSequence(
+    'set.featureB',
+    'dev',
     done));
 
 // --------------
