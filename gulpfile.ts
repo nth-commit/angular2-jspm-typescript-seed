@@ -36,7 +36,7 @@ gulp.task('dev.featureA', (done: any) =>
     'dev',
     done));
 
-// Feature A
+// Feature B
 gulp.task('dev.featureB', (done: any) =>
   runSequence(
     'set.featureB',
@@ -50,14 +50,34 @@ gulp.task('build.prod', (done: any) =>
     'clean.prod',
     'tslint',
     'build.assets.prod',
-    'build.js.prod',
     done));
 
 // --------------
-// Serve prod
+// Build prod
 gulp.task('prod', (done: any) =>
   runSequence(
     'build.prod',
+    'build.js.prod',
+    'build.index.prod',
+    'copy.prod',
+    'serve.prod',
+    done));
+
+// Feature A
+gulp.task('prod.featureA', (done: any) =>
+  runSequence(
+    'build.prod',
+    'build.js.prod.featureA',
+    'build.index.prod',
+    'copy.prod',
+    'serve.prod',
+    done));
+
+// Feature B
+gulp.task('prod.featureB', (done: any) =>
+  runSequence(
+    'build.prod',
+    'build.js.prod.featureB',
     'build.index.prod',
     'copy.prod',
     'serve.prod',

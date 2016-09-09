@@ -11,18 +11,13 @@ import { PROJECT_ROOT_APP_SRC,
 
 const plugins = <any>gulpLoadPlugins();
 
-export = (done: any) => {
+export = (outputOptions: any, done: any) => {
 
   let Builder = jspm.Builder;
   let builder = new Builder(PROJECT_ROOT_APP_SRC, JSPM_CONFIG);
 
   // https://github.com/systemjs/builder
-  builder.buildStatic(BOOTSTRAP_MODULE, UNMINIFIED_JS_PROD_DEST, {
-
-    // amd, cjs or es6
-    // format: 'es6',
-    sourceMaps: true
-  }).then(function() {
+  builder.buildStatic(BOOTSTRAP_MODULE, UNMINIFIED_JS_PROD_DEST, outputOptions).then(function() {
       gulp.src(UNMINIFIED_JS_PROD_DEST)
       /**
        * mangle:true ( default ) breaks the angular2 app.

@@ -2,6 +2,7 @@
 
 [JSPM Guide - Conditional Substitution](http://jspm.io/0.17-beta-guide/conditional-substitution.html)
 [Module loading with SystemJS](http://martinmicunda.com/2015/10/26/conditional-module-loading-with-systemjs/)
+[SystemJS Builder](https://github.com/systemjs/builder)
 
 Conditional substitution provides a method to dynamically change an import statement using SystemJS. 
 
