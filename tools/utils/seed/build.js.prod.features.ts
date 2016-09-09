@@ -11,7 +11,7 @@ import { PROJECT_ROOT_APP_SRC,
 
 const plugins = <any>gulpLoadPlugins();
 
-export = (outputOptions: any, done: any) => {
+export function builder (outputOptions: any, done: any): any {
 
   let Builder = jspm.Builder;
   let builder = new Builder(PROJECT_ROOT_APP_SRC, JSPM_CONFIG);

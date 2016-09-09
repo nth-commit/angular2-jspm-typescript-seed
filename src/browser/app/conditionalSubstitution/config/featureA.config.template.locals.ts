@@ -1,5 +1,6 @@
 import { IFeatureConfig } from './interfaces/FeatureConfig';
 
 export const FeatureConfig: IFeatureConfig = {
-  LOAD_COMPONENT: 'featureA',
+  FEATURE_COMPONENT_NAME: 'featureA',
+  LOAD_FEATURE: true
 };

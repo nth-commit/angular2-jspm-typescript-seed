@@ -18,14 +18,14 @@ We can have both Apps live in the same code base, as well as both features. That
 But you want to only load one feature per app, so you need to CONDITIONALLY load the feature based on some config. The import then would look like this:
 
 ```javascript
-    export * from './#{FEATURE|FeatureConfig.LOAD_COMPONENT}/index';
+    export * from './#{FEATURE|FeatureConfig.FEATURE_COMPONENT_NAME}/index';
 ```
 
 * The "#" tells SystemJS that a string substituion needs to be handeled. 
 * The "FEATURE" is the module in the  ```jspm.config.js``` to load the config rules.
 * The "|" indicates there is an object map to find the correct string.
 * The "FeatureConfig" is the name of an object export.
-* And the "LOAD_COMPONENT" is a property in the object map for the key.
+* And the "FEATURE_COMPONENT_NAME" is a property in the object map for the key.
 
 ### setting it up
 
@@ -52,7 +52,7 @@ In all the config file you will see the string substitutions:
     import { IFeatureConfig } from './interfaces/FeatureConfig';
     
     export const FeatureConfig: IFeatureConfig = {
-      LOAD_COMPONENT: 'featureB'
+      FEATURE_COMPONENT_NAME: 'featureB'
     };
 ```
 
@@ -62,14 +62,14 @@ Because you are working with multiple configuration files, the TypeScript Interf
 
 ```javascript
     export interface IFeatureConfig {
-      LOAD_COMPONENT: string;
+      FEATURE_COMPONENT_NAME: string;
     }
 ```
 
 Now when you load the app SystemJS will see this import:
 
 ```javascript
-    export * from './#{FEATURE|FeatureConfig.LOAD_COMPONENT}/index';
+    export * from './#{FEATURE|FeatureConfig.FEATURE_COMPONENT_NAME}/index';
 ```
 
-And will look for the FEATURE module, and then look for the LOAD_COMPONENT property of the FeatureConfig object.
+And will look for the FEATURE module, and then look for the FEATURE_COMPONENT_NAME property of the FeatureConfig object.
