@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import navbarTemplate from './navbar.component.html!text';
 import styles from './navbar.component.scss!';
+
+import { FeatureConfig } from '../../conditionalSubstitution/config/feature.config';
+
 /**
  * This class represents the navigation bar component.
  */
@@ -11,4 +14,18 @@ import styles from './navbar.component.scss!';
   styles: [styles]
 })
 
-export class NavbarComponent {}
+export class NavbarComponent implements OnInit {
+
+  showFeature: string;
+
+  /**
+   * Get the names OnInit
+   */
+  ngOnInit() {
+    this.getFeature();
+  }
+
+  getFeature() {
+    this.showFeature = FeatureConfig.LOAD_FEATURE;
+  }
+}
