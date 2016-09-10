@@ -1,4 +1,4 @@
 export interface IFeatureConfig {
-  FEATURE_COMPONENT_NAME: string;
+  FEATURE_NAME: string;
   LOAD_FEATURE: boolean;
 }

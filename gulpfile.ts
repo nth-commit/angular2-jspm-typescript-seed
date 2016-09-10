@@ -50,6 +50,7 @@ gulp.task('build.prod', (done: any) =>
     'clean.prod',
     'tslint',
     'build.assets.prod',
+    'copy.prod',
     done));
 
 // --------------
@@ -59,7 +60,6 @@ gulp.task('prod', (done: any) =>
     'build.prod',
     'build.js.prod',
     'build.index.prod',
-    'copy.prod',
     'serve.prod',
     done));
 
@@ -69,7 +69,6 @@ gulp.task('prod.featureA', (done: any) =>
     'build.prod',
     'build.js.prod.featureA',
     'build.index.prod',
-    'copy.prod',
     'serve.prod',
     done));
 
@@ -79,7 +78,6 @@ gulp.task('prod.featureB', (done: any) =>
     'build.prod',
     'build.js.prod.featureB',
     'build.index.prod',
-    'copy.prod',
     'serve.prod',
     done));
 

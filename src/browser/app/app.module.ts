@@ -9,8 +9,9 @@ import { routes } from './app.routes';
 import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { FeatureModule } from './conditionalSubstitution/#{FEATURE|FeatureConfig.FEATURE_COMPONENT_NAME}/feature.module';
-// /feature.module#?FEATURE|FeatureConfig.LOAD_FEATURE';
+import {
+  FeatureModule
+} from './conditionalSubstitution/#{FEATURE|FeatureConfig.FEATURE_NAME}/feature.module';
 
 /**
  * Conditional import based on ~production flag in jspm.config:
@@ -35,7 +36,15 @@ import { FeatureModule } from './conditionalSubstitution/#{FEATURE|FeatureConfig
  */
 import {Config} from './shared/config/prod.config';
 
-var importModules = [BrowserModule, HttpModule, RouterModule.forRoot(routes), AboutModule, HomeModule, SharedModule.forRoot()];
+var importModules = [
+  BrowserModule,
+  HttpModule,
+  RouterModule.forRoot(routes),
+  AboutModule,
+  HomeModule,
+  SharedModule.forRoot(),
+  FeatureModule
+];
 
 if (FeatureModule) {
   importModules.push(FeatureModule);

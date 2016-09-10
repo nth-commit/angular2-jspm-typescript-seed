@@ -529,6 +529,7 @@ SystemJS.config({
     "@angular/platform-browser/testing": "npm:@angular/platform-browser@2.0.0-rc.6/bundles/platform-browser-testing.umd.js",
     "@angular/router": "npm:@angular/router@3.0.0-rc.2/bundles/router.umd.js",
     "@angular/router/testing": "npm:@angular/router@3.0.0-rc.2/bundles/router-testing.umd.js",
+    "FEATURE": "app/conditionalSubstitution/config/feature.config",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",

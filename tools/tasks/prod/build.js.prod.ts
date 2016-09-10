@@ -11,8 +11,8 @@ export = (done: any) => {
       sourceRoot: PROJECT_ROOT_APP_SRC
     },
     conditions: {
-      'app/conditionalSubstitution/config/feature.config|FeatureConfig.FEATURE_COMPONENT_NAME': 'featureA',
-      'app/conditionalSubstitution/config/feature.config|FeatureConfig.LOAD_FEATURE': true
+      // Resolve import to featureA if included with build.
+      'app/conditionalSubstitution/config/feature.config|FeatureConfig.FEATURE_NAME': 'featureA'
     }
   };
 
