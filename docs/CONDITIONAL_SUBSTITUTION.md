@@ -10,7 +10,7 @@
 * [REFERENCES](#references)
 
 ## CONCEPT
-Conditional substitution provides a method to dynamically change an import statement using SystemJS. 
+SystemJD' Conditional substitution feature provides a method to dynamically change an import statement using SystemJS. 
 
 An example scenario is that if you have two apps sharing the same environment -- App A and App B -- and have two features --- featureA and featureB -- how would you only load/build featureA for App A and featureB for App B?
 
