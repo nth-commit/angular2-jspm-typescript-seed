@@ -16,8 +16,12 @@ describe('App', () => {
     expect(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('HOME');
   });
 
+  it('should have correct nav text for Home', () => {
+    expect(element(by.css('sd-app sd-navbar nav a:nth-child(2)')).getText()).toEqual('ABOUT');
+  });
+
   it('should have correct nav text for About', () => {
-    expect(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('ABOUT');
+    expect(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('CONDITIONAL SUBSTITUTION');
   });
 
 });

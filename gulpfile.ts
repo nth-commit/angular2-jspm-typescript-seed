@@ -23,62 +23,67 @@ loadTasks(join(process.cwd(), 'tools', 'tasks', 'conditionalSubstitution'));
 
 // --------------
 // Build dev.
-gulp.task('dev', (done: any) =>
+gulp.task('build.dev', (done: any) =>
   runSequence(
     'build.index.dev',
     'serve.dev',
+    done));
+
+gulp.task('dev', (done: any) =>
+  runSequence(
+    'set.featureA',
+    'build.dev',
     done));
 
 // Feature A
 gulp.task('dev.featureA', (done: any) =>
   runSequence(
     'set.featureA',
-    'dev',
+    'build.dev',
     done));
 
 // Feature B
 gulp.task('dev.featureB', (done: any) =>
   runSequence(
     'set.featureB',
-    'dev',
+    'build.dev',
     done));
 
 // --------------
 // Build prod.
+
 gulp.task('build.prod', (done: any) =>
   runSequence(
-    'clean.prod',
     'tslint',
     'build.assets.prod',
     'copy.prod',
+    'build.index.prod',
+    'serve.prod',
     done));
 
 // --------------
 // Build prod
 gulp.task('prod', (done: any) =>
   runSequence(
+    'clean.prod',
+    'build.js.prod.featureA',
     'build.prod',
-    'build.js.prod',
-    'build.index.prod',
-    'serve.prod',
     done));
 
 // Feature A
 gulp.task('prod.featureA', (done: any) =>
   runSequence(
-    'build.prod',
+    'clean.prod',
     'build.js.prod.featureA',
-    'build.index.prod',
-    'serve.prod',
+    'build.prod',
     done));
 
 // Feature B
 gulp.task('prod.featureB', (done: any) =>
   runSequence(
-    'build.prod',
+    'clean.prod',
     'build.js.prod.featureB',
-    'build.index.prod',
-    'serve.prod',
+    'build.prod',
     done));
 
 // --------------

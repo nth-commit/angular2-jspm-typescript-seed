@@ -3,17 +3,17 @@ import {
   async,
   TestBed
 } from '@angular/core/testing';
-import { AboutModule } from './about.module';
+import { FeatureModule } from './feature.module';
 
 export function main() {
-  describe('About component', () => {
+  describe('FeatureB component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [AboutModule]
+        imports: [FeatureModule]
       });
     });
 
@@ -25,7 +25,7 @@ export function main() {
             let fixture = TestBed.createComponent(TestComponent);
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-            expect(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
+            expect(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Conditional Substitution');
           });
       }));
   });
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-about></sd-about>'
+  template: '<sd-feature></sd-feature>'
 })
 class TestComponent {}
