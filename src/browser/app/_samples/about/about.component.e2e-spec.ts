@@ -1,7 +1,7 @@
 describe('About', () => {
 
   beforeEach( () => {
-    browser.get('/about');
+    browser.get('/samples/about');
   });
 
   it('should have correct feature heading', () => {

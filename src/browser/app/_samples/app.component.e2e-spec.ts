@@ -1,4 +1,4 @@
-describe('App', () => {
+describe('Samples App', () => {
 
   beforeEach( () => {
     browser.get('/');

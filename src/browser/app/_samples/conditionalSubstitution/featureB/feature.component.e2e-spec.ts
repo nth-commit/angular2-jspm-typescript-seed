@@ -1,7 +1,7 @@
 describe('Conditional Substitution', () => {
 
   beforeEach( () => {
-    browser.get('/conditionalSubstitution');
+    browser.get('/samples/conditionalSubstitution');
   });
 
   it('should have correct feature heading', () => {

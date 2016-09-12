@@ -95,7 +95,7 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
-    "FEATURE": "app/conditionalSubstitution/config/feature.config",
+    "FEATURE": "app/_samples/conditionalSubstitution/config/feature.config",
     "@angular/common": "npm:@angular/common@2.0.0-rc.6",
     "@angular/compiler": "npm:@angular/compiler@2.0.0-rc.6",
     "@angular/core": "npm:@angular/core@2.0.0-rc.6",

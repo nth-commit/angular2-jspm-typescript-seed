@@ -6,7 +6,7 @@ import {
 import { FeatureModule } from './feature.module';
 
 export function main() {
-  describe('FeatureA component', () => {
+  describe('Samples FeatureA component', () => {
     // Setting module for testing
     // Disable old forms
 

@@ -11,8 +11,8 @@ export = (done: any) => {
 
   let component: string = 'featureA';
 
-  let src: string = join(APP_DIR, 'conditionalSubstitution', 'config', component + '.config.template.locals.ts');
-  let dest: string = join(APP_DIR, 'conditionalSubstitution', 'config');
+  let src: string = join(APP_DIR, '_samples', 'conditionalSubstitution', 'config', component + '.config.template.locals.ts');
+  let dest: string = join(APP_DIR, '_samples', 'conditionalSubstitution', 'config');
   let fileName: string = 'feature.config.ts';
   let rimrafFile: string = join(dest, fileName);
 

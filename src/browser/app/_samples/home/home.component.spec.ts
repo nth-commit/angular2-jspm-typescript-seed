@@ -16,7 +16,7 @@ import { NameListService } from '../shared/index';
 import { HomeModule } from './home.module';
 
 export function main() {
-  describe('Home component', () => {
+  describe('Samples Home component', () => {
     // setting module for testing
     // Disable old forms
     beforeEach(() => {

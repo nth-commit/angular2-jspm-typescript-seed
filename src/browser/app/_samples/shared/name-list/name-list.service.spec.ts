@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { NameListService } from './name-list.service';
 
 export function main() {
-  describe('NameList Service', () => {
+  describe('Samples NameList Service', () => {
     let nameListService: NameListService;
     let backend: MockBackend;
     let initialResponse: any;

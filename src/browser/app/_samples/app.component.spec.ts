@@ -20,11 +20,11 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export function main() {
 
-  describe('App component', () => {
+  describe('Samples App component', () => {
 
     let config: Route[] = [
-      { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent }
+      { path: 'samples', component: HomeComponent },
+      { path: 'samples/about', component: AboutComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({

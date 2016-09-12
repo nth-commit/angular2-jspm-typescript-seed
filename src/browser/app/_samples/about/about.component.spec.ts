@@ -6,7 +6,7 @@ import {
 import { AboutModule } from './about.module';
 
 export function main() {
-  describe('About component', () => {
+  describe('Samples About component', () => {
     // Setting module for testing
     // Disable old forms
 

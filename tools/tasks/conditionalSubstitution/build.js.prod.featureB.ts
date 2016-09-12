@@ -13,7 +13,7 @@ export = (done: any) => {
     },
     conditions: {
       // Resolve import to featureB if included with build.
-      'app/conditionalSubstitution/config/feature.config|FeatureConfig.FEATURE_NAME': 'featureB'
+      'app/_samples/conditionalSubstitution/config/feature.config|FeatureConfig.FEATURE_NAME': 'featureB'
     }
   };
 

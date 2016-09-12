@@ -3,7 +3,7 @@ import { FeatureComponent } from './index';
 
 export const FeatureRoutes: Route[] = [
   {
-    path: 'conditionalSubstitution',
+    path: 'samples/conditionalSubstitution',
     component: FeatureComponent
   }
 ];

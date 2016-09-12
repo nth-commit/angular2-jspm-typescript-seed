@@ -6,5 +6,10 @@ import { FeatureRoutes } from './conditionalSubstitution/index';
 export const routes: Routes = [
   ...HomeRoutes,
   ...AboutRoutes,
-  ...FeatureRoutes
+  ...FeatureRoutes,
+  {
+    path: '',
+    redirectTo: 'samples/home',
+    pathMatch: 'full'
+  }
 ];

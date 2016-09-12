@@ -9,13 +9,13 @@ import 'reflect-metadata';
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 import { enableProdMode } from '@angular/core';
-import { Config } from './shared/config/prod.config';
+import { Config } from './_samples/shared/config/prod.config';
 
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // The app module
-import { AppModule } from './app.module';
+import { AppModule } from './_samples/app.module';
 
 if (String(Config.ENV) === 'prod') { enableProdMode(); }
 
