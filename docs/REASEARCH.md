@@ -16,6 +16,9 @@
 ### Generators
 - [Angular-cli](https://github.com/angular/angular-cli/blob/master/README.md#usage)
 
+### i18n
+- [i18n-sample](https://github.com/StephenFluin/i18n-sample)
+
 ### JSPM
 - [jspm 0.17 Beta Guide](http://jspm.io/0.17-beta-guide/index.html)
 - [@uiuxengineering/karma-jspm](https://github.com/UIUXEngineering/karma-jspm)
