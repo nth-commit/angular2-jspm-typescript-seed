@@ -1,8 +1,7 @@
 # Additional Angular2 research
 
-### News
+### blog
 - [angularjs.blogspot.com](http://angularjs.blogspot.com/)
-- [ng-newsletter](http://www.ng-newsletter.com/)
 
 ### SystemJS Config
 - [rc6-config.md](https://gist.github.com/robwormald/29f3dcda1a06b955d83fccb2a94586eb)
