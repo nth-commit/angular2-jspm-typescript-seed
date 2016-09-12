@@ -13,6 +13,9 @@
 ### Validators
 - [Custom Validators](http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html#building-a-custom-validator)
 
+### Generators
+- [Angular-cli](https://github.com/angular/angular-cli/blob/master/README.md#usage)
+
 ### JSPM
 - [jspm 0.17 Beta Guide](http://jspm.io/0.17-beta-guide/index.html)
 - [@uiuxengineering/karma-jspm](https://github.com/UIUXEngineering/karma-jspm)
