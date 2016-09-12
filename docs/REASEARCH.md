@@ -24,9 +24,11 @@
 - [@uiuxengineering/karma-jspm](https://github.com/UIUXEngineering/karma-jspm)
 - [@guybedform's SystemJS, Mocha, Istanbul blog post](http://guybedford.com/systemjs-mocha-istanbul)
 
+### Releases
+- [rc6](http://angularjs.blogspot.com/2016/09/angular-2-rc6_1.html?view=timeslide)
+
 ### Demos
 - [angular-2-samples](http://www.syntaxsuccess.com/angular-2-samples/#/about) 
-
 
 
 
