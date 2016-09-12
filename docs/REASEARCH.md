@@ -20,6 +20,15 @@
 ### i18n
 - [i18n-sample](https://github.com/StephenFluin/i18n-sample)
 
+### Lazy Loading
+- [ngMddule Lazy Loading](http://blog.angular-university.io/angular2-ngmodule/)
+- [Component Lazy Loading](http://stackoverflow.com/questions/39297219/angular2-rc6-dynamically-load-component-from-module)
+- [rc5 Component Lazy Loading](http://stackoverflow.com/questions/38963916/how-do-you-lazy-load-a-single-component-in-angular2-rc5)
+- [Google Search Lazy Load Component](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#tbs=qdr:m&q=angular2+lazy+load+component)
+
+### NPM Publishing
+- [How to publish a library](https://medium.com/@OCombe/how-to-publish-a-library-for-angular-2-on-npm-5f48cdabf435#.dqvq4u81l)
+
 ### JSPM
 - [jspm 0.17 Beta Guide](http://jspm.io/0.17-beta-guide/index.html)
 - [@uiuxengineering/karma-jspm](https://github.com/UIUXEngineering/karma-jspm)
