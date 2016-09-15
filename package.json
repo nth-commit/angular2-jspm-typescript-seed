@@ -1,6 +1,6 @@
 {
   "name": "@uiuxengineering/angular2-jspm-typescript-seed",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "description": "Modular seed project for Angular 2 apps with fast, statically typed build",
   "repository": {
     "url": "https://github.com/UIUXEngineering/angular2-jspm-typescript-seed"
@@ -31,7 +31,7 @@
   "author": "Minko Gechev <mgechev>",
   "license": "MIT",
   "devDependencies": {
-    "@uiuxengineering/karma-jspm": "^2.2.22",
+    "@uiuxengineering/karma-jspm": "^3.0.0",
     "async": "^1.4.2",
     "browser-sync": "^2.12.8",
     "chalk": "^1.1.3",

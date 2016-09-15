@@ -11,7 +11,7 @@
 
 Provides fast, reliable and extensible starter for the development of Angular 2 projects.
 
-**This seed supports @angular 2.0.0-rc.6**.
+**This seed supports @angular 2.0.0 and JSPM 0.17 beta**.
 
 This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed).
 
@@ -20,7 +20,7 @@ This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](htt
 - [JSPM Features](./docs/JSPM_FEATURES.md)  
 - [Research](./docs/REASEARCH.md)  
   
-# This `angular2-seed` provides the following features:
+# This seed`` provides the following features:
 
 - Allows you to painlessly update the seed tasks of your already existing project.
 - Out of the box ServiceWorkers and AppCache support thanks to the integration with [angular/progressive](https://github.com/angular/progressive).
