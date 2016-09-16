@@ -13,3 +13,17 @@
 
 * Please detail the affected browser(s) and operating system(s)
 * Please be sure to state which version of node **and** npm you're using
+
+## Test your work  
+Please run these tasks on Mac and Windows ( if you have both environments ); 
+* npm run dev
+* npm run dev.featureA
+* npm run dev.featureB
+* npm run prod
+* npm run prod.featureA
+* npm run prod.featureB
+* npm test
+* npm run e2e.dev
+* npm run e2e.prod
+* npm run serve.reports
+

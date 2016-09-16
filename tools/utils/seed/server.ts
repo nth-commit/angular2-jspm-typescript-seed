@@ -6,7 +6,13 @@ import * as serveIndex from 'serve-index';
 import * as history from 'connect-history-api-fallback';
 import * as chalk from 'chalk';
 import * as util from 'gulp-util';
-import { TEST_REPORTS_DIR, TEST_REPORTS_PORT, APP_BASE, CLIENT_SRC, E2E_PORT, DIST_DIR } from '../../config';
+import {
+  TEST_REPORTS_DIR,
+  TEST_REPORTS_PORT,
+  APP_BASE,
+  CLIENT_SRC,
+  E2E_PORT,
+  BROWSER_DEST } from '../../config';
 
 /**
  * Starts a new `express` server, serving the static unit test code coverage
@@ -49,8 +55,8 @@ export class ProtractorProdServer {
   server() {
     let app = express();
     app.use(history({ index: `${APP_BASE}index.html` }));
-    app.use(express.static(DIST_DIR));
-    util.log(chalk.yellow('Serving ./' + DIST_DIR));
+    app.use(express.static(BROWSER_DEST));
+    util.log(chalk.yellow('Serving ./' + BROWSER_DEST));
     return new Promise((resolve, reject) => {
       let server = app.listen(E2E_PORT, () => {
         resolve(server);

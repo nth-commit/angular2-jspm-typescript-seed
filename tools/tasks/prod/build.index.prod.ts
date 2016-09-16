@@ -5,9 +5,8 @@ import * as slash from 'slash';
 
 import {
   APP_BASE,
-  PROD_DEST,
+  BROWSER_DEST,
   CLIENT_SRC,
-  JS_PROD_DIR,
   JS_PROD_DEST,
   JS_PROD_APP_BUNDLE_MIN
 } from '../../config';
@@ -20,7 +19,7 @@ export = () => {
     .pipe(injectJs())
     .pipe(plugins.template(templateLocals()))
     .pipe(plugins.rename('index.html'))
-    .pipe(gulp.dest(PROD_DEST));
+    .pipe(gulp.dest(BROWSER_DEST));
 };
 
 function inject(...files: Array<string>) {
@@ -38,7 +37,7 @@ function transformPath() {
   return function(filepath: string) {
     let path: Array<string> = normalize(filepath).split(sep);
     let base = ( APP_BASE !== '/' ) ? APP_BASE : '';
-    base += JS_PROD_DIR + sep;
+    // base += JS_PROD_DIR + sep;
     arguments[0] = base + path.slice(3, path.length).join(sep) + `?${Date.now()}`;
     return slash(plugins.inject.transform.apply(plugins.inject.transform, arguments));
   };

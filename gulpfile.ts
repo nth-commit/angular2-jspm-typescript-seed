@@ -104,6 +104,8 @@ gulp.task('e2e.dev', (done: any) =>
     'protractor.dev',
     done));
 
+gulp.task('e2e', ['e2e.dev']);
+
 // --------------
 // e2e serving dev.
 // Note: Don't want to use prod task because

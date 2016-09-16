@@ -8,23 +8,43 @@
   "scripts": {
     "clean.env": "rm -rf node_modules && rm -rf src/browser/jspm_packages",
     "clean.reports": "gulp clean.reports",
+    "clean.tools": "gulp clean.tools",
+
+    "check.versions": "gulp check.versions",
+
     "dev": "gulp dev --color",
+    "dev.featureA": "gulp dev.featureA --color",
+    "dev.featureB": "gulp dev.featureB --color",
+
     "build.prod": "gulp build.prod --color",
+
+    "e2e": "gulp e2e",
+    "e2e.dev": "gulp e2e.dev",
+    "e2e.prod": "gulp e2e.prod",
+    "e2e.live": "gulp e2e.dev --elementExplorer",
+
     "generate.manifest": "gulp generate.manifest --color",
-    "e2e": "protractor",
-    "e2e.live": "protractor --elementExplorer",
-    "gulp": "gulp",
-    "karma": "karma",
-    "karma.start": "karma start",
+
     "postinstall": "typings install && gulp check.versions && npm prune  && gulp webdriver && jspm install",
     "reinstall": "npm cache clean && npm install && jspm install",
+
     "prod": "gulp prod",
+    "prod.featureA": "gulp prod.featureA",
+    "prod.featureB": "gulp prod.featureB",
+
     "serve.reports": "gulp serve.reports",
     "serve.prod": "gulp serve.prod --color",
+
+    "set.featureA": "gulp set.featureA --color",
+    "set.featureB": "gulp set.featureB --color",
+
     "start": "gulp dev --color",
+
     "tasks.list": "gulp --tasks-simple --color",
+
     "test": "gulp test --color",
-    "tests.all": "npm test && npm run e2e",
+    "test.all": "npm test && npm run e2e",
+
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
   },

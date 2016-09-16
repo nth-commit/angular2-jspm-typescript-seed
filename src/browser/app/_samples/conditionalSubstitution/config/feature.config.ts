@@ -2,7 +2,7 @@ import { IFeatureConfig } from './interfaces/FeatureConfig';
 
 export const FeatureConfig: IFeatureConfig = {
   /**
-   * Load @Component 'featureA'
+   * Load @Component 'featureB'
    *
    * In the file src/browser/app/conditionalSubstitution/index.ts
    *
@@ -10,7 +10,7 @@ export const FeatureConfig: IFeatureConfig = {
    * export * from './#{FEATURE|FeatureConfig.FEATURE_NAME}/index';
    *
    * will resolve to:
-   * export * from './featureA/index';
+   * export * from './featureB/index';
    *
    * Hot Reloading can not handle loading an
    * a different set of files, so changing
@@ -18,10 +18,10 @@ export const FeatureConfig: IFeatureConfig = {
    * and error. You must do a full page refresh
    * to see the changes.
    */
-  FEATURE_NAME: 'featureA',
+  FEATURE_NAME: 'featureB',
 
   /**
-   * Boolean to either load featureA or not in it's entirety.
+   * Boolean to either load featureB or not in it's entirety.
    *
    * In the files:
    * src/browser/app/app.module.ts

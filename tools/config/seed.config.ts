@@ -147,14 +147,14 @@ export class SeedConfig {
    * The folder for the built files in the `prod` environment.
    * @type {string}
    */
-  PROD_DEST = this.DIST_DIR;
+  BROWSER_DEST = `${this.DIST_DIR}/browser`;
 
 
   /**
    * Distribution assets directory
    * @type {string}
    */
-  ASSETS_PROD = `${this.PROD_DEST}/assets`;
+  ASSETS_PROD = `${this.BROWSER_DEST}/assets`;
 
   /**
    * path to jspm.config
@@ -168,7 +168,7 @@ export class SeedConfig {
    * @type {string}
    */
   JS_PROD_DIR = 'js';
-  JS_PROD_DEST = `${this.PROD_DEST}/${this.JS_PROD_DIR}`;
+  JS_PROD_DEST = `${this.BROWSER_DEST}/${this.JS_PROD_DIR}`;
 
   JS_PROD_DEST_ROOT = join(this.PROJECT_ROOT, this.JS_PROD_DEST);
 
@@ -323,14 +323,14 @@ export class SeedConfig {
     files: [].concat(
       // [this.APP_SRC + '/app/**/*.css'],
       // [this.APP_SRC + '/app/**/*.scss'],
-      [this.PROD_DEST + '/app/**/*.json'],
-      [this.PROD_DEST + '/app/**/*.html'],
-      [this.PROD_DEST + '/index.html'],
-      [this.PROD_DEST + '/**/*.svg'],
-      [this.PROD_DEST + '/**/*.map']
+      [this.BROWSER_DEST + '/app/**/*.json'],
+      [this.BROWSER_DEST + '/app/**/*.html'],
+      [this.BROWSER_DEST + '/index.html'],
+      [this.BROWSER_DEST + '/**/*.svg'],
+      [this.BROWSER_DEST + '/**/*.map']
     ),
     server: {
-      baseDir: this.PROD_DEST + '/',
+      baseDir: this.BROWSER_DEST + '/',
       index: 'index.html'
     }
   };

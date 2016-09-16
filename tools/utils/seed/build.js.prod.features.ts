@@ -15,7 +15,7 @@ export function builder (outputOptions: any, done: any): any {
 
   let Builder = jspm.Builder;
   let builder = new Builder(PROJECT_ROOT_APP_SRC, JSPM_CONFIG);
-
+  console.log(JS_PROD_APP_BUNDLE_MIN);
   // https://github.com/systemjs/builder
   builder.buildStatic(BOOTSTRAP_MODULE, UNMINIFIED_JS_PROD_DEST, outputOptions).then(function() {
       gulp.src(UNMINIFIED_JS_PROD_DEST)
