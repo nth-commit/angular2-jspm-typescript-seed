@@ -207,7 +207,7 @@ module.exports = function(config) {
     ],
 
     plugins: [
-      require('@uiuxengineering/karma-jspm'),
+      '@uiuxengineering/karma-jspm',
       'karma-jasmine',
       'karma-chrome-launcher',
       'karma-mocha-reporter',
