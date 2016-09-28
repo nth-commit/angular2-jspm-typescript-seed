@@ -207,12 +207,10 @@ module.exports = function(config) {
     ],
 
     plugins: [
-      '@uiuxengineering/karma-jspm',
+      'karma-uiuxengineering-jspm',
       'karma-jasmine',
       'karma-chrome-launcher',
-      'karma-mocha-reporter',
-      'karma-ie-launcher',
-      'karma-phantomjs-launcher'
+      'karma-mocha-reporter'
     ],
 
     customLaunchers: {
