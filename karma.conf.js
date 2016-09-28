@@ -52,6 +52,14 @@ module.exports = function(config) {
        */
       adapter: 'angular2',
 
+      /**
+       * If test files are wrapped in a method,
+       * call the wrapper to initiate tests.
+       *
+       * @param wrapper method name
+       */
+      // testWrapperFunctionName: 'main',
+
 
       /**
        * Files loaded by system js before app is loaded.
