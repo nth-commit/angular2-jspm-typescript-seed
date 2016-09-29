@@ -210,6 +210,7 @@ module.exports = function(config) {
       'karma-uiuxengineering-jspm',
       'karma-jasmine',
       'karma-chrome-launcher',
+      'karma-ie-launcher',
       'karma-mocha-reporter'
     ],
 
