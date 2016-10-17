@@ -4,7 +4,7 @@ import { PROJECT_ROOT_APP_SRC,} from '../../config';
 export = (done: any) => {
   const outputOptions = {
     // amd, cjs or es6
-    format: 'umd',
+    format: 'amd',
     sourceMaps: true,
     inlineConditions: true,
     config: {
