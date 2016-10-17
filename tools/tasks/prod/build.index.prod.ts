@@ -8,7 +8,7 @@ import {
   BROWSER_DEST,
   CLIENT_SRC,
   JS_PROD_DEST,
-  JS_PROD_APP_BUNDLE_MIN
+  JS_PROD_APP_BUNDLE
 } from '../../config';
 import { templateLocals } from '../../utils';
 
@@ -30,7 +30,7 @@ function inject(...files: Array<string>) {
 }
 
 function injectJs() {
-  return inject(join(JS_PROD_DEST, JS_PROD_APP_BUNDLE_MIN));
+  return inject(join(JS_PROD_DEST, JS_PROD_APP_BUNDLE));
 }
 
 function transformPath() {

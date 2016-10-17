@@ -1,5 +1,4 @@
 {
-  "name": "@uiuxengineering/angular2-jspm-typescript-seed",
   "version": "2.0.0",
   "description": "Modular seed project for Angular 2 apps with fast, statically typed build",
   "repository": {
@@ -122,36 +121,44 @@
     "walk": "^2.3.9",
     "yargs": "^4.2.0"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "jspm": {
-    "name": "@uiuxengineering/app",
-    "main": "@uiuxengineering/main.ts",
     "directories": {
-      "baseURL": "src/browser"
+      "packages": "src/browser/jspm_packages"
+    },
+    "configFiles": {
+      "jspm": "src/browser/jspm.config.js",
+      "jspm:dev": "jspm.dev.js",
+      "jspm:browser": "jspm.browser.js",
+      "jspm:node": "jspm.node.js"
     },
     "dependencies": {
-      "@angular/forms": "npm:@angular/forms@^2.0.0",
-      "@angular/http": "npm:@angular/http@^2.0.0",
-      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.0.0",
-      "@angular/router": "npm:@angular/router@^3.0.0",
-      "core-js": "npm:core-js@^2.4.0",
+      "@angular/forms": "npm:@angular/forms@^2.1.0",
+      "@angular/http": "npm:@angular/http@^2.1.0",
+      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.1.0",
+      "@angular/router": "npm:@angular/router@^3.1.0",
+      "core-js": "npm:core-js@^2.4.1",
       "es6-shim": "github:es-shims/es6-shim@^0.35.1",
       "reflect-metadata": "npm:reflect-metadata@^0.1.8",
       "scss": "github:KevCJones/plugin-scss@^0.2.11",
       "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.6.0",
-      "text": "github:systemjs/plugin-text@^0.0.8"
+      "text": "github:systemjs/plugin-text@^0.0.9"
     },
     "devDependencies": {
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12",
-      "ts": "github:frankwallis/plugin-typescript@^5.0.1"
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.16",
+      "ts": "github:frankwallis/plugin-typescript@^5.2.7"
     },
     "peerDependencies": {
-      "@angular/common": "npm:@angular/common@^2.0.0",
-      "@angular/compiler": "npm:@angular/compiler@^2.0.0",
-      "@angular/core": "npm:@angular/core@^2.0.0",
-      "@angular/platform-browser": "npm:@angular/platform-browser@^2.0.0",
+      "@angular/common": "npm:@angular/common@2.1.0",
+      "@angular/compiler": "npm:@angular/compiler@2.1.0",
+      "@angular/core": "npm:@angular/core@2.1.0",
+      "@angular/platform-browser": "npm:@angular/platform-browser@2.1.0",
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
       "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
       "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
       "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
@@ -168,7 +175,10 @@
       "zone.js": "npm:zone.js@^0.6.21"
     },
     "overrides": {
-      "npm:@angular/common@2.0.0": {
+      "github:socketio/socket.io-client@1.5.0": {
+        "main": "socket.io.js"
+      },
+      "npm:@angular/common@2.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -176,9 +186,13 @@
               "zone.js"
             ]
           }
+        },
+        "map": {
+          "@angular/common": ".",
+          "./testing": "./bundles/common-testing.umd.js"
         }
       },
-      "npm:@angular/compiler@2.0.0": {
+      "npm:@angular/compiler@2.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -186,9 +200,13 @@
               "zone.js"
             ]
           }
+        },
+        "map": {
+          "@angular/compiler": ".",
+          "./testing": "./bundles/compiler-testing.umd.js"
         }
       },
-      "npm:@angular/core@2.0.0": {
+      "npm:@angular/core@2.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -196,9 +214,13 @@
               "zone.js"
             ]
           }
+        },
+        "map": {
+          "@angular/core": ".",
+          "./testing": "./bundles/core-testing.umd.js"
         }
       },
-      "npm:@angular/http@2.0.0": {
+      "npm:@angular/http@2.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -206,9 +228,13 @@
               "zone.js"
             ]
           }
+        },
+        "map": {
+          "@angular/http": ".",
+          "./testing": "./bundles/http-testing.umd.js"
         }
       },
-      "npm:@angular/platform-browser-dynamic@2.0.0": {
+      "npm:@angular/platform-browser-dynamic@2.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -216,9 +242,13 @@
               "zone.js"
             ]
           }
+        },
+        "map": {
+          "@angular/platform-browser-dynamic": ".",
+          "./testing": "./bundles/platform-browser-dynamic-testing.umd.js"
         }
       },
-      "npm:@angular/platform-browser@2.0.0": {
+      "npm:@angular/platform-browser@2.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -226,9 +256,13 @@
               "zone.js"
             ]
           }
+        },
+        "map": {
+          "@angular/platform-browser": ".",
+          "./testing": "./bundles/platform-browser-testing.umd.js"
         }
       },
-      "npm:@angular/router@3.0.0": {
+      "npm:@angular/router@3.1.0": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -250,6 +284,9 @@
           "./browser.js": {
             "node": "./node.js"
           },
+          "./node.js": {
+            "browser": "./browser.js"
+          },
           "fs": "@node/fs",
           "net": "@node/net",
           "tty": "@node/tty",
@@ -261,7 +298,7 @@
           "test.js"
         ]
       },
-      "npm:lodash@4.15.0": {
+      "npm:lodash@4.16.4": {
         "map": {
           "buffer": "@empty",
           "process": "@empty"
@@ -280,7 +317,7 @@
           }
         }
       },
-      "npm:sass.js@0.9.12": {
+      "npm:sass.js@0.9.13": {
         "map": {
           "ws": "@empty"
         },
@@ -290,7 +327,7 @@
           }
         }
       },
-      "npm:typescript@2.0.0": {
+      "npm:typescript@2.0.3": {
         "browser": {},
         "map": {
           "buffer": "@empty",
@@ -301,11 +338,6 @@
           "readline": "@empty"
         }
       }
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

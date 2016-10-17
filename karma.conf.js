@@ -118,7 +118,7 @@ module.exports = function(config) {
       ]
     },
 
-    // must go along with above, suppress annoying 404 warnings.
+    // must have path roots of serveFiles and loadFiles, suppress annoying 404 warnings.
     proxies: {
       '/app/': '/base/app/',
       '/assets/': '/base/assets/',

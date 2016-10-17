@@ -106,7 +106,7 @@ export class SeedConfig {
   /**
    * @type {string}
    */
-  BOOTSTRAP_MODULE = join(this.PROJECT_ROOT_APP_SRC, this.BOOTSTRAP_DIR, 'main.ts');
+  BOOTSTRAP_MODULE = join(this.BOOTSTRAP_DIR, 'main.ts');
 
   /**
    * The folder of the applications asset files.
@@ -229,37 +229,6 @@ export class SeedConfig {
     '**/*___jb_tmp___',
     '**/*~',
   ];
-
-  /**
-   * TODO: deprecate, handled by jspm
-   * The configuration of SystemJS for the `dev` environment.
-   * @type {any}
-   */
-  protected SYSTEM_CONFIG_DEV: any = {
-    defaultJSExtensions: true,
-    packageConfigPaths: [
-      `${this.APP_BASE}node_modules/*/package.json`,
-      `${this.APP_BASE}node_modules/**/package.json`,
-      `${this.APP_BASE}node_modules/@angular/*/package.json`
-    ],
-    paths: {
-      [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
-      'rxjs/*': `${this.APP_BASE}rxjs/*`,
-      'app/*': `/app/*`,
-      '*': `${this.APP_BASE}node_modules/*`
-    },
-    //TODO: copy to system.config.js
-    packages: {
-      rxjs: { defaultExtension: false }
-    }
-  };
-
-  /**
-   * The configuration of SystemJS of the application.
-   * Per default, the configuration of the `dev` environment will be used.
-   * @type {any}
-   */
-  SYSTEM_CONFIG: any = this.SYSTEM_CONFIG_DEV;
 
   /**
    * The Autoprefixer configuration for the application.

@@ -15,3 +15,4 @@ export = () => {
   browserSync.init(BROWSER_SYNC_CONFIG_DEV);
 
 };
+

@@ -1,6 +1,5 @@
 import 'jspm_packages/system-polyfills.js';
 import 'es6-shim';
-import 'core-js/client/shim.min.js';
 import 'zone.js/dist/zone.js';
 import 'reflect-metadata';
 
@@ -32,3 +31,5 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 //     .catch((err: any) =>
 //       console.log('ServiceWorker registration failed: ', err));
 // }
+
+console.log('Foo');
