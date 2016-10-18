@@ -46,9 +46,8 @@ SystemJS.config({
   },
   packages: {
     'app': {
-      'main': 'main',
       'defaultExtension': 'ts',
-      'format': 'commonjs',
+      'format': 'system',
       'meta': {
         '*.js': {
           'loader': 'plugin-babel'
