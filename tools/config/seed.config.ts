@@ -119,6 +119,9 @@ export class SeedConfig {
    * @type {string}
    */
   CSS_SRC = `${this.CLIENT_SRC}/css`;
+  SCSS_SRC = `${this.CLIENT_SRC}/scss`;
+  SCSS_APP = `${this.SCSS_SRC}/app.scss`;
+
 
   APP_SRC = `${this.CLIENT_SRC}/app`;
 
@@ -136,6 +139,7 @@ export class SeedConfig {
   PROD_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'prod');
   REPORTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'reports');
   UNIT_TESTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'unitTests');
+  SCSS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'scss');
 
   /**
    * The base folder for built files.
@@ -260,7 +264,7 @@ export class SeedConfig {
     // startPath: this.APP_SRC + '/',
     open: argv['b'] ? false : true,
     files: [].concat(
-      // [this.APP_SRC + '/app/**/*.css'],
+      [this.APP_SRC + '/app/**/*.css'],
       // [this.APP_SRC + '/app/**/*.scss'],
       [this.CLIENT_SRC + '/app/**/*.json'],
       [this.CLIENT_SRC + '/app/**/*.html'],
@@ -290,8 +294,8 @@ export class SeedConfig {
     // startPath: this.APP_SRC + '/',
     open: argv['b'] ? false : true,
     files: [].concat(
-      // [this.APP_SRC + '/app/**/*.css'],
-      // [this.APP_SRC + '/app/**/*.scss'],
+      // [this.BROWSER_DEST + '/app/**/*.css'],
+      // [this.BROWSER_DEST + '/app/**/*.scss'],
       [this.BROWSER_DEST + '/app/**/*.json'],
       [this.BROWSER_DEST + '/app/**/*.html'],
       [this.BROWSER_DEST + '/index.html'],

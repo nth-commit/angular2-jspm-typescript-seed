@@ -27,6 +27,8 @@ build/Release
 /src/browser/jspm_packages/
 src/browser/jspm.karma.config.js
 /test-reports
+/src/browser/**/*.css
+/src/browser/scss/imports/*
 
 # Users Environment Variables
 .lock-wscript

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import template from './feature.component.html!text';
-import styles from './feature.component.scss!';
+import styles from './feature.component.css!UIUXEngineering/plugin-css-string';
 
 /**
  * This class represents the lazy loaded AboutComponent.

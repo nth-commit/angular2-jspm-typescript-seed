@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import template from './app.component.html!text';
-import styles from './app.component.scss!';
+import styles from './app.component.css!UIUXEngineering/plugin-css-string';
 
 /**
  * Conditional import based on ~production flag in jspm.config:

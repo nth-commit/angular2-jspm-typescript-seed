@@ -21,66 +21,71 @@ SystemJS.config({
   },
   transpiler: "plugin-babel",
   babelOptions: {
-    'optional': [
-      'runtime',
-      'optimisation.modules.system'
+    "optional": [
+      "runtime",
+      "optimisation.modules.system"
     ],
-    'compact': false
+    "compact": false
   },
   typescriptOptions: {
-    'module': 'system',
-    'target': 'es5',
-    'declaration': false,
-    'removeComments': true,
-    'noLib': false,
-    'emitDecoratorMetadata': true,
-    'experimentalDecorators': true,
-    'sourceMap': true,
-    'pretty': true,
-    'allowUnreachableCode': false,
-    'allowUnusedLabels': false,
-    'noImplicitAny': true,
-    'noImplicitReturns': true,
-    'noImplicitUseStrict': false,
-    'noFallthroughCasesInSwitch': true
+    "module": "system",
+    "target": "es5",
+    "declaration": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true
   },
   packages: {
-    'app': {
-      'defaultExtension': 'ts',
-      'format': 'system',
-      'meta': {
-        '*.js': {
-          'loader': 'plugin-babel'
+    "app": {
+      "defaultExtension": "ts",
+      "format": "system",
+      "meta": {
+        "*.js": {
+          "loader": "plugin-babel"
         },
-        '*.jsx': {
-          'loader': 'plugin-babel'
+        "*.jsx": {
+          "loader": "plugin-babel"
         },
-        '*.ts': {
-          'loader': 'ts'
+        "*.ts": {
+          "loader": "ts"
         },
-        '*.tsx': {
-          'loader': 'ts'
+        "*.tsx": {
+          "loader": "ts"
         },
-        '*.css': {
-          'loader': 'css'
+        "*.css": {
+          "loader": "UIUXEngineering/plugin-css-string"
         },
-        '*.scss': {
-          'loader': 'scss'
+        "*.scss": {
+          "loader": "scss"
         }
       },
-      'map': {
-        './shared/config/prod.config': {
-          '~production': './shared/config/dev.config'
+      "map": {
+        "./shared/config/prod.config": {
+          "~production": "./shared/config/dev.config"
         }
       }
     },
     'scss': {
       'defaultExtension': 'js',
       'loader': 'plugin-babel'
+    },
+    'UIUXEngineering/plugin-css-string': {
+      'defaultExtension': 'js',
+      'loader': 'plugin-babel'
     }
   },
   map: {
-    'FEATURE': 'app/_samples/conditionalSubstitution/config/feature.config'
+    "FEATURE": "app/_samples/conditionalSubstitution/config/feature.config",
+    "cssString": "github:UIUXEngineering/plugin-css-string@master"
   }
 });
 
@@ -99,6 +104,7 @@ SystemJS.config({
     "@angular/platform-browser": "npm:@angular/platform-browser@2.1.0",
     "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.1.0",
     "@angular/router": "npm:@angular/router@3.1.0",
+    "UIUXEngineering/plugin-css-string": "github:UIUXEngineering/plugin-css-string@master",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
@@ -107,12 +113,12 @@ SystemJS.config({
     "es6-shim": "github:es-shims/es6-shim@0.35.1",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
+    "normalize.css": "github:necolas/normalize.css@5.0.0",
     "os": "github:jspm/nodelibs-os@0.2.0-alpha",
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "reflect-metadata": "npm:reflect-metadata@0.1.8",
     "rxjs": "npm:rxjs@5.0.0-beta.12",
-    "scss": "github:KevCJones/plugin-scss@0.2.11",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
     "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.6.0",
@@ -336,81 +342,6 @@ SystemJS.config({
     "github:jspm/nodelibs-os@0.2.0-alpha": {
       "map": {
         "os-browserify": "npm:os-browserify@0.2.1"
-      }
-    },
-    "github:KevCJones/plugin-scss@0.2.11": {
-      "map": {
-        "lodash": "npm:lodash@4.16.4",
-        "autoprefixer": "npm:autoprefixer@6.5.1",
-        "postcss": "npm:postcss@5.2.4",
-        "sass.js": "npm:sass.js@0.9.13",
-        "path": "github:jspm/nodelibs-path@0.1.0",
-        "url": "github:jspm/nodelibs-url@0.1.0",
-        "fs": "github:jspm/nodelibs-fs@0.1.2",
-        "reqwest": "github:ded/reqwest@2.0.5"
-      }
-    },
-    "npm:autoprefixer@6.5.1": {
-      "map": {
-        "postcss": "npm:postcss@5.2.4",
-        "normalize-range": "npm:normalize-range@0.1.2",
-        "postcss-value-parser": "npm:postcss-value-parser@3.3.0",
-        "num2fraction": "npm:num2fraction@1.2.2",
-        "browserslist": "npm:browserslist@1.4.0",
-        "caniuse-db": "npm:caniuse-db@1.0.30000559"
-      }
-    },
-    "npm:postcss@5.2.4": {
-      "map": {
-        "chalk": "npm:chalk@1.1.3",
-        "js-base64": "npm:js-base64@2.1.9",
-        "source-map": "npm:source-map@0.5.6",
-        "supports-color": "npm:supports-color@3.1.2"
-      }
-    },
-    "npm:chalk@1.1.3": {
-      "map": {
-        "has-ansi": "npm:has-ansi@2.0.0",
-        "escape-string-regexp": "npm:escape-string-regexp@1.0.5",
-        "strip-ansi": "npm:strip-ansi@3.0.1",
-        "supports-color": "npm:supports-color@2.0.0",
-        "ansi-styles": "npm:ansi-styles@2.2.1"
-      }
-    },
-    "npm:browserslist@1.4.0": {
-      "map": {
-        "caniuse-db": "npm:caniuse-db@1.0.30000559"
-      }
-    },
-    "npm:has-ansi@2.0.0": {
-      "map": {
-        "ansi-regex": "npm:ansi-regex@2.0.0"
-      }
-    },
-    "npm:strip-ansi@3.0.1": {
-      "map": {
-        "ansi-regex": "npm:ansi-regex@2.0.0"
-      }
-    },
-    "npm:supports-color@3.1.2": {
-      "map": {
-        "has-flag": "npm:has-flag@1.0.0"
-      }
-    },
-    "github:jspm/nodelibs-path@0.1.0": {
-      "map": {
-        "path-browserify": "npm:path-browserify@0.0.0"
-      }
-    },
-    "github:jspm/nodelibs-url@0.1.0": {
-      "map": {
-        "url": "npm:url@0.10.3"
-      }
-    },
-    "npm:url@0.10.3": {
-      "map": {
-        "punycode": "npm:punycode@1.3.2",
-        "querystring": "npm:querystring@0.2.0"
       }
     },
     "github:capaj/systemjs-hot-reloader@0.6.0": {

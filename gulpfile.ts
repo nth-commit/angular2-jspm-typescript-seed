@@ -2,7 +2,15 @@ import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
 import { join } from 'path';
 
-import {PROJECT_TASKS_DIR, DEV_TASKS_DIR, E2E_TASKS_DIR, PROD_TASKS_DIR, REPORTS_TASKS_DIR, UNIT_TESTS_TASKS_DIR} from './tools/config';
+import {
+  PROJECT_TASKS_DIR,
+  DEV_TASKS_DIR,
+  E2E_TASKS_DIR,
+  PROD_TASKS_DIR,
+  REPORTS_TASKS_DIR,
+  UNIT_TESTS_TASKS_DIR,
+  SCSS_TASKS_DIR
+} from './tools/config';
 import {loadTasks} from './tools/utils';
 
 
@@ -12,6 +20,8 @@ loadTasks(E2E_TASKS_DIR);
 loadTasks(PROD_TASKS_DIR);
 loadTasks(REPORTS_TASKS_DIR);
 loadTasks(UNIT_TESTS_TASKS_DIR);
+loadTasks(UNIT_TESTS_TASKS_DIR);
+loadTasks(SCSS_TASKS_DIR);
 
 /**
  * No config property since this is for demo
@@ -25,6 +35,7 @@ loadTasks(join(process.cwd(), 'tools', 'tasks', 'conditionalSubstitution'));
 // Build dev.
 gulp.task('build.dev', (done: any) =>
   runSequence(
+    'scss',
     'build.index.dev',
     'serve.dev',
     done));
@@ -66,8 +77,33 @@ gulp.task('build.prod', (done: any) =>
 gulp.task('prod', (done: any) =>
   runSequence(
     'clean.prod',
+    'scss.compile',
     'build.js.prod.featureA',
     'build.prod',
+    done));
+
+// Alias for 'package' task
+gulp.task('package', (done: any) =>
+  runSequence(
+    'clean.prod',
+    'scss.compile',
+    'build.js.prod',
+    'build.prod',
+    done));
+
+// --------------
+// scss
+gulp.task('scss', (done: any) =>
+  runSequence(
+    'scss.compile',
+    'scss.watch',
+    done));
+
+// --------------
+// postinstall
+gulp.task('postinstall', (done: any) =>
+  runSequence(
+    'copy.cssimports',
     done));
 
 // Feature A

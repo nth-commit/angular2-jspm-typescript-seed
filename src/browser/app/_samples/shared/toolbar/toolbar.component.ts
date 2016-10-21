@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import template from './toolbar.component.html!text';
-import styles from './toolbar.component.scss!';
+import styles from './toolbar.component.css!UIUXEngineering/plugin-css-string';
 
 /**
  * This class represents the toolbar component.

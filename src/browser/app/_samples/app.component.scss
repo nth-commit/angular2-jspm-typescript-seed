@@ -1,23 +1,8 @@
-/* Reset */
-html,
-body,
-div {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
+//@import "../../scss/main.scss";
 
 /* Box-sizing border-box */
-* {
+.border-box {
   box-sizing: border-box;
-}
-
-/* Set up a default font and some padding to provide breathing room */
-body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 p {
