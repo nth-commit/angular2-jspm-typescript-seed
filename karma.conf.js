@@ -42,13 +42,18 @@ module.exports = function(config) {
       packages: 'jspm_packages',
 
       /**
-       * Adapters do any preloading with systemJs before tests start,
-       * and impletent the karma.start method.
+       * Adapters load application and test files,
+       * do any pre-work needed to run tests,
+       * and implement the karma.start method.
        *
        * 'angular2' is the only option for now.
-       * If not defined, a default adapter is used.
+       * If not defined, a standard set of files
+       * needed for angular 2 testing are loaded,
+       * provided they are installed via jspm.
        *
-       * @param path to adapter or 'angular2'
+       * PR's welcome to implement other frameworks.
+       *
+       * @param path to adapter | 'angular2'
        */
       adapter: 'angular2',
 
@@ -58,7 +63,7 @@ module.exports = function(config) {
        *
        * @param wrapper method name
        */
-      // testWrapperFunctionName: 'main',
+      testWrapperFunctionName: 'main',
 
 
       /**
@@ -95,8 +100,7 @@ module.exports = function(config) {
        *
        */
       loadFiles: [
-        'app/**/*.spec.ts',
-        'testing/**/*.ts'
+        'app/**/*.spec.ts'
       ],
 
       /**
@@ -114,6 +118,7 @@ module.exports = function(config) {
         'app/**/*!(*.spec|*.e2e-spec).ts',
         'app/**/*.html',
         'app/**/*.scss',
+        'app/**/*.css',
         'assets/**/*.json'
       ]
     },
@@ -123,8 +128,7 @@ module.exports = function(config) {
       '/app/': '/base/app/',
       '/assets/': '/base/assets/',
       '/jspm_packages/': '/base/jspm_packages/',
-      '/scss/': '/base/scss/',
-      '/testing/': '/base/testing/'
+      '/scss/': '/base/scss/'
     },
 
     // list of files to exclude
@@ -254,17 +258,23 @@ module.exports = function(config) {
 };
 
 function chalkOptionList (config) {
-  chalkOption(config, 'frameworks');
-  chalkOption(config, 'reporters');
-  chalkOption(config, 'browsers');
-  chalkOption(config, 'singleRun');
-  chalkOption(config, 'browserNoActivityTimeout');
+  if (argv['verbose']) {
+      chalkOption(config, 'frameworks');
+      chalkOption(config, 'reporters');
+      chalkOption(config, 'browsers');
+      chalkOption(config, 'singleRun');
+      chalkOption(config, 'browserNoActivityTimeout');
+  }
 }
 
 function chalkHeader(msg) {
-  console.log('\n' + chalk.yellow.bgRed.bold('\nKarma config options for ' + msg + ' environment:'));
+  if (argv['verbose']) {
+      console.log('\n' + chalk.yellow.bgRed.bold('\nKarma config options for ' + msg + ' environment:'));
+  }
 }
 
 function chalkOption(option, prop) {
-  console.log(chalk.yellow(prop + ": " + option[prop]));
+  if (argv['verbose']) {
+      console.log(chalk.yellow(prop + ": " + option[prop]));
+  }
 }

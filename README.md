@@ -101,7 +101,8 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
 ```bash
 npm test
 
-npm run test 
+# To see extra logging
+npm test -- --verbose
 
 # code coverage (istanbul)
 # auto-generated at the end of `npm test`

@@ -5,13 +5,17 @@ import * as util from 'gulp-util';
 import * as isstream from 'isstream';
 import { join } from 'path';
 import * as tildify from 'tildify';
+import { argv } from 'yargs';
 
 /**
  * Loads the tasks within the given path.
  * @param {string} path the path to load the tasks from
  */
 export function loadTasks(path: string): void {
-  util.log('Loading tasks folder', chalk.green(path.replace(process.cwd(), '.')));
+
+  if (argv['verbose']) {
+    util.log('Loading tasks folder', chalk.green(path.replace(process.cwd(), '.')));
+  }
   readDir(path, taskname => registerTask(taskname, path));
 }
 
@@ -22,7 +26,10 @@ export function loadTasks(path: string): void {
  */
 function registerTask(taskname: string, path: string): void {
   const TASK = join(path, taskname);
-  util.log('Registering task', chalk.yellow(tildify(taskname)));
+
+  if (argv['verbose']) {
+    util.log('Registering task', chalk.yellow(tildify(taskname)));
+  }
 
   gulp.task(taskname, (done: any) => {
     const task = require(TASK);
