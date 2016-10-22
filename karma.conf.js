@@ -73,14 +73,23 @@ module.exports = function(config) {
        * Default files are set for 'angular2' adapter.
        * This property will override defaults if set.
        */
-      // preloadBySystemJS: [
-      //   'zone.js/dist/zone.js',
-      //   '@angular/core/testing',
-      //   '@angular/platform-browser-dynamic/testing',
-      //   'zone.js/dist/jasmine-patch.js',
-      //   'zone.js/dist/async-test.js',
-      //   'zone.js/dist/fake-async-test.js'
-      // ],
+      preloadBySystemJS: [
+        // 'es6-shim',
+        // 'reflect-metadata/Reflect.js',
+        //
+        // // Test Assistance
+        // 'zone.js/dist/zone.js',
+        // 'zone.js/dist/proxy.js',
+        // 'zone.js/dist/sync-test.js',
+        // 'zone.js/dist/jasmine-patch.js',
+        // 'zone.js/dist/async-test.js',
+        // 'zone.js/dist/fake-async-test.js',
+        // 'zone.js/dist/long-stack-trace-zone.js',
+        //
+        // // TestBed.initTestEnvironment
+        // '@angular/core/testing',
+        // '@angular/platform-browser-dynamic/testing'
+      ],
 
       /**
        * Files may be provided in a object to
@@ -258,23 +267,17 @@ module.exports = function(config) {
 };
 
 function chalkOptionList (config) {
-  if (argv['verbose']) {
-      chalkOption(config, 'frameworks');
-      chalkOption(config, 'reporters');
-      chalkOption(config, 'browsers');
-      chalkOption(config, 'singleRun');
-      chalkOption(config, 'browserNoActivityTimeout');
-  }
+  chalkOption(config, 'frameworks');
+  chalkOption(config, 'reporters');
+  chalkOption(config, 'browsers');
+  chalkOption(config, 'singleRun');
+  chalkOption(config, 'browserNoActivityTimeout');
 }
 
 function chalkHeader(msg) {
-  if (argv['verbose']) {
-      console.log('\n' + chalk.yellow.bgRed.bold('\nKarma config options for ' + msg + ' environment:'));
-  }
+  console.log('\n' + chalk.yellow.bgRed.bold('\nKarma config options for ' + msg + ' environment:'));
 }
 
 function chalkOption(option, prop) {
-  if (argv['verbose']) {
-      console.log(chalk.yellow(prop + ": " + option[prop]));
-  }
+  console.log(chalk.yellow(prop + ": " + option[prop]));
 }
