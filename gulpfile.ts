@@ -126,6 +126,7 @@ gulp.task('prod.featureB', (done: any) =>
 // Test.
 gulp.task('test', (done: any) =>
   runSequence(
+    'scss.compile',
     'build.jspm.test.config',
     'clean.unitTest.reports',
     'karma.start',
