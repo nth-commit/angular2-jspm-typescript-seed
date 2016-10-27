@@ -92,6 +92,8 @@ module.exports = function(config) {
       ],
 
       /**
+       * Run in the browser
+       *
        * Files may be provided in a object to
        * configure specific serve options.
        *
@@ -113,20 +115,27 @@ module.exports = function(config) {
       ],
 
       /**
-       * Files will be put in an object EXACTLY with the options:
+       * Ran by karma
+       *
+       * Files may be provided in a object to
+       * configure specific serve options.
+       *
+       * Files will be put in an object similar to:
        *
        * {
        *    pattern: 'someFile.js,
-       *    included: false,
-       *    served: true,
-       *    nocache: false,
-       *    watched: true
+       *    included: false,  // configurable
+       *    served: true,     // configurable
+       *    nocache: false,   // configurable
+       *    watched: true     // configurable
        * };
+       *
+       * All options configured if provided in an object.
+       *
        */
       serveFiles: [
         'app/**/*!(*.spec|*.e2e-spec).ts',
         'app/**/*.html',
-        'app/**/*.scss',
         'app/**/*.css',
         'assets/**/*.json'
       ]
