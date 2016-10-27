@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import template from './about.component.html!text';
-import styles from './about.component.css!UIUXEngineering/plugin-css-string';
+import styles from './about.component.css!text';
 
 @Component({
   moduleId: module.id,

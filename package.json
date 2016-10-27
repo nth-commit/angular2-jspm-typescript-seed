@@ -5,7 +5,7 @@
     "url": "https://github.com/UIUXEngineering/angular2-jspm-typescript-seed"
   },
   "scripts": {
-    "clean.env": "rm -rf node_modules && rm -rf src/browser/jspm_packages",
+    "clean.env": "rm -rf node_modules && rm -rf src/browser/jspm_packages && npm cache clean",
     "clean.reports": "gulp clean.reports",
     "clean.tools": "gulp clean.tools",
     "check.versions": "gulp check.versions",
@@ -89,7 +89,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-mocha-reporter": "^2.0.3",
     "karma-phantomjs-launcher": "^1.0.0",
-    "karma-uiuxengineering-jspm": "^3.0.6",
+    "karma-uiuxengineering-jspm": "^3.1.2",
     "lodash": "^4.15.0",
     "merge-stream": "^1.0.0",
     "open": "0.0.5",
@@ -129,21 +129,13 @@
   },
   "jspm": {
     "directories": {
-      "packages": "src/browser/jspm_packages"
-    },
-    "configFiles": {
-      "jspm": "src/browser/jspm.config.js",
-      "jspm:dev": "jspm.dev.js",
-      "jspm:browser": "jspm.browser.js",
-      "jspm:node": "jspm.node.js"
+      "baseURL": "src/browser"
     },
     "dependencies": {
-      "@angular/forms": "npm:@angular/forms@^2.1.0",
-      "@angular/http": "npm:@angular/http@^2.1.0",
-      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.1.0",
-      "@angular/router": "npm:@angular/router@^3.1.0",
-      "UIUXEngineering/plugin-css-string": "github:UIUXEngineering/plugin-css-string@master",
-      "core-js": "npm:core-js@^2.4.1",
+      "@angular/forms": "npm:@angular/forms@^2.1.1",
+      "@angular/http": "npm:@angular/http@^2.1.1",
+      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.1.1",
+      "@angular/router": "npm:@angular/router@^3.1.1",
       "es6-shim": "github:es-shims/es6-shim@^0.35.1",
       "normalize.css": "github:necolas/normalize.css@^5.0.0",
       "reflect-metadata": "npm:reflect-metadata@^0.1.8",
@@ -151,36 +143,39 @@
       "text": "github:systemjs/plugin-text@^0.0.9"
     },
     "devDependencies": {
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.16",
-      "ts": "github:frankwallis/plugin-typescript@^5.2.7"
+      "http": "npm:jspm-nodelibs-http@^0.2.0",
+      "net": "npm:jspm-nodelibs-net@^0.2.0",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.17",
+      "ts": "github:frankwallis/plugin-typescript@^5.2.7",
+      "url": "npm:jspm-nodelibs-url@^0.2.0"
     },
     "peerDependencies": {
-      "@angular/common": "npm:@angular/common@2.1.0",
-      "@angular/compiler": "npm:@angular/compiler@2.1.0",
-      "@angular/core": "npm:@angular/core@2.1.0",
-      "@angular/platform-browser": "npm:@angular/platform-browser@2.1.0",
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
-      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "@angular/common": "npm:@angular/common@2.1.1",
+      "@angular/compiler": "npm:@angular/compiler@2.1.1",
+      "@angular/core": "npm:@angular/core@2.1.1",
+      "@angular/platform-browser": "npm:@angular/platform-browser@2.1.1",
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
+      "events": "npm:jspm-nodelibs-events@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "os": "npm:jspm-nodelibs-os@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
       "rxjs": "npm:rxjs@5.0.0-beta.12",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
-      "timers": "github:jspm/nodelibs-timers@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
-      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "timers": "npm:jspm-nodelibs-timers@^0.2.0",
+      "util": "npm:jspm-nodelibs-util@^0.2.0",
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0",
       "zone.js": "npm:zone.js@^0.6.21"
     },
     "overrides": {
-      "github:socketio/socket.io-client@1.5.0": {
+      "github:socketio/socket.io-client@1.5.1": {
         "main": "socket.io.js"
       },
-      "npm:@angular/common@2.1.0": {
+      "npm:@angular/common@2.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -194,7 +189,7 @@
           "./testing": "./bundles/common-testing.umd.js"
         }
       },
-      "npm:@angular/compiler@2.1.0": {
+      "npm:@angular/compiler@2.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -208,7 +203,7 @@
           "./testing": "./bundles/compiler-testing.umd.js"
         }
       },
-      "npm:@angular/core@2.1.0": {
+      "npm:@angular/core@2.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -222,7 +217,7 @@
           "./testing": "./bundles/core-testing.umd.js"
         }
       },
-      "npm:@angular/http@2.1.0": {
+      "npm:@angular/http@2.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -236,7 +231,7 @@
           "./testing": "./bundles/http-testing.umd.js"
         }
       },
-      "npm:@angular/platform-browser-dynamic@2.1.0": {
+      "npm:@angular/platform-browser-dynamic@2.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -250,7 +245,7 @@
           "./testing": "./bundles/platform-browser-dynamic-testing.umd.js"
         }
       },
-      "npm:@angular/platform-browser@2.1.0": {
+      "npm:@angular/platform-browser@2.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -264,7 +259,7 @@
           "./testing": "./bundles/platform-browser-testing.umd.js"
         }
       },
-      "npm:@angular/router@3.1.0": {
+      "npm:@angular/router@3.1.1": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -313,7 +308,7 @@
           }
         }
       },
-      "npm:typescript@2.0.3": {
+      "npm:typescript@2.0.6": {
         "browser": {},
         "map": {
           "buffer": "@empty",

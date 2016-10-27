@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/index';
 import template from './home.component.html!text';
-import styles from './home.component.css!UIUXEngineering/plugin-css-string';
+import styles from './home.component.css!text';
 
 /**
  * This class represents the lazy loaded HomeComponent.

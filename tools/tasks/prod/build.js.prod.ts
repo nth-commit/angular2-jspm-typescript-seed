@@ -1,14 +1,16 @@
 import {builder} from '../../utils/seed/build.js.prod.features';
-import { PROJECT_ROOT_APP_SRC,} from '../../config';
+import { CLIENT_SRC,} from '../../config';
 
 export = (done: any) => {
   const outputOptions = {
     // amd, cjs or es6
-    format: 'amd',
+    format: 'cjs',
+    minify: true,
+    mangle: false,
     sourceMaps: true,
     inlineConditions: true,
     config: {
-      sourceRoot: PROJECT_ROOT_APP_SRC
+      sourceRoot: CLIENT_SRC
     },
     conditions: {
       // Resolve import to featureA if included with build.

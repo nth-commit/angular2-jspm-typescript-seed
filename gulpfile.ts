@@ -78,7 +78,7 @@ gulp.task('prod', (done: any) =>
   runSequence(
     'clean.prod',
     'scss.compile',
-    'build.js.prod.featureA',
+    'build.js.prod',
     'build.prod',
     done));
 
@@ -104,22 +104,6 @@ gulp.task('scss', (done: any) =>
 gulp.task('postinstall', (done: any) =>
   runSequence(
     'copy.cssimports',
-    done));
-
-// Feature A
-gulp.task('prod.featureA', (done: any) =>
-  runSequence(
-    'clean.prod',
-    'build.js.prod.featureA',
-    'build.prod',
-    done));
-
-// Feature B
-gulp.task('prod.featureB', (done: any) =>
-  runSequence(
-    'clean.prod',
-    'build.js.prod.featureB',
-    'build.prod',
     done));
 
 // --------------
@@ -158,3 +142,24 @@ gulp.task('e2e.prod', (done: any) =>
 // --------------
 // Clean all reports.
 gulp.task('clean.reports', ['clean.e2e.reports', 'clean.unitTest.reports']);
+
+
+// --------------
+// Features - Conditional Substitution
+
+
+// Feature A
+gulp.task('prod.featureA', (done: any) =>
+  runSequence(
+    'clean.prod',
+    'build.js.prod.featureA',
+    'build.prod',
+    done));
+
+// Feature B
+gulp.task('prod.featureB', (done: any) =>
+  runSequence(
+    'clean.prod',
+    'build.js.prod.featureB',
+    'build.prod',
+    done));

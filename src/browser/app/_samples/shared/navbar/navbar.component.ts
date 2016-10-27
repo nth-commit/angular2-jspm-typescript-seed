@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import navbarTemplate from './navbar.component.html!text';
-import styles from './navbar.component.css!UIUXEngineering/plugin-css-string';
+import styles from './navbar.component.css!text';
 
 /**
  * This class represents the navigation bar component.
