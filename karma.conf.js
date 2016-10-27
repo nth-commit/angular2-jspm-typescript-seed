@@ -20,24 +20,24 @@ module.exports = function(config) {
       stripExtension: false,
 
       /**
-       * main config
+       * jspm.browser.js or custom name.
        */
-      config: 'jspm.karma.config.js',
+      browserConfig: null,
 
       /**
-       * dev jspm config.
+       * jspm.dev.js or custom name.
        */
-      dev: null,
+      devConfig: null,
 
       /**
-       * node jspm config
+       * jspm.node.js or custom name.
        */
-      node: null,
+      nodeConfig: null,
 
       /**
-       * browser jspm config.
+       * jspm.config.js or custom name.
        */
-      browser: null,
+      jspmConfig: 'jspm.karma.config.js',
 
       packages: 'jspm_packages',
 
