@@ -91,6 +91,9 @@ SystemJS.config({
         },
         "*.css": {
           "loader": "text"
+        },
+        "*.html": {
+          "loader": "text"
         }
       },
       "map": {
@@ -98,10 +101,6 @@ SystemJS.config({
           "~production": "./shared/config/dev.config"
         }
       }
-    },
-    'UIUXEngineering/plugin-css-string': {
-      'defaultExtension': 'js',
-      'loader': 'plugin-babel'
     }
   },
   map: {
