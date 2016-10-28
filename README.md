@@ -11,7 +11,7 @@
 
 Provides fast, reliable and extensible starter for the development of Angular 2 projects.
 
-**This seed supports @angular 2.0.0 and JSPM 0.28 beta**.
+**This seed supports @angular 2.0.0 and JSPM 0.31 beta**.
 
 This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed).
 
