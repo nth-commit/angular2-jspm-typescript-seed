@@ -95,6 +95,8 @@ export class SeedConfig {
    */
   CLIENT_SRC = 'src/browser';
 
+  JSPM_PACKAGES = join(this.CLIENT_SRC, 'jspm_packages');
+
   /**
    * The base folder for the application typescript files.
    * @type {string}

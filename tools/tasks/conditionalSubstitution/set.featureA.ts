@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
-import * as rimraf from 'rimraf';
+import * as rmfr from 'rmfr';
 
 import { APP_DIR } from '../../config';
 
@@ -16,10 +16,13 @@ export = (done: any) => {
   let fileName: string = 'feature.config.ts';
   let rimrafFile: string = join(dest, fileName);
 
-  rimraf(rimrafFile, function() {
-    gulp.src([src])
-      .pipe(plugins.rename(fileName))
-      .pipe(gulp.dest(dest))
-      .on('finish', done);
-  });
+  rmfr(rimrafFile, {glob: true})
+    .then(() => {
+      gulp.src([src])
+        .pipe(plugins.rename(fileName))
+        .pipe(gulp.dest(dest))
+        .on('finish', done);
+    })
+    .catch(console.error);
+
 };

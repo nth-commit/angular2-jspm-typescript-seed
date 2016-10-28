@@ -5,7 +5,7 @@
     "url": "https://github.com/UIUXEngineering/angular2-jspm-typescript-seed"
   },
   "scripts": {
-    "clean.env": "rm -rf node_modules && rm -rf src/browser/jspm_packages && npm cache clean",
+    "clean.env": "gulp clean.env && npm cache clean && npm install",
     "clean.reports": "gulp clean.reports",
     "clean.tools": "gulp clean.tools",
     "check.versions": "gulp check.versions",
@@ -98,7 +98,7 @@
     "protractor": "^3.3.0",
     "protractor-jasmine2-screenshot-reporter": "^0.3.2",
     "remap-istanbul": "^0.6.4",
-    "rimraf": "^2.5.2",
+    "rmfr": "^1.0.1",
     "run-sequence": "^1.1.5",
     "semver": "^5.1.0",
     "serve-index": "^1.8.0",
