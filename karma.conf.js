@@ -16,6 +16,7 @@ module.exports = function(config) {
     frameworks: ['jspm', 'jasmine'],
 
     // list of files / patterns to load in the browser
+    // See https://github.com/UIUXEngineering/karma-jspm
     jspm: {
       stripExtension: false,
 
@@ -92,49 +93,15 @@ module.exports = function(config) {
       ],
 
       /**
-       * Run in the browser
+       * SystemJS will load ts files.
        *
-       * Files may be provided in a object to
-       * configure specific serve options.
+       * Glob 7.x supported.
        *
-       * Files will be put in an object similar to:
-       *
-       * {
-       *    pattern: 'someFile.js,
-       *    included: false,  // configurable
-       *    served: true,     // configurable
-       *    nocache: false,   // configurable
-       *    watched: true     // configurable
-       * };
-       *
-       * All options configured if provided in an object.
+       * See https://www.npmjs.com/package/glob.
        *
        */
-      loadFiles: [
-        'app/**/*.spec.ts'
-      ],
-
-      /**
-       * Ran by karma
-       *
-       * Files may be provided in a object to
-       * configure specific serve options.
-       *
-       * Files will be put in an object similar to:
-       *
-       * {
-       *    pattern: 'someFile.js,
-       *    included: false,  // configurable
-       *    served: true,     // configurable
-       *    nocache: false,   // configurable
-       *    watched: true     // configurable
-       * };
-       *
-       * All options configured if provided in an object.
-       *
-       */
-      serveFiles: [
-        'app/**/*!(*.spec|*.e2e-spec).ts',
+      files: [
+        'app/**/!(*.e2e-spec).ts',
         'app/**/*.html',
         'app/**/*.css',
         'assets/**/*.json'
