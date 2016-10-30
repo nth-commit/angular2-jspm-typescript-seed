@@ -8,6 +8,7 @@ import { routes } from './app.routes';
 
 import { AboutModule } from './_samples/about/about.module';
 import { HomeModule } from './_samples/home/home.module';
+import { CacheBusterModule } from './_samples/cacheBuster/cacheBuster.module';
 import { SharedModule } from './_samples/shared/shared.module';
 import {
   FeatureModule
@@ -42,6 +43,7 @@ var importModules = [
   RouterModule.forRoot(routes),
   AboutModule,
   HomeModule,
+  CacheBusterModule,
   SharedModule.forRoot(),
   FeatureModule
 ];
