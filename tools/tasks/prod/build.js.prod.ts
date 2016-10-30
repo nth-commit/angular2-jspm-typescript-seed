@@ -12,6 +12,8 @@ export = (done: any) => {
     config: {
       sourceRoot: CLIENT_SRC
     },
+
+    // Remove / comment if not using conditional substitution
     conditions: {
       // Resolve import to featureA if included with build.
       'app/_samples/conditionalSubstitution/config/feature.config|FeatureConfig.FEATURE_NAME': 'featureA'
