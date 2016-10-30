@@ -97,8 +97,8 @@ SystemJS.config({
         }
       },
       "map": {
-        "./shared/config/prod.config": {
-          "~production": "./shared/config/dev.config"
+        "./config/env/prod.config": {
+          "~production": "./config/env/dev.config"
         }
       }
     }

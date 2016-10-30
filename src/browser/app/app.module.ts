@@ -6,35 +6,35 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
-import { AboutModule } from './about/about.module';
-import { HomeModule } from './home/home.module';
-import { SharedModule } from './shared/shared.module';
+import { AboutModule } from './_samples/about/about.module';
+import { HomeModule } from './_samples/home/home.module';
+import { SharedModule } from './_samples/shared/shared.module';
 import {
   FeatureModule
-} from './conditionalSubstitution/#{FEATURE|FeatureConfig.FEATURE_NAME}/feature.module';
+} from './_samples/conditionalSubstitution/#{FEATURE|FeatureConfig.FEATURE_NAME}/feature.module';
 
 /**
  * Conditional import based on ~production flag in jspm.config:
  *
  *  "map": {
- *      "./shared/config/prod.config": {
- *        "~production": "./shared/config/dev.config"
+ *      "./config/env/prod.config": {
+ *        "~production": "./config/env/dev.config"
  *      }
  *    }
  *
- *   gulp dev task will load ./shared/config/dev.config.
- *   gulp prod task will load ./shared/config/prod.config
+ *   gulp dev task will load ./config/env/dev.config.
+ *   gulp prod task will load ./config/env/prod.config
  *
  *   This is a feature driven by SystemJS, where the SystemJS
  *   builder ( via JSPM ) builder.buildStatic method will
- *   load the "./shared/config/prod.config" path.
+ *   load the "./config/env/prod.config" path.
  *
  *   ~production means NOT production. The production flag is set
  *   to true by the SystemJS builder internally.
  *
  *   For more info, see http://jspm.io/0.17-beta-guide/conditional-loading.html
  */
-import {Config} from './shared/config/prod.config';
+import {Config} from './config/env/prod.config';
 
 var importModules = [
   BrowserModule,

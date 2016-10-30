@@ -13,10 +13,10 @@ import {
   RouterTestingModule
 } from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
-import {ToolbarComponent} from './shared/toolbar/toolbar.component';
-import {NavbarComponent} from './shared/navbar/navbar.component';
+import {HomeComponent} from './_samples/home/home.component';
+import {AboutComponent} from './_samples/about/about.component';
+import {ToolbarComponent} from './_samples/shared/toolbar/toolbar.component';
+import {NavbarComponent} from './_samples/shared/navbar/navbar.component';
 
 describe('Samples App component', () => {
 
