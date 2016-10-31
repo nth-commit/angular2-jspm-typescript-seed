@@ -174,6 +174,26 @@ npm run generate.manifest
 
 Then, the commented snippet in `main.ts` must be uncommented to register the worker script as a service worker. -->
 
+# Semantic Versioning
+
+Gulp tasks to bump semantic versioning for major, minor, and patch. All files should
+be committed and pushed to master. IE. these tasks will only bump semver in the
+package.json, push to master, push tag to github, and npm publish. Currently, npm 
+publish is commented -- see ```./tools/utils/server.ts``` to change this behavior.
+
+```bash
+
+# To bump patch version
+npm bump.patch
+
+# To bump minor version
+npm bump.minor
+
+# To bump major version
+npm bump.major
+
+```
+
 # Contributing
 
 Please see the [CONTRIBUTING](https://github.com/UIUXEngineering/angular2-seed/blob/master/.github/CONTRIBUTING.md) file for guidelines.
