@@ -1,4 +1,4 @@
-import * as CONFIG from '../../config';
+import * as CONFIG from '../config';
 
 /**
  * Returns the project configuration (consisting of the base configuration

@@ -14,7 +14,7 @@ import {
   BOOTSTRAP_MODULE,
   JS_PROD_DEST_ROOT,
   CACHE_BUSTER
-} from '../../config';
+} from '../config';
 
 const plugins = <any>gulpLoadPlugins();
 

@@ -12,7 +12,7 @@ import {
   APP_BASE,
   CLIENT_SRC,
   E2E_PORT,
-  BROWSER_DEST } from '../../config';
+  BROWSER_DEST } from '../config';
 
 /**
  * Starts a new `express` server, serving the static unit test code coverage

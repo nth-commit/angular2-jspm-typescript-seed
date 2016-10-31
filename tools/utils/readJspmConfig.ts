@@ -7,7 +7,7 @@ import { join } from 'path';
 import * as fs from 'fs';
 import * as vm from 'vm';
 import {forEach, extend, forIn} from 'lodash';
-import { JSPM_CONFIG_FILE} from '../../config';
+import { JSPM_CONFIG_FILE} from '../config';
 
 /**
  *

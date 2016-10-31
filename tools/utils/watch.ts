@@ -3,7 +3,7 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 import * as runSequence from 'run-sequence';
 
-import { CLIENT_SRC, TEMP_FILES } from '../../config';
+import { CLIENT_SRC, TEMP_FILES } from '../config';
 // import { notifyLiveReload } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();

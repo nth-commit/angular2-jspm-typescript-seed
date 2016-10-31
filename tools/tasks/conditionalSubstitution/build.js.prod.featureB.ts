@@ -1,4 +1,4 @@
-import {builder} from '../../utils/seed/build.js.prod.features';
+import {builder} from '../../utils/build.js.prod.features';
 import { PROJECT_ROOT_APP_SRC,} from '../../config';
 
 
