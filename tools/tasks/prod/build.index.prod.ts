@@ -20,7 +20,7 @@ export = () => {
   return gulp.src(join(CLIENT_SRC, 'index.temp.html'))
     .pipe(injectJs())
     .pipe(plugins.template(templateLocals()))
-    .pipe(plugins.replace('CACHE_BUSTER', CACHE_BUSTER))
+    .pipe(plugins.replace('CACHE_BUSTER/scss', CACHE_BUSTER + '/css'))
     .pipe(plugins.rename('index.html'))
     .pipe(gulp.dest(BROWSER_DEST));
 };

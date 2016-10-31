@@ -167,7 +167,7 @@ class Config {
    * @type {string}
    */
   ASSETS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'assets');
-  CSS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'scss');
+  CSS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'css');
 
   /**
    * path to jspm.config
