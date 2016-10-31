@@ -1,5 +1,6 @@
 import { join } from 'path';
 import { argv } from 'yargs';
+import * as moment from 'moment';
 
 import { InjectableDependency } from './interfaces/InjectableDependency';
 
@@ -65,6 +66,11 @@ class Config {
   HOT_LOADER_PORT = 5578;
 
   E2E_PORT = 5555;
+
+  CACHE_BUSTER =(function() {
+    return 'v' + moment().format('YYYYMMDDHHmmss');
+  })();
+
 
   /**
    * The directory where the bootstrap file is located.
@@ -162,7 +168,7 @@ class Config {
    * Distribution assets directory
    * @type {string}
    */
-  ASSETS_PROD = `${this.BROWSER_DEST}/assets`;
+  ASSETS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'assets');
 
   /**
    * path to jspm.config
@@ -171,12 +177,7 @@ class Config {
   JSPM_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.config.js');
   JSPM_KARMA_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.karma.config.js');
 
-  /**
-   * The folder for the built JavaScript files.
-   * @type {string}
-   */
-  JS_PROD_DIR = 'js';
-  JS_PROD_DEST = `${this.BROWSER_DEST}/${this.JS_PROD_DIR}`;
+  JS_PROD_DEST = `${this.BROWSER_DEST}/${this.CACHE_BUSTER}`;
 
   JS_PROD_DEST_ROOT = join(this.PROJECT_ROOT, this.JS_PROD_DEST);
 
@@ -184,6 +185,8 @@ class Config {
    * The version of the application as defined in the `package.json`.
    */
   VERSION = appVersion();
+
+  JS_PROD_APP_BUNDLE_CACHE_BUSTER = 'app.cacheBuster.js';
 
   /**
    * The name of the bundle file to include all JavaScript application files.
@@ -201,6 +204,7 @@ class Config {
    * path to unminified js production build.
    * @type {string}
    */
+  UNMINIFIED_JS_PROD_DEST_CACHE_BUSTER = join(this.JS_PROD_DEST, this.JS_PROD_APP_BUNDLE_CACHE_BUSTER);
   UNMINIFIED_JS_PROD_DEST = join(this.JS_PROD_DEST, this.JS_PROD_APP_BUNDLE);
 
   /**
@@ -263,7 +267,17 @@ class Config {
    * @type {any}
    */
   BROWSER_SYNC_CONFIG_DEV: any = {
-    middleware: [require('connect-history-api-fallback')({ index: `${this.APP_BASE}index.html` })],
+    middleware: [
+      require('connect-history-api-fallback')({ index: `${this.APP_BASE}index.html` }),
+      function (req: any, res: any, next: any) {
+
+        if (req.url.indexOf('/CACHE_BUSTER') > -1) {
+          req.url = req.url.replace('/CACHE_BUSTER', '');
+        }
+
+        next();
+      }
+    ],
     port: this.PORT,
     // startPath: this.APP_SRC + '/',
     open: argv['b'] ? false : true,

@@ -5,9 +5,9 @@ export = (done: any) => {
   const outputOptions = {
     // amd, cjs or es6
     format: 'cjs',
-    minify: true,
+    minify: false,
     mangle: false,
-    sourceMaps: true,
+    sourceMaps: false,
     inlineConditions: true,
     config: {
       sourceRoot: CLIENT_SRC

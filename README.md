@@ -87,7 +87,7 @@ Default application server configuration
 For Enviroment config, see ```./tools/config/```.  
 
 **APP**  
-For the App see the ```./src/browser/_samples/shared/config``` directory. The
+For the App see the ```./src/browser/app/config``` directory. The
 ```dev.config.ts``` and ```prod.config.ts``` are [conditionallly loaded](http://jspm.io/0.17-beta-guide/conditional-loading.html).
 
 You can conditionally build a feature, including only the chosen feature without dead code of excluded features. See [CONDITIONAL_SUBSTITUTION](./docs/CONDITIONAL_SUBSTITUTION.md).
@@ -95,6 +95,28 @@ You can conditionally build a feature, including only the chosen feature without
 # Tools documentation
 
 A documentation of the provided tools can be found in [tools/README.md](tools/README.md).
+
+# Cache Buster
+The Cache Buster is a deployment feature used to place all assets ( including scripts )
+    in a unique, time stamped directory. The directory is auto-created upon running any
+    build tasks such as "prod" or "package".  
+    
+The built assets and js files will be copied to a directory such as "v2016101112342123". The directory structure will look like:
+```
+
+    index.html
+    v2016101112342123  -- cache busting directory
+        assets
+            images
+        app.min.js
+
+```
+
+While developing, prefix any asset -- images, svg, fonts, *.json 
+files served from the app directory -- with ```CACHE_BUSTER```. 
+Search ```CACHE_BUSTER``` in the ```src/browser ``` directory to see 
+sample implementations.
+ 
 
 # Running tests
 

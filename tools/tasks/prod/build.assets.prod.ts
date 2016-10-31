@@ -1,7 +1,10 @@
 import * as gulp from 'gulp';
 import { join } from 'path';
 
-import { ASSETS_PROD, ASSETS_SRC } from '../../config';
+import {
+  ASSETS_PROD,
+  ASSETS_SRC
+} from '../../config';
 
 
 export = () => {

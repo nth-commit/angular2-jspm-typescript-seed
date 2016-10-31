@@ -8,7 +8,8 @@ import {
   BROWSER_DEST,
   CLIENT_SRC,
   JS_PROD_DEST,
-  JS_PROD_APP_BUNDLE
+  // JS_PROD_APP_BUNDLE,
+  JS_PROD_APP_BUNDLE_MIN
 } from '../../config';
 import { templateLocals } from '../../utils';
 
@@ -30,7 +31,7 @@ function inject(...files: Array<string>) {
 }
 
 function injectJs() {
-  return inject(join(JS_PROD_DEST, JS_PROD_APP_BUNDLE));
+  return inject(join(JS_PROD_DEST, JS_PROD_APP_BUNDLE_MIN));
 }
 
 function transformPath() {
@@ -38,7 +39,7 @@ function transformPath() {
     let path: Array<string> = normalize(filepath).split(sep);
     let base = ( APP_BASE !== '/' ) ? APP_BASE : '';
     // base += JS_PROD_DIR + sep;
-    arguments[0] = base + path.slice(3, path.length).join(sep) + `?${Date.now()}`;
+    arguments[0] = base + path.slice(3, path.length).join(sep);
     return slash(plugins.inject.transform.apply(plugins.inject.transform, arguments));
   };
 }

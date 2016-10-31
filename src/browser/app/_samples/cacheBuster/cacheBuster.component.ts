@@ -8,4 +8,9 @@ import styles from './cacheBuster.component.css!text';
   template: template,
   styles: [styles]
 })
-export class CacheBusterComponent { }
+export class CacheBusterComponent {
+
+  cacheBusterName:string = 'CACHE' + '_' + 'BUSTER';
+
+
+}

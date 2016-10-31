@@ -1,1 +1,22 @@
 <h2>Cache Buster</h2>
+
+<p>The Cache Buster is a deployment feature used to place all assets ( including scripts )
+    in a unique, time stamped directory. The directory is auto-created upon running any
+    build tasks such as "prod" or "package".</p>
+<p>The built assets and js files will be copied to a directory such as "v2016101112342123". The directory structure will look like:</p>
+<pre>
+
+    index.html
+    v2016101112342123  -- cache busting directory
+        assets
+            images
+        app.min.js
+
+</pre>
+
+<p>While developing, prefix any asset -- images, svg, fonts, *.json files served from the app directory -- with "{{cacheBusterName}}". Inpect the following img source
+    while running dev or prod to see the different behavior.
+</p>
+
+
+<img src="CACHE_BUSTER/assets/images/austin-texas.jpg" width="800px" />

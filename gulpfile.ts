@@ -66,10 +66,12 @@ gulp.task('dev.featureB', (done: any) =>
 gulp.task('build.prod', (done: any) =>
   runSequence(
     'tslint',
+    'build.js.prod',
+    'prod.js.uglify',
+    'clean.cacheBuster.js',
     'build.assets.prod',
     'copy.prod',
     'build.index.prod',
-    'serve.prod',
     done));
 
 // --------------
@@ -78,8 +80,8 @@ gulp.task('prod', (done: any) =>
   runSequence(
     'clean.prod',
     'scss.compile',
-    'build.js.prod',
     'build.prod',
+    'serve.prod',
     done));
 
 // Alias for 'package' task
@@ -87,7 +89,6 @@ gulp.task('package', (done: any) =>
   runSequence(
     'clean.prod',
     'scss.compile',
-    'build.js.prod',
     'build.prod',
     done));
 
