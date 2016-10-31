@@ -15,6 +15,8 @@ let files = [
   '!./scratch{,/**/*}',
   '!./src/browser/jspm_packages{,/**/*}',
   '!./src/browser/**/*.css',
+  '!./src/browser/jspm.karma.config.js',
+  '!./src/browser/scss/imports/**/*.scss',
   '!./test-reports{,/**/*}',
   '!./typings{,/**/*}',
   '!./**/*.log',
