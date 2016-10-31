@@ -3,13 +3,14 @@ import * as runSequence from 'run-sequence';
 import { join } from 'path';
 
 import {
-  PROJECT_TASKS_DIR,
   DEV_TASKS_DIR,
   E2E_TASKS_DIR,
   PROD_TASKS_DIR,
+  PROJECT_TASKS_DIR,
   REPORTS_TASKS_DIR,
-  UNIT_TESTS_TASKS_DIR,
-  SCSS_TASKS_DIR
+  SCSS_TASKS_DIR,
+  SEMVER,
+  UNIT_TESTS_TASKS_DIR
 } from './tools/config';
 import {loadTasks} from './tools/utils';
 
@@ -22,6 +23,7 @@ loadTasks(REPORTS_TASKS_DIR);
 loadTasks(UNIT_TESTS_TASKS_DIR);
 loadTasks(UNIT_TESTS_TASKS_DIR);
 loadTasks(SCSS_TASKS_DIR);
+loadTasks(SEMVER);
 
 /**
  * No config property since this is for demo

@@ -148,6 +148,7 @@ class Config {
   REPORTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'reports');
   UNIT_TESTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'unitTests');
   SCSS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'scss');
+  SEMVER = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'semver');
 
   /**
    * The base folder for built files.
