@@ -13,11 +13,11 @@ os:
   - osx
 
 matrix:
-  exclude:
-    - os: osx
-      node_js: "5"
-    - os: osx
-      node_js: "6.4.0"
+#  exclude:
+#    - os: osx
+#      node_js: "5"
+#    - os: osx
+#      node_js: "6.4.0"
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
