@@ -14,6 +14,7 @@ let files = [
   '!./node_modules{,/**/*}',
   '!./scratch{,/**/*}',
   '!./src/browser/jspm_packages{,/**/*}',
+  '!./src/browser/**/*.css',
   '!./test-reports{,/**/*}',
   '!./typings{,/**/*}',
   '!./**/*.log',
