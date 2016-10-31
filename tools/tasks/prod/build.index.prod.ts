@@ -6,6 +6,7 @@ import * as slash from 'slash';
 import {
   APP_BASE,
   BROWSER_DEST,
+  CACHE_BUSTER,
   CLIENT_SRC,
   JS_PROD_DEST,
   // JS_PROD_APP_BUNDLE,
@@ -19,6 +20,7 @@ export = () => {
   return gulp.src(join(CLIENT_SRC, 'index.temp.html'))
     .pipe(injectJs())
     .pipe(plugins.template(templateLocals()))
+    .pipe(plugins.replace('CACHE_BUSTER', CACHE_BUSTER))
     .pipe(plugins.rename('index.html'))
     .pipe(gulp.dest(BROWSER_DEST));
 };

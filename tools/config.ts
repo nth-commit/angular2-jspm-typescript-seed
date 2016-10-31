@@ -126,9 +126,7 @@ class Config {
    * The folder of the applications css files.
    * @type {string}
    */
-  CSS_SRC = `${this.CLIENT_SRC}/css`;
   SCSS_SRC = `${this.CLIENT_SRC}/scss`;
-  SCSS_APP = `${this.SCSS_SRC}/app.scss`;
 
 
   APP_SRC = `${this.CLIENT_SRC}/app`;
@@ -169,6 +167,7 @@ class Config {
    * @type {string}
    */
   ASSETS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'assets');
+  CSS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'scss');
 
   /**
    * path to jspm.config
@@ -230,7 +229,7 @@ class Config {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.CSS_SRC}/main.css`, inject: true, vendor: false }
+    { src: `${this.SCSS_SRC}/main.css`, inject: true, vendor: false }
   ];
 
   /**
@@ -271,8 +270,9 @@ class Config {
       require('connect-history-api-fallback')({ index: `${this.APP_BASE}index.html` }),
       function (req: any, res: any, next: any) {
 
-        if (req.url.indexOf('/CACHE_BUSTER') > -1) {
-          req.url = req.url.replace('/CACHE_BUSTER', '');
+        if (req.url.indexOf('CACHE_BUSTER/') > -1) {
+          console.log(req.url);
+          req.url = req.url.replace('CACHE_BUSTER/', '');
         }
 
         next();
@@ -282,8 +282,8 @@ class Config {
     // startPath: this.APP_SRC + '/',
     open: argv['b'] ? false : true,
     files: [].concat(
-      [this.APP_SRC + '/app/**/*.css'],
-      // [this.APP_SRC + '/app/**/*.scss'],
+      [this.CLIENT_SRC + '/**/*.css'],
+      [this.CLIENT_SRC + '/**/*.woff2'],
       [this.CLIENT_SRC + '/app/**/*.json'],
       [this.CLIENT_SRC + '/app/**/*.html'],
       [this.CLIENT_SRC + '/index.html']

@@ -69,8 +69,9 @@ gulp.task('build.prod', (done: any) =>
     'build.js.prod',
     'prod.js.uglify',
     'clean.cacheBuster.js',
-    'build.assets.prod',
-    'copy.prod',
+    'copy.assets.prod',
+    'copy.favicon.prod',
+    'copy.css.prod',
     'build.index.prod',
     done));
 
