@@ -85,7 +85,7 @@ function commit() {
       .pipe(plugins.git.commit(commitMessage, {emitData: true}))
       .on('data', function(data: any) {
 
-        if (data && data.indexOf('error') > -1) {
+        if (data && data.error) {
           console.error(require('chalk').white.bgRed.bold(data));
         }
 
