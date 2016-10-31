@@ -84,7 +84,11 @@ function commit() {
     gulp.src(files)
       .pipe(plugins.git.commit(commitMessage, {emitData: true}))
       .on('data', function(data: any) {
-        console.error(require('chalk').white.bgGreen.bold(data));
+
+        if (data && data.indexOf('error') > -1) {
+          console.error(require('chalk').white.bgRed.bold(data));
+        }
+
       })
       .on('end', resolve)
       .on('error', reject);
