@@ -10,7 +10,13 @@ const plugins = <any>gulpLoadPlugins();
 
 let files = [
   './**/!(.git)*',
+  '!./dist{,/**/*}',
   '!./node_modules{,/**/*}',
+  '!./scratch{,/**/*}',
+  '!./src/browser/jspm_packages{,/**/*}',
+  '!./test-reports{,/**/*}',
+  '!./typings{,/**/*}',
+  '!./**/*.log',
   '!./.idea{,/**/*}'
 ];
 
