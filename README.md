@@ -176,10 +176,11 @@ Then, the commented snippet in `main.ts` must be uncommented to register the wor
 
 # Semantic Versioning
 
-Gulp tasks to bump semantic versioning for major, minor, and patch. All files should
-be committed and pushed to master. IE. these tasks will only bump semver in the
-package.json, push to master, push tag to github, and npm publish. Currently, npm 
-publish is commented -- see ```./tools/utils/server.ts``` to change this behavior.
+Gulp tasks to bump semantic versioning for major, minor, and patch. You need to be on
+the master branch, and all files should be committed and pushed to master. I.E., these 
+tasks will only bump semver in the package.json, push to master, push tag to github, 
+and npm publish ( if configured ). Currently, npm publish is commented -- see ```./tools/utils/server.ts``` 
+to change this behavior.
 
 ```bash
 
