@@ -69,6 +69,7 @@ _Does not rely on any global dependencies._
 - [Table of Content](#table-of-contents)
 - [Configuration](#configuration)
 - [Tools documentation](#tools-documentation)
+- [Cache Buster](#cache-buster)
 - [Running tests](#running-tests)
 <!-- - [Progressive Web Apps](#progressive-web-apps) -->
 - [Contributing](#contributing)
