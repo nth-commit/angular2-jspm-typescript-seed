@@ -109,7 +109,7 @@ class Config {
    */
   APP_DIR = join(this.CLIENT_SRC, this.BOOTSTRAP_DIR);
 
-  PROJECT_ROOT_APP_SRC = `${this.PROJECT_ROOT}/` + this.CLIENT_SRC + '/';
+  PROJECT_ROOT_APP_SRC = `${this.PROJECT_ROOT}/` + this.CLIENT_SRC;
 
   /**
    * @type {string}

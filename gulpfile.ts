@@ -82,7 +82,7 @@ gulp.task('build.prod', (done: any) =>
 gulp.task('prod', (done: any) =>
   runSequence(
     'clean.prod',
-    'scss.compile',
+    'scss.compile.all',
     'build.prod',
     'serve.prod',
     done));
@@ -91,7 +91,7 @@ gulp.task('prod', (done: any) =>
 gulp.task('package', (done: any) =>
   runSequence(
     'clean.prod',
-    'scss.compile',
+    'scss.compile.all',
     'build.prod',
     done));
 
@@ -99,7 +99,7 @@ gulp.task('package', (done: any) =>
 // scss
 gulp.task('scss', (done: any) =>
   runSequence(
-    'scss.compile',
+    'scss.compile.all',
     'scss.watch',
     done));
 
@@ -114,7 +114,7 @@ gulp.task('postinstall', (done: any) =>
 // Test.
 gulp.task('test', (done: any) =>
   runSequence(
-    'scss.compile',
+    'scss.compile.all',
     'build.jspm.test.config',
     'clean.unitTest.reports',
     'karma.start',

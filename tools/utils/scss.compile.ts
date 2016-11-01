@@ -1,22 +1,26 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import { join, relative } from 'path';
+import { sep } from 'path';
+import { initial } from 'lodash';
 
-// import {
-//   CLIENT_SRC
-// } from '../../config';
+import {
+  PROJECT_ROOT_APP_SRC
+} from '../config';
 
 
 const plugins = <any>gulpLoadPlugins();
 
-/**
- * pass in done: any if needed.
- * export = (done: any) => {
- */
-export = () => {
+process.on('message', function (data: any) {
+  let files = data.files;
+  let dest = './';
 
-  // Capture cwd to reset after task is finished.
-  let cwd = process.cwd();
+  /**
+   * is glob pattern
+   */
+  if (files.indexOf('*') === -1) {
+    dest += initial(files.split(sep)).join(sep);
+    console.log('dest', dest);
+  }
 
   /**
    * Make @import are relative to app root rather than
@@ -29,14 +33,17 @@ export = () => {
    * @import "./src/browser/scss/partials/colors";
    *
    */
-  process.chdir('./src/browser');
+  process.chdir(PROJECT_ROOT_APP_SRC);
 
-  function changeToRootDirectory() {
+  console.log('cwd', process.cwd());
 
-    if (process.cwd() !== cwd) {
-      process.chdir(relative(process.cwd(), cwd) + '/');
-      // done();
-    }
+  function onEnd() {
+
+    process.send({
+      event: 'finish',
+      pid: process.pid
+    });
+
   }
 
 
@@ -50,10 +57,9 @@ export = () => {
    * and gulp.dest would look like this:
    * .pipe(gulp.dest(CLIENT_SRC))
    */
-  return gulp.src(join('**', '*.scss'))
-    // .pipe(plugins.sass({outputStyle: 'compressed'})
+  gulp.src(files)
     .pipe(plugins.sass({outputStyle: 'compressed'})
       .on('error', plugins.sass.logError))
-    .pipe(gulp.dest('./'))
-    .on('finish', changeToRootDirectory);
-};
+    .pipe(gulp.dest(dest))
+    .on('end', onEnd);
+});

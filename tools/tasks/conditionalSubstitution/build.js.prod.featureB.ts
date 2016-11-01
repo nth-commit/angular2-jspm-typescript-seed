@@ -1,5 +1,5 @@
 import {builder} from '../../utils/build.js.prod.features';
-import { PROJECT_ROOT_APP_SRC,} from '../../config';
+import { PROJECT_ROOT_APP_SRC} from '../../config';
 
 
 export = (done: any) => {
@@ -9,7 +9,7 @@ export = (done: any) => {
     sourceMaps: true,
     inlineConditions: true,
     config: {
-      sourceRoot: PROJECT_ROOT_APP_SRC
+      sourceRoot: PROJECT_ROOT_APP_SRC + '/'
     },
     conditions: {
       // Resolve import to featureB if included with build.
