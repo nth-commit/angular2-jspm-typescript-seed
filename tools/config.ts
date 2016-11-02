@@ -72,18 +72,35 @@ class Config {
   })();
 
 
+  //---------------------------------------
+  // DIRECTORY NAMES IN SRC/BROWSER
+  //---------------------------------------
+
+
   /**
-   * The directory where the bootstrap file is located.
-   * The default directory is `app`.
+   * Key directory names.
    * @type {string}
    */
-  BOOTSTRAP_DIR = 'app';
+  APP_DIR_NAME = 'app';
+  SCSS_DIR_NAME = 'scss';
+  ASSETS_DIR_NAME = 'assets';
+
+  /**
+   * Key file names.
+   */
+  SCSS_MAIN = 'main.scss';
+
+  /**
+   * Key files relative to src/browser
+   */
+  SCSS_MAIN_PATH = join(this.SCSS_DIR_NAME, this.SCSS_MAIN);
 
   /**
    * The parent directory where test-reports reports are located.
    * The default directory is `test-reports`.
    * @type {string}
    */
+  // TODO change to TEST_REPORTS_DIR_NAME
   TEST_REPORTS_DIR = 'test-reports';
   E2E_REPORTS_DIR = join(this.TEST_REPORTS_DIR, 'e2e');
   UNTI_TEST_REPORTS_DIR = join(this.TEST_REPORTS_DIR, 'unit');
@@ -107,16 +124,16 @@ class Config {
    * The base folder for the application typescript files.
    * @type {string}
    */
-  APP_DIR = join(this.CLIENT_SRC, this.BOOTSTRAP_DIR);
+  SRC_APP_DIR = join(this.CLIENT_SRC, this.APP_DIR_NAME);
 
   // TODO PROJECT_ROOT_BROWSER_SRC
   PROJECT_ROOT_BROWSER_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC);
-  PROJECT_ROOT_APP_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC, this.BOOTSTRAP_DIR);
+  PROJECT_ROOT_APP_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC, this.APP_DIR_NAME);
 
   /**
    * @type {string}
    */
-  BOOTSTRAP_MODULE = join(this.BOOTSTRAP_DIR, 'main.ts');
+  BOOTSTRAP_MODULE = join(this.APP_DIR_NAME, 'main.ts');
 
   /**
    * The folder of the applications asset files.

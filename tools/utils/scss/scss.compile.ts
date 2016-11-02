@@ -1,11 +1,11 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { sep } from 'path';
-import { initial, each } from 'lodash';
+import { initial } from 'lodash';
 
 import {
   PROJECT_ROOT_BROWSER_SRC
-} from '../config';
+} from '../../config';
 
 
 const plugins = <any>gulpLoadPlugins();
@@ -18,6 +18,10 @@ process.on('message', function (data: any) {
    * is glob pattern
    */
   if (files.indexOf('*') !== -1) {
+
+    /**
+     * dTree means directory tree
+     */
     let dTree = files.split(sep);
     let destArray:string[] = [];
 
@@ -36,7 +40,6 @@ process.on('message', function (data: any) {
 
   } else {
     dest += initial(files.split(sep)).join(sep);
-    console.log('dest', dest);
   }
 
   /**
@@ -62,7 +65,6 @@ process.on('message', function (data: any) {
   }
 
   console.log(files);
-
 
   /**
    * NOTE

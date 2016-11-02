@@ -101,8 +101,6 @@ gulp.task('scss', (done: any) =>
   runSequence(
     'scss.compile.main',
     'scss.compile.app',
-
-    //TODO create separate watches for app and scss
     'scss.watch',
     done));
 
