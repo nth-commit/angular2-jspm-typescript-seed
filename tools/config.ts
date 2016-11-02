@@ -1,4 +1,4 @@
-import { join, normalize } from 'path';
+import { join } from 'path';
 import { argv } from 'yargs';
 import * as moment from 'moment';
 
@@ -85,8 +85,8 @@ class Config {
    * @type {string}
    */
   TEST_REPORTS_DIR = 'test-reports';
-  E2E_REPORTS_DIR = `${this.TEST_REPORTS_DIR}/e2e`;
-  UNTI_TEST_REPORTS_DIR = `${this.TEST_REPORTS_DIR}/unit`;
+  E2E_REPORTS_DIR = join(this.TEST_REPORTS_DIR, 'e2e');
+  UNTI_TEST_REPORTS_DIR = join(this.TEST_REPORTS_DIR, 'unit');
 
   /**
    * The default title of the application as used in the `<title>` tag of the
@@ -120,16 +120,16 @@ class Config {
    * The folder of the applications asset files.
    * @type {string}
    */
-  ASSETS_SRC = `${this.CLIENT_SRC}/assets`;
+  ASSETS_SRC = join(this.CLIENT_SRC, 'assets');
 
   /**
    * The folder of the applications css files.
    * @type {string}
    */
-  SCSS_SRC = `${this.CLIENT_SRC}/scss`;
+  SCSS_SRC = join(this.CLIENT_SRC, 'scss');
 
 
-  APP_SRC = `${this.CLIENT_SRC}/app`;
+  APP_SRC = join(this.CLIENT_SRC, 'app');
 
   /**
    * The directory of the applications tools
@@ -160,7 +160,7 @@ class Config {
    * The folder for the built files in the `prod` environment.
    * @type {string}
    */
-  BROWSER_DEST = `${this.DIST_DIR}/browser`;
+  BROWSER_DEST = join(this.DIST_DIR, 'browser');
 
 
   /**
@@ -177,7 +177,7 @@ class Config {
   JSPM_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.config.js');
   JSPM_KARMA_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.karma.config.js');
 
-  JS_PROD_DEST = `${this.BROWSER_DEST}/${this.CACHE_BUSTER}`;
+  JS_PROD_DEST = join(this.BROWSER_DEST, this.CACHE_BUSTER);
 
   JS_PROD_DEST_ROOT = join(this.PROJECT_ROOT, this.JS_PROD_DEST);
 
@@ -230,7 +230,7 @@ class Config {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.SCSS_SRC}/main.css`, inject: true, vendor: false }
+    { src: join(this.SCSS_SRC, 'main.css'), inject: true, vendor: false }
   ];
 
   /**
@@ -268,7 +268,7 @@ class Config {
    */
   BROWSER_SYNC_CONFIG_DEV: any = {
     middleware: [
-      require('connect-history-api-fallback')({ index: `${this.APP_BASE}index.html` }),
+      require('connect-history-api-fallback')({ index: join(this.APP_BASE + 'index.html') }),
       function (req: any, res: any, next: any) {
 
         if (req.url.indexOf('CACHE_BUSTER/') > -1) {
@@ -308,7 +308,7 @@ class Config {
    * @type {any}
    */
   BROWSER_SYNC_CONFIG_PROD: any = {
-    middleware: [require('connect-history-api-fallback')({ index: `${this.APP_BASE}index.html` })],
+    middleware: [require('connect-history-api-fallback')({ index: join(this.APP_BASE + `index.html`) })],
     port: this.PORT,
     // startPath: this.APP_SRC + '/',
     open: argv['b'] ? false : true,

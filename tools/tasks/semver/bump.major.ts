@@ -1,4 +1,4 @@
-import { semver } from '../../utils'
+import { semver } from '../../utils';
 
 export = (done: any) => {
   semver(done, {bumpType: 'major'});

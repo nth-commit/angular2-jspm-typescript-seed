@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 import { join, sep } from 'path';
 import { fork } from 'child_process';
-import { isScss } from '../../utils'
+import { isScss } from '../../utils';
 
 import {
   CLIENT_SRC,

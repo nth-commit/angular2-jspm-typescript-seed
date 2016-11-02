@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as gulp from 'gulp';
 import * as bump from 'gulp-bump';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import { spawn } from 'child_process';
+// import { spawn } from 'child_process';
 import { argv } from 'yargs';
 
 const plugins = <any>gulpLoadPlugins();
@@ -43,7 +43,7 @@ function readPackageJson() {
 
   console.log('readPackageJson');
   return new Promise(function(resolve, reject) {
-    fs.readFile(src, "utf8", function(err, data) {
+    fs.readFile(src, 'utf8', function(err, data) {
 
       if (data) {
         pkg = JSON.parse(data);
@@ -142,20 +142,20 @@ function pushTag() {
   });
 }
 
-function publish() {
-
-  console.log('npm publish');
-  var options = {
-    stdio: 'inherit',
-    cwd: './'
-  };
-
-  return new Promise(function(resolve, reject) {
-    spawn('npm', ['publish'], options)
-      .on('close', resolve)
-      .on('error', reject);
-  });
-}
+// function publish() {
+//
+//   console.log('npm publish');
+//   var options = {
+//     stdio: 'inherit',
+//     cwd: './'
+//   };
+//
+//   return new Promise(function(resolve, reject) {
+//     spawn('npm', ['publish'], options)
+//       .on('close', resolve)
+//       .on('error', reject);
+//   });
+// }
 
 export function semver(done: any, config: any) {
 
@@ -181,6 +181,6 @@ export function semver(done: any, config: any) {
   //   publish();
   }).then(function() {
     done();
-  })
+  });
 
 }
