@@ -33,6 +33,8 @@ export = () => {
         }
       });
 
+      console.log(PROJECT_ROOT_APP_SRC);
+
       backgroundProcess.send({files: file.path.replace(PROJECT_ROOT_APP_SRC + sep, '')});
     }
   });

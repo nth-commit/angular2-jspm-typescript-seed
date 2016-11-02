@@ -13,10 +13,8 @@ export = (done: any) => {
 
     if (error) {
       console.log(error);
-    } else {
-      done();
     }
-
+    done();
   });
 
   backgroundProcess.on('message', function(msgFromChild: any) {

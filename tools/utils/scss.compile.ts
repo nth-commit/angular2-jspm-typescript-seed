@@ -35,8 +35,6 @@ process.on('message', function (data: any) {
    */
   process.chdir(PROJECT_ROOT_APP_SRC);
 
-  console.log('cwd', process.cwd());
-
   function onEnd() {
 
     process.send({
@@ -45,6 +43,8 @@ process.on('message', function (data: any) {
     });
 
   }
+
+  console.log(files);
 
 
   /**
