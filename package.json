@@ -9,6 +9,7 @@
     "bump.major": "gulp bump.major",
     "bump.minor": "gulp bump.minor",
     "bump.patch": "gulp bump.patch",
+    "clean.css": "gulp clean.css",
     "clean.env": "gulp clean.env && npm cache clean && npm install",
     "clean.reports": "gulp clean.reports",
     "clean.tools": "gulp clean.tools",

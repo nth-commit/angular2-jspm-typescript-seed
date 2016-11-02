@@ -23,6 +23,6 @@ export = (done: any) => {
     }
   });
 
-  backgroundProcess.send({files: join('**', '*.scss')});
+  backgroundProcess.send({files: join('app', '**', '*.scss')});
 
 };

@@ -99,7 +99,7 @@ class Config {
    * The base folder of the applications source files.
    * @type {string}
    */
-  CLIENT_SRC = 'src/browser';
+  CLIENT_SRC = join('src', 'browser');
 
   JSPM_PACKAGES = join(this.CLIENT_SRC, 'jspm_packages');
 
@@ -109,7 +109,9 @@ class Config {
    */
   APP_DIR = join(this.CLIENT_SRC, this.BOOTSTRAP_DIR);
 
-  PROJECT_ROOT_APP_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC);
+  // TODO PROJECT_ROOT_BROWSER_SRC
+  PROJECT_ROOT_BROWSER_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC);
+  PROJECT_ROOT_APP_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC, this.BOOTSTRAP_DIR);
 
   /**
    * @type {string}
@@ -129,6 +131,7 @@ class Config {
   SCSS_SRC = join(this.CLIENT_SRC, 'scss');
 
 
+  // TODO dubplicate of APP_DIR
   APP_SRC = join(this.CLIENT_SRC, 'app');
 
   /**
@@ -173,7 +176,7 @@ class Config {
   /**
    * path to jspm.config
    */
-  JSPM_CONFIG = join(this.PROJECT_ROOT_APP_SRC, 'jspm.config');
+  JSPM_CONFIG = join(this.PROJECT_ROOT_BROWSER_SRC, 'jspm.config');
   JSPM_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.config.js');
   JSPM_KARMA_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.karma.config.js');
 

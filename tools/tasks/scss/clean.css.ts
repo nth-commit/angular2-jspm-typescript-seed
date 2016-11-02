@@ -8,7 +8,7 @@ export = (done: any) => {
     let scssDir = join(resolve('./' + CLIENT_SRC), 'scss', '**', '*.css');
     let appDir = join(resolve('./' + CLIENT_SRC), 'app', '**', '*.css');
 
-    Promise.all([rmfr(scssDir), rmfr(appDir)])
+    Promise.all([rmfr(scssDir, {glob: true}), rmfr(appDir, {glob: true})])
       .then(() => {
           done();
       }).catch(() => {

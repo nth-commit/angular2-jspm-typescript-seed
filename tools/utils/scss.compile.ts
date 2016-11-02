@@ -1,10 +1,10 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { sep } from 'path';
-import { initial } from 'lodash';
+import { initial, each } from 'lodash';
 
 import {
-  PROJECT_ROOT_APP_SRC
+  PROJECT_ROOT_BROWSER_SRC
 } from '../config';
 
 
@@ -12,12 +12,29 @@ const plugins = <any>gulpLoadPlugins();
 
 process.on('message', function (data: any) {
   let files = data.files;
-  let dest = './';
+  let dest = '.' + sep;
 
   /**
    * is glob pattern
    */
-  if (files.indexOf('*') === -1) {
+  if (files.indexOf('*') !== -1) {
+    let dTree = files.split(sep);
+    let destArray:string[] = [];
+
+    let len: number = dTree.length;
+    let i:number = 0;
+
+    for (i; i < len; i++) {
+      if (dTree[i].indexOf('*') === -1) {
+        destArray.push(dTree[i]);
+      } else {
+        break;
+      }
+    }
+
+    dest += destArray.join(sep);
+
+  } else {
     dest += initial(files.split(sep)).join(sep);
     console.log('dest', dest);
   }
@@ -33,7 +50,7 @@ process.on('message', function (data: any) {
    * @import "./src/browser/scss/partials/colors";
    *
    */
-  process.chdir(PROJECT_ROOT_APP_SRC);
+  process.chdir(PROJECT_ROOT_BROWSER_SRC);
 
   function onEnd() {
 

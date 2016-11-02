@@ -9,7 +9,7 @@ export = (done: any) => {
   let nodeModules: string = join(resolve('./' + 'node_modules'));
   let typings: string = join(resolve('./' + 'typings'));
 
-  Promise.all([rmfr(jspmPackages), rmfr(nodeModules), rmfr(typings)])
+  Promise.all([rmfr(jspmPackages, {glob: true}), rmfr(nodeModules, {glob: true}), rmfr(typings, {glob: true})])
     .then(() => {
       done();
     }).catch(() => {
