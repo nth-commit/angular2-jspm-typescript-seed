@@ -1,5 +1,5 @@
 import { fork } from 'child_process';
-import { join, sep } from 'path';
+import { join } from 'path';
 
 let processQueue = <any>{};
 

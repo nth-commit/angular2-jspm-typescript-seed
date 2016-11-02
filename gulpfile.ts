@@ -48,20 +48,6 @@ gulp.task('dev', (done: any) =>
     'build.dev',
     done));
 
-// Feature A
-gulp.task('dev.featureA', (done: any) =>
-  runSequence(
-    'set.featureA',
-    'build.dev',
-    done));
-
-// Feature B
-gulp.task('dev.featureB', (done: any) =>
-  runSequence(
-    'set.featureB',
-    'build.dev',
-    done));
-
 // --------------
 // Build prod.
 
@@ -97,6 +83,13 @@ gulp.task('package', (done: any) =>
 
 // --------------
 // scss
+
+gulp.task('scss.compile.all', (done: any) =>
+  runSequence(
+    'scss.compile.main',
+    'scss.compile.app',
+    done));
+
 gulp.task('scss', (done: any) =>
   runSequence(
     'scss.compile.main',
@@ -167,4 +160,18 @@ gulp.task('prod.featureB', (done: any) =>
     'clean.prod',
     'build.js.prod.featureB',
     'build.prod',
+    done));
+
+// Feature A
+gulp.task('dev.featureA', (done: any) =>
+  runSequence(
+    'set.featureA',
+    'build.dev',
+    done));
+
+// Feature B
+gulp.task('dev.featureB', (done: any) =>
+  runSequence(
+    'set.featureB',
+    'build.dev',
     done));

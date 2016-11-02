@@ -64,8 +64,6 @@ process.on('message', function (data: any) {
 
   }
 
-  console.log(files);
-
   /**
    * NOTE
    * if process.cwd were project root then gulp.src would
