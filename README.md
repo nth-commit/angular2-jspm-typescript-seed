@@ -58,6 +58,8 @@ npm run dev
 npm run prod
 ```
 
+Read the [INIT_PROJECT](./docs/INIT_PROJECT.md) docs for environmental setup.
+
 _Does not rely on any global dependencies._
 
 # Table of Contents
