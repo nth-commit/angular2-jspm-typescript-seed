@@ -9,7 +9,7 @@ import {
   TASKS_PROJECT_DIR,
   TASKS_REPORTS_DIR,
   TASKS_SCSS_DIR,
-  TASKS_SEMVER_DIR,
+  TASKS_RELEASE_DIR,
   TASKS_UNIT_TESTS_DIR
 } from './tools/config';
 import {loadTasks} from './tools/utils';
@@ -23,7 +23,7 @@ loadTasks(TASKS_REPORTS_DIR);
 loadTasks(TASKS_UNIT_TESTS_DIR);
 loadTasks(TASKS_UNIT_TESTS_DIR);
 loadTasks(TASKS_SCSS_DIR);
-loadTasks(TASKS_SEMVER_DIR);
+loadTasks(TASKS_RELEASE_DIR);
 
 /**
  * No config property since this is for demo
@@ -140,6 +140,55 @@ gulp.task('e2e.prod', (done: any) =>
 // --------------
 // Clean all reports.
 gulp.task('clean.reports', ['clean.e2e.reports', 'clean.unitTest.reports']);
+
+// --------------
+// Release
+
+gulp.task('release.prerelease', function (done: any) {
+  runSequence(
+    'bump.prerelease',
+    '_release',
+    done);
+});
+
+gulp.task('release.patch', function (done: any) {
+  runSequence(
+    'bump.patch',
+    '_release',
+    done);
+});
+
+gulp.task('release.minor', function (done: any) {
+  runSequence(
+    'bump.minor',
+    '_release',
+    done);
+});
+
+gulp.task('release.major', function (done: any) {
+  runSequence(
+    'bump.major',
+    '_release',
+    done);
+});
+
+// Sub task, do not call directly
+gulp.task('_release', function (done: any) {
+  runSequence(
+    'changelog',
+    'commit.changes',
+    'push.changes',
+    'create.new.tag',
+    'github.release',
+    function (error: any) {
+      if (error) {
+        console.log(error.message);
+      } else {
+        console.log('RELEASE FINISHED SUCCESSFULLY');
+      }
+      done(error);
+    });
+});
 
 
 // --------------

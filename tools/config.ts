@@ -186,7 +186,7 @@ class Config {
   TASKS_REPORTS_DIR                       = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'reports');
   TASKS_UNIT_TESTS_DIR                    = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'unitTests');
   TASKS_SCSS_DIR                          = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'scss');
-  TASKS_SEMVER_DIR                        = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'semver');
+  TASKS_RELEASE_DIR                       = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'release');
   TASKS_PROJECT_DIR                       = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'project');
 
 
@@ -246,6 +246,22 @@ class Config {
     'ios >= 7',
     'android >= 4.4',
     'bb >= 10'
+  ];
+
+  GIT_ADD_AND_IGNORE_FILES = [
+    './**/!(.git)*',                        // Add all, ignore .git in any directory
+    '!./tokens.json',                       // ignore to ./tokens.json
+    '!./dist{,/**/*}',                      // ignore dist directory
+    '!./node_modules{,/**/*}',              // ignore node_modules directory
+    '!./scratch{,/**/*}',                   // ignore scratch directory
+    '!./src/browser/jspm_packages{,/**/*}', // ignore src/browser/jspm_packages directory
+    '!./src/browser/**/*.css',              // ignore all .css in src/browser directory
+    '!./src/browser/jspm.karma.config.js',  // ignore src/browser/jspm.karma.config.js
+    '!./src/browser/scss/imports{,/**/*}',  // ignore src/browser/scss/imports directory
+    '!./test-reports{,/**/*}',              // ignore test-reports directory
+    '!./typings{,/**/*}',                   // ignore typings directory
+    '!./**/*.log',                          // ignore log files in any directory
+    '!./**/*.idea{,/**/*}'                  // ignore jetbrains .idea directories
   ];
 
   /**
