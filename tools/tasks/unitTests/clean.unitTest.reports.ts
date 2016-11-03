@@ -1,10 +1,13 @@
 import * as rmfr from 'rmfr';
 import { join, resolve } from 'path';
-import { UNTI_TEST_REPORTS_DIR } from '../../config';
+
+import {
+  TEST_REPORTS_UNIT_DIR
+} from '../../config';
 
 export = (done: any) => {
 
-  let files = join(resolve( './' + UNTI_TEST_REPORTS_DIR));
+  let files = join(resolve( './' + TEST_REPORTS_UNIT_DIR));
 
   rmfr(files, {glob: true})
     .then(() => {

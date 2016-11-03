@@ -1,11 +1,11 @@
 import { compileSCSSInChildProcess } from '../../utils';
 
 import {
-  SCSS_MAIN_PATH  // scss/main.scss
+  CLIENT_SCSS_MAIN_PATH_FILE  // scss/main.scss
 } from '../../config';
 
 export = (done: any) => {
 
-  compileSCSSInChildProcess(SCSS_MAIN_PATH, done);
+  compileSCSSInChildProcess(CLIENT_SCSS_MAIN_PATH_FILE, done);
 
 };

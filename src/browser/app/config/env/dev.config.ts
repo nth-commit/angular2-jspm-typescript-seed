@@ -21,5 +21,6 @@ import {EnvConfig} from './interfaces/EnvConfig';
 export const Config: EnvConfig = {
   API: 'localhost://demo.com:9000',
   ENV: 'DEV',
-  BASE: '/'
+  BASE: '/',
+  HOT_LOADER_PORT: 5578
 };

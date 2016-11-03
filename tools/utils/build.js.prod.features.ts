@@ -5,14 +5,12 @@ import * as Builder from 'systemjs-builder';
 // import * as jspm from 'jspm';
 
 import {
-  CLIENT_SRC,
-  JSPM_CONFIG_FILE,
-  JS_PROD_APP_BUNDLE,
-  // JS_PROD_APP_BUNDLE_MIN,
-  UNMINIFIED_JS_PROD_DEST_CACHE_BUSTER,
-  // UNMINIFIED_JS_PROD_DEST,
-  BOOTSTRAP_MODULE,
-  JS_PROD_DEST_ROOT,
+  BROWSER_PATH,
+  CLIENT_JSPM_CONFIG_PATH_FILE,
+  DIST_APP_JS_FILE,
+  DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE,
+  CLIENT_MAIN_TS_PATH_FILE,
+  DIST_PROJECT_ROOT_CACHE_BUSTER,
   CACHE_BUSTER
 } from '../config';
 
@@ -20,22 +18,27 @@ const plugins = <any>gulpLoadPlugins();
 
 export function builder (outputOptions: any, done: any): any {
 
-  let builder = new Builder(CLIENT_SRC, JSPM_CONFIG_FILE);
+  let builder = new Builder(BROWSER_PATH, CLIENT_JSPM_CONFIG_PATH_FILE);
 
   function normalizePathForBuilder(path: string) {
     return normalize(path).replace(/\\/g, '/');
   }
 
   // https://github.com/systemjs/builder
-  builder.buildStatic(normalizePathForBuilder(BOOTSTRAP_MODULE), UNMINIFIED_JS_PROD_DEST_CACHE_BUSTER, outputOptions).then(function() {
+  builder.buildStatic(
+    normalizePathForBuilder(
+      CLIENT_MAIN_TS_PATH_FILE),
+      DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE,
+      outputOptions
+  ).then(function() {
 
     /**
      * Replace 'CACHE_BUSTER' with directory name
      */
-    gulp.src(UNMINIFIED_JS_PROD_DEST_CACHE_BUSTER)
+    gulp.src(DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE)
       .pipe(plugins.replace('CACHE_BUSTER', CACHE_BUSTER))
-      .pipe(plugins.rename(JS_PROD_APP_BUNDLE))
-      .pipe(gulp.dest(JS_PROD_DEST_ROOT))
+      .pipe(plugins.rename(DIST_APP_JS_FILE))
+      .pipe(gulp.dest(DIST_PROJECT_ROOT_CACHE_BUSTER))
       .on('finish', done);
 
     });

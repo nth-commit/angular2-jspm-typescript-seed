@@ -2,12 +2,16 @@ import * as fs from 'fs';
 import { join } from 'path';
 import * as vm from 'vm';
 import {forEach, keys, sortBy, map, extend} from 'lodash';
-import { JSPM_CONFIG_FILE, JSPM_KARMA_CONFIG_FILE } from '../../config';
+
+import {
+  CLIENT_JSPM_CONFIG_PATH_FILE,
+  CLIENT_JSPM_KARMA_CONFIG_PATH_FILE
+} from '../../config';
 
 export = (done: any) => {
 
-  var jspmConfigPath = JSPM_CONFIG_FILE;
-  var jspmKarmaConfig = JSPM_KARMA_CONFIG_FILE;
+  var jspmConfigPath = CLIENT_JSPM_CONFIG_PATH_FILE;
+  var jspmKarmaConfig = CLIENT_JSPM_KARMA_CONFIG_PATH_FILE;
   let file: string = join(process.cwd(),  jspmConfigPath);
 
   var SystemJS = {

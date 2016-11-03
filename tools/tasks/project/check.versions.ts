@@ -1,4 +1,7 @@
-import { VERSION_NODE, VERSION_NPM } from '../../config';
+import {
+  VERSION_NODE,
+  VERSION_NPM
+} from '../../config';
 
 function reportError(message: string) {
   console.error(require('chalk').white.bgRed.bold(message));

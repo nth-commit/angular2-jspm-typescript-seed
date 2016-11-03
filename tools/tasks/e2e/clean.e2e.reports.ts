@@ -1,9 +1,12 @@
 import * as rmfr from 'rmfr';
 import { join, resolve } from 'path';
-import { E2E_REPORTS_DIR } from '../../config';
+
+import {
+  TEST_REPORTS_E2E_DIR
+} from '../../config';
 
 export = (done: any) => {
-  let files = join(resolve( './' + E2E_REPORTS_DIR));
+  let files = join(resolve( './' + TEST_REPORTS_E2E_DIR));
 
   rmfr(files, {glob: true})
     .then(() => {

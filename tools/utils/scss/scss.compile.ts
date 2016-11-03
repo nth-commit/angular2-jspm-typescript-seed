@@ -4,7 +4,7 @@ import { sep } from 'path';
 import { initial } from 'lodash';
 
 import {
-  PROJECT_ROOT_BROWSER_SRC
+  CLIENT_PROJECT_ROOT_BROWSER_PATH
 } from '../../config';
 
 
@@ -53,7 +53,7 @@ process.on('message', function (data: any) {
    * @import "./src/browser/scss/partials/colors";
    *
    */
-  process.chdir(PROJECT_ROOT_BROWSER_SRC);
+  process.chdir(CLIENT_PROJECT_ROOT_BROWSER_PATH);
 
   function onEnd() {
 

@@ -8,15 +8,26 @@ import { InjectableDependency } from './interfaces/InjectableDependency';
  * This class represents the basic configuration of the seed.
  * It provides the following:
  * - Constants for directories, ports, versions etc.
- * - Injectable NPM dependencies
  * - Injectable application assets
- * - Temporary editor files to be ignored by the watcher and asset builder
  * - SystemJS configuration
- * - Autoprefixer configuration
  * - BrowserSync configuration
- * - Utilities
  */
 class Config {
+
+  /**
+   * The default title of the application as used in the `<title>` tag of the
+   * `index.html`.
+   * @type {string}
+   */
+  APP_TITLE                               = 'Welcome to angular2-seed!';
+
+  /**
+   * The flag for the debug option of the application.
+   * The default value is `false`, which can be overriden by the `--debug` flag
+   * when running `npm start`.
+   * @type {boolean}
+   */
+  DEBUG                                    = argv['debug'] || false;
 
   /**
    * The port where the application will run.
@@ -27,17 +38,9 @@ class Config {
   PORT = argv['port'] || 8000;
 
   /**
-   * The root folder of the project (up one levels from the current directory).
+   * The system path to project from C:\ in windows /Machintosh HD in Mac.
    */
-  PROJECT_ROOT = join(__dirname, '..');
-
-  /**
-   * The flag for the debug option of the application.
-   * The default value is `false`, which can be overriden by the `--debug` flag
-   * when running `npm start`.
-   * @type {boolean}
-   */
-  DEBUG = argv['debug'] || false;
+  PROJECT_ROOT                            = join(__dirname, '..');
 
 
   /**
@@ -49,183 +52,147 @@ class Config {
   TEST_REPORTS_PORT = argv['test-report-port'] || 4004;
 
   /**
+   * Also set in /src/browser/app/config/env/dev.config.ts
+   * The port where the application will run, if the `hot-loader` option mode
+   * is used. The default hot-loader port is `5578`.
+   *
+   * @type {number}
+   */
+  HOT_LOADER_PORT                         = 5578;
+
+  /**
+   * E2E server port
+   * @type {number}
+   */
+  E2E_PORT                                = 5555;
+
+  /**
    * The path for the base of the application at runtime.
    * The default path is `/`, which can be overriden by the `--base` flag when
    * running `npm start`.
    * @type {string}
    */
-  APP_BASE = argv['base'] || '/';
+  APP_BASE                                = argv['base'] || '/';
 
   /**
-   * TODO: deprecate
-   * The port where the application will run, if the `hot-loader` option mode
-   * is used.
-   * The default hot-loader port is `5578`.
-   * @type {number}
+   * Generate directory name for prod files
+   * @type {string}
    */
-  HOT_LOADER_PORT = 5578;
-
-  E2E_PORT = 5555;
-
   CACHE_BUSTER =(function() {
     return 'v' + moment().format('YYYYMMDDHHmmss');
   })();
 
+  /**
+   * BASE PATHS
+   */
 
-  //---------------------------------------
-  // DIRECTORY NAMES IN SRC/BROWSER
-  //---------------------------------------
+  BROWSER_PATH                            = join('src', 'browser');
 
 
   /**
-   * Key directory names.
-   * @type {string}
+   * DIRECTORY NAMES
    */
-  APP_DIR_NAME = 'app';
-  SCSS_DIR_NAME = 'scss';
-  ASSETS_DIR_NAME = 'assets';
+
+  // CLIENT DIRECTORIES
+  // -------------
+  CLIENT_BROWSER_DIR                      = 'browser';  // src/browser
+  CLIENT_APP_DIR                          = 'app';          // src/browser/app
+  CLIENT_SCSS_DIR                         = 'scss';        // src/browser/scss
+  CLIENT_ASSETS_DIR                       = 'assets';    // src/browser/assets
+  CLIENT_JSPM_PACKAGES_DIR                = 'jspm_packages';
+
+  // TEST REPORTS DIRECTORIES
+  // -------------
+  TEST_REPORTS_DIR                        = 'test-reports';
+  TEST_E2E_DIR                            = 'e2e';          // test-reports/e2e
+  TEST_UNIT_DIR                           = 'unit';        // test-reports/unit
+
+  // TOOLS DIRECTORIES
+  // -------------
+  TOOLS_DIR                               = 'tools';
+  TASKS_DIR                               = 'tasks';
+
+  // DIST DIRECTORY
+  // -------------
+  DIST_DIR                                = 'dist';
 
   /**
-   * Key file names.
+   * FILE NAMES
    */
-  SCSS_MAIN = 'main.scss';
+
+  // CLIENT FILE NAMES
+  // -------------
+  CLIENT_SCSS_MAIN_FILE                   = 'main.scss';
+  CLIENT_MAIN_FILE                        = 'main.ts';
+
+  // DIST FILE NAMES
+  // -------------
+  DIST_RAW_CACHE_BUSTER_FILE              = 'app.cacheBuster.js';
+  DIST_APP_JS_FILE                        = `app.js`;
+  DIST_APP_MIN_FILE                       = `app.min.js`;
 
   /**
-   * Key files relative to src/browser
+   * PATHS TO FILES
    */
-  SCSS_MAIN_PATH = join(this.SCSS_DIR_NAME, this.SCSS_MAIN);
 
-  /**
-   * The parent directory where test-reports reports are located.
-   * The default directory is `test-reports`.
-   * @type {string}
-   */
-  // TODO change to TEST_REPORTS_DIR_NAME
-  TEST_REPORTS_DIR = 'test-reports';
-  E2E_REPORTS_DIR = join(this.TEST_REPORTS_DIR, 'e2e');
-  UNTI_TEST_REPORTS_DIR = join(this.TEST_REPORTS_DIR, 'unit');
+  CLIENT_SCSS_MAIN_PATH_FILE              = join(this.CLIENT_SCSS_DIR, this.CLIENT_SCSS_MAIN_FILE);
+  CLIENT_MAIN_TS_PATH_FILE                = join(this.CLIENT_APP_DIR, this.CLIENT_MAIN_FILE);
+  CLIENT_JSPM_CONFIG_PATH_FILE            = join(this.BROWSER_PATH, 'jspm.config.js');
+  CLIENT_JSPM_KARMA_CONFIG_PATH_FILE      = join(this.BROWSER_PATH, 'jspm.karma.config.js');
 
-  /**
-   * The default title of the application as used in the `<title>` tag of the
-   * `index.html`.
-   * @type {string}
-   */
-  APP_TITLE = 'Welcome to angular2-seed!';
-
-  /**
-   * The base folder of the applications source files.
-   * @type {string}
-   */
-  CLIENT_SRC = join('src', 'browser');
-
-  JSPM_PACKAGES = join(this.CLIENT_SRC, 'jspm_packages');
-
-  /**
-   * The base folder for the application typescript files.
-   * @type {string}
-   */
-  SRC_APP_DIR = join(this.CLIENT_SRC, this.APP_DIR_NAME);
-
-  // TODO PROJECT_ROOT_BROWSER_SRC
-  PROJECT_ROOT_BROWSER_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC);
-  PROJECT_ROOT_APP_SRC = join(this.PROJECT_ROOT, this.CLIENT_SRC, this.APP_DIR_NAME);
-
-  /**
-   * @type {string}
-   */
-  BOOTSTRAP_MODULE = join(this.APP_DIR_NAME, 'main.ts');
-
-  /**
-   * The folder of the applications asset files.
-   * @type {string}
-   */
-  ASSETS_SRC = join(this.CLIENT_SRC, 'assets');
-
-  /**
-   * The folder of the applications css files.
-   * @type {string}
-   */
-  SCSS_SRC = join(this.CLIENT_SRC, 'scss');
-
-
-  // TODO dubplicate of APP_DIR
-  APP_SRC = join(this.CLIENT_SRC, 'app');
-
-  /**
-   * The directory of the applications tools
-   * @type {string}
-   */
-  TOOLS_DIR = 'tools';
-
-  PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-
-  /**
-   * The directory of the tasks provided by the seed.
-   */
-  DEV_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'dev');
-  E2E_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'e2e');
-  PROD_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'prod');
-  REPORTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'reports');
-  UNIT_TESTS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'unitTests');
-  SCSS_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'scss');
-  SEMVER = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'semver');
-
-  /**
-   * The base folder for built files.
-   * @type {string}
-   */
-  DIST_DIR = 'dist';
-
-  /**
-   * The folder for the built files in the `prod` environment.
-   * @type {string}
-   */
-  BROWSER_DEST = join(this.DIST_DIR, 'browser');
 
 
   /**
-   * Distribution assets directory
-   * @type {string}
+   * PATHS
    */
-  ASSETS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'assets');
-  CSS_PROD = join(this.BROWSER_DEST, this.CACHE_BUSTER, 'css');
+
+  // CLIENT
+  // -------------
+  CLIENT_SCSS_PATH                        = join(this.BROWSER_PATH, this.CLIENT_SCSS_DIR);
+  CLIENT_JSPM_PACKAGES_PATH               = join(this.BROWSER_PATH, this.CLIENT_JSPM_PACKAGES_DIR);
+  CLIENT_APP_PATH                         = join(this.BROWSER_PATH, this.CLIENT_APP_DIR);
+  CLIENT_ASSETS_PATH                      = join(this.BROWSER_PATH, this.CLIENT_ASSETS_DIR);
+
+  // DIST
+  // -------------
+
+  DIST_BROWSER                            = join(this.DIST_DIR, this.CLIENT_BROWSER_DIR);
+  DIST_ASSETS                             = join(this.DIST_BROWSER, this.CACHE_BUSTER, 'assets');
+  DIST_CSS                                = join(this.DIST_BROWSER, this.CACHE_BUSTER, 'css');
+  DIST_CACHE_BUSTER                       = join(this.DIST_BROWSER, this.CACHE_BUSTER);
+  DIST_PROJECT_ROOT_CACHE_BUSTER          = join(this.PROJECT_ROOT, this.DIST_CACHE_BUSTER);
+  DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE  = join(this.DIST_CACHE_BUSTER, this.DIST_RAW_CACHE_BUSTER_FILE);
+  DIST_UNMINIFIED_APP_PATH_FILE           = join(this.DIST_CACHE_BUSTER, this.DIST_APP_JS_FILE);
+
+  // TEST REPORTS
+  // -------------
+  TEST_REPORTS_UNIT_DIR                   = join(this.TEST_REPORTS_DIR, this.TEST_UNIT_DIR);
+  TEST_REPORTS_E2E_DIR                    = join(this.TEST_REPORTS_DIR, this.TEST_E2E_DIR);
+
+  // Entire path
+  // from C:\ in windows
+  // /Machintosh HD in Mac
+  CLIENT_PROJECT_ROOT_BROWSER_PATH        = join(this.PROJECT_ROOT, this.BROWSER_PATH);
 
   /**
-   * path to jspm.config
+   * TASK PATHS
    */
-  JSPM_CONFIG = join(this.PROJECT_ROOT_BROWSER_SRC, 'jspm.config');
-  JSPM_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.config.js');
-  JSPM_KARMA_CONFIG_FILE = join(this.CLIENT_SRC, 'jspm.karma.config.js');
+  TASKS_DEV_DIR                           = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'dev');
+  TASKS_E2E_DIR                           = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'e2e');
+  TASKS_PROD_DIR                          = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'prod');
+  TASKS_REPORTS_DIR                       = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'reports');
+  TASKS_UNIT_TESTS_DIR                    = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'unitTests');
+  TASKS_SCSS_DIR                          = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'scss');
+  TASKS_SEMVER_DIR                        = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'semver');
+  TASKS_PROJECT_DIR                       = join(process.cwd(), this.TOOLS_DIR, this.TASKS_DIR, 'project');
 
-  JS_PROD_DEST = join(this.BROWSER_DEST, this.CACHE_BUSTER);
-
-  JS_PROD_DEST_ROOT = join(this.PROJECT_ROOT, this.JS_PROD_DEST);
 
   /**
    * The version of the application as defined in the `package.json`.
    */
   VERSION = appVersion();
 
-  JS_PROD_APP_BUNDLE_CACHE_BUSTER = 'app.cacheBuster.js';
 
-  /**
-   * The name of the bundle file to include all JavaScript application files.
-   * @type {string}
-   */
-  JS_PROD_APP_BUNDLE = `app.js`;
-
-  /**
-   * The name of the bundle file to include all JavaScript application files minified.
-   * @type {string}
-   */
-  JS_PROD_APP_BUNDLE_MIN = `app.min.js`;
-
-  /**
-   * path to unminified js production build.
-   * @type {string}
-   */
-  UNMINIFIED_JS_PROD_DEST_CACHE_BUSTER = join(this.JS_PROD_DEST, this.JS_PROD_APP_BUNDLE_CACHE_BUSTER);
-  UNMINIFIED_JS_PROD_DEST = join(this.JS_PROD_DEST, this.JS_PROD_APP_BUNDLE);
 
   /**
    * The required NPM version to run the application.
@@ -250,7 +217,7 @@ class Config {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: join(this.SCSS_SRC, 'main.css'), inject: true, vendor: false }
+    { src: join(this.CLIENT_SCSS_PATH, 'main.css'), inject: true, vendor: false }
   ];
 
   /**
@@ -303,14 +270,14 @@ class Config {
     // startPath: this.APP_SRC + '/',
     open: argv['b'] ? false : true,
     files: [].concat(
-      [this.CLIENT_SRC + '/**/*.css'],
-      [this.CLIENT_SRC + '/**/*.woff2'],
-      [this.CLIENT_SRC + '/app/**/*.json'],
-      [this.CLIENT_SRC + '/app/**/*.html'],
-      [this.CLIENT_SRC + '/index.html']
+      [this.BROWSER_PATH + '/**/*.css'],
+      [this.BROWSER_PATH + '/**/*.woff2'],
+      [this.BROWSER_PATH + '/app/**/*.json'],
+      [this.BROWSER_PATH + '/app/**/*.html'],
+      [this.BROWSER_PATH + '/index.html']
     ),
     server: {
-      baseDir: this.CLIENT_SRC + '/',
+      baseDir: this.BROWSER_PATH + '/',
       // serve our jspm dependencies with the client folder
       routes: {
         '/jspm.config.js': './jspm.config.js',
@@ -335,14 +302,14 @@ class Config {
     files: [].concat(
       // [this.BROWSER_DEST + '/app/**/*.css'],
       // [this.BROWSER_DEST + '/app/**/*.scss'],
-      [this.BROWSER_DEST + '/app/**/*.json'],
-      [this.BROWSER_DEST + '/app/**/*.html'],
-      [this.BROWSER_DEST + '/index.html'],
-      [this.BROWSER_DEST + '/**/*.svg'],
-      [this.BROWSER_DEST + '/**/*.map']
+      [this.DIST_BROWSER + '/app/**/*.json'],
+      [this.DIST_BROWSER + '/app/**/*.html'],
+      [this.DIST_BROWSER + '/index.html'],
+      [this.DIST_BROWSER + '/**/*.svg'],
+      [this.DIST_BROWSER + '/**/*.map']
     ),
     server: {
-      baseDir: this.BROWSER_DEST + '/',
+      baseDir: this.DIST_BROWSER + '/',
       index: 'index.html'
     }
   };

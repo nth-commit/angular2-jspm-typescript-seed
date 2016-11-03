@@ -3,7 +3,9 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 import * as rmfr from 'rmfr';
 
-import { SRC_APP_DIR } from '../../config';
+import {
+  CLIENT_APP_PATH
+} from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -11,8 +13,8 @@ export = (done: any) => {
 
   let component: string = 'featureB';
 
-  let src: string = join(SRC_APP_DIR, '_samples', 'conditionalSubstitution', 'config', component + '.config.template.locals.ts');
-  let dest: string = join(SRC_APP_DIR, '_samples', 'conditionalSubstitution', 'config');
+  let src: string = join(CLIENT_APP_PATH, '_samples', 'conditionalSubstitution', 'config', component + '.config.template.locals.ts');
+  let dest: string = join(CLIENT_APP_PATH, '_samples', 'conditionalSubstitution', 'config');
   let fileName: string = 'feature.config.ts';
   let rimrafFile: string = join(dest, fileName);
 

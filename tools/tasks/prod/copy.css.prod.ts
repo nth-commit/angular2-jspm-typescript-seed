@@ -2,13 +2,13 @@ import * as gulp from 'gulp';
 import { join } from 'path';
 
 import {
-  CSS_PROD,
-  SCSS_SRC
+  DIST_CSS,
+  CLIENT_SCSS_PATH
 } from '../../config';
 
 
 export = () => {
   return gulp.src([
-    join(SCSS_SRC, 'main.css'),
-  ]).pipe(gulp.dest(CSS_PROD));
+    join(CLIENT_SCSS_PATH, 'main.css'),
+  ]).pipe(gulp.dest(DIST_CSS));
 };

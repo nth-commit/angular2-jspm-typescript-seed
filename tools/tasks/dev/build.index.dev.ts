@@ -3,7 +3,7 @@ import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 
 import {
-  CLIENT_SRC
+  BROWSER_PATH
 } from '../../config';
 
 import { templateLocals } from '../../utils';
@@ -11,8 +11,8 @@ import { templateLocals } from '../../utils';
 const plugins = <any>gulpLoadPlugins();
 
 export = () => {
-  return gulp.src(join(CLIENT_SRC, 'index.temp.html'))
+  return gulp.src(join(BROWSER_PATH, 'index.temp.html'))
     .pipe(plugins.template(templateLocals()))
     .pipe(plugins.rename('index.html'))
-    .pipe(gulp.dest(CLIENT_SRC));
+    .pipe(gulp.dest(BROWSER_PATH));
 };

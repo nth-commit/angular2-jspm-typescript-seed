@@ -1,11 +1,13 @@
 import * as rmfr from 'rmfr';
 import {join, resolve} from 'path';
 
-import {JSPM_PACKAGES} from '../../config';
+import {
+  CLIENT_JSPM_PACKAGES_PATH
+} from '../../config';
 
 export = (done: any) => {
 
-  let jspmPackages: string = join(resolve('./' + JSPM_PACKAGES));
+  let jspmPackages: string = join(resolve('./' + CLIENT_JSPM_PACKAGES_PATH));
   let nodeModules: string = join(resolve('./' + 'node_modules'));
   let typings: string = join(resolve('./' + 'typings'));
 

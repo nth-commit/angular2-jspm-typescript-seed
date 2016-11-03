@@ -7,7 +7,10 @@ import { join } from 'path';
 import * as fs from 'fs';
 import * as vm from 'vm';
 import {forEach, extend, forIn} from 'lodash';
-import { JSPM_CONFIG_FILE} from '../config';
+
+import {
+  CLIENT_JSPM_CONFIG_PATH_FILE
+} from '../config';
 
 /**
  *
@@ -21,7 +24,7 @@ import { JSPM_CONFIG_FILE} from '../config';
  */
 export function readSystemJSConfig (callback: any, parseConfig: any) {
 
-  let file: string = join(process.cwd(),  JSPM_CONFIG_FILE);
+  let file: string = join(process.cwd(),  CLIENT_JSPM_CONFIG_PATH_FILE);
 
   // Mock SystemJS to extract paths
   var SystemJS = {

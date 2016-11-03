@@ -2,7 +2,11 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 import { readSystemJSConfig } from '../../utils';
-import { SCSS_SRC, CLIENT_SRC } from '../../config';
+
+import {
+  CLIENT_SCSS_PATH,
+  BROWSER_PATH
+} from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -17,9 +21,9 @@ export = (done: any) => {
          * something like jspm_packages/github/necolas/normalize.css@5.0.0
          *
          */
-        return gulp.src(join(CLIENT_SRC, config.map['normalize.css'], 'normalize.css'))
+        return gulp.src(join(BROWSER_PATH, config.map['normalize.css'], 'normalize.css'))
             .pipe(plugins.rename('normalize.scss'))
-            .pipe(gulp.dest(join(SCSS_SRC, 'imports')))
+            .pipe(gulp.dest(join(CLIENT_SCSS_PATH, 'imports')))
             .on('end', done);
 
         // Chain another file here.

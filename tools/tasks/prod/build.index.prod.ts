@@ -5,24 +5,25 @@ import * as slash from 'slash';
 
 import {
   APP_BASE,
-  BROWSER_DEST,
+  DIST_BROWSER,
   CACHE_BUSTER,
-  CLIENT_SRC,
-  JS_PROD_DEST,
+  BROWSER_PATH,
+  DIST_CACHE_BUSTER,
   // JS_PROD_APP_BUNDLE,
-  JS_PROD_APP_BUNDLE_MIN
+  DIST_APP_MIN_FILE
 } from '../../config';
+
 import { templateLocals } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
 
 export = () => {
-  return gulp.src(join(CLIENT_SRC, 'index.temp.html'))
+  return gulp.src(join(BROWSER_PATH, 'index.temp.html'))
     .pipe(injectJs())
     .pipe(plugins.template(templateLocals()))
     .pipe(plugins.replace('CACHE_BUSTER/scss', CACHE_BUSTER + '/css'))
     .pipe(plugins.rename('index.html'))
-    .pipe(gulp.dest(BROWSER_DEST));
+    .pipe(gulp.dest(DIST_BROWSER));
 };
 
 function inject(...files: Array<string>) {
@@ -33,7 +34,7 @@ function inject(...files: Array<string>) {
 }
 
 function injectJs() {
-  return inject(join(JS_PROD_DEST, JS_PROD_APP_BUNDLE_MIN));
+  return inject(join(DIST_CACHE_BUSTER, DIST_APP_MIN_FILE));
 }
 
 function transformPath() {

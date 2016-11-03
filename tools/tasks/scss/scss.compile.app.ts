@@ -2,11 +2,11 @@ import { join } from 'path';
 import { compileSCSSInChildProcess } from '../../utils';
 
 import {
-  APP_DIR_NAME   // app,
+  CLIENT_APP_DIR   // app,
 } from '../../config';
 
 export = (done: any) => {
 
-  compileSCSSInChildProcess(join(APP_DIR_NAME, '**', '*.scss'), done);
+  compileSCSSInChildProcess(join(CLIENT_APP_DIR, '**', '*.scss'), done);
 
 };

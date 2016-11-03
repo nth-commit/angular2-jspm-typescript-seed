@@ -1,17 +1,19 @@
 import * as gulp from 'gulp';
 
-import { BROWSER_DEST } from '../../config';
+import {
+  DIST_BROWSER
+} from '../../config';
 
 export = () => {
   return require('angular2-service-worker')
     .gulpGenManifest({
       group: [{
         name: 'css',
-        sources: gulp.src(`${BROWSER_DEST}/**/*.css`)
+        sources: gulp.src(`${DIST_BROWSER}/**/*.css`)
       }, {
         name: 'js',
-        sources: gulp.src(`${BROWSER_DEST}/**/*.js`)
+        sources: gulp.src(`${DIST_BROWSER}/**/*.js`)
       }]
     })
-    .pipe(gulp.dest(BROWSER_DEST));
+    .pipe(gulp.dest(DIST_BROWSER));
 };

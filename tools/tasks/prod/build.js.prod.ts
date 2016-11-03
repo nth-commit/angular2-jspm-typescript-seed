@@ -1,5 +1,8 @@
 import {builder} from '../../utils/build.js.prod.features';
-import { CLIENT_SRC,} from '../../config';
+
+import {
+  BROWSER_PATH
+} from '../../config';
 
 export = (done: any) => {
   const outputOptions = {
@@ -10,7 +13,7 @@ export = (done: any) => {
     sourceMaps: false,
     inlineConditions: true,
     config: {
-      sourceRoot: CLIENT_SRC
+      sourceRoot: BROWSER_PATH
     },
 
     // Remove / comment if not using conditional substitution

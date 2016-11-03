@@ -1,14 +1,18 @@
 import * as browserSync from 'browser-sync';
 import * as chokidarSocketEmitter from 'chokidar-socket-emitter';
 
-import { CLIENT_SRC, BROWSER_SYNC_CONFIG_DEV } from '../../config';
+import {
+  BROWSER_PATH,
+  BROWSER_SYNC_CONFIG_DEV,
+  HOT_LOADER_PORT
+} from '../../config';
 
 export = () => {
 
   chokidarSocketEmitter({
-    port: 8081,
-    path: CLIENT_SRC + '/',
-    relativeTo: CLIENT_SRC + '/',
+    port: HOT_LOADER_PORT,
+    path: BROWSER_PATH + '/',
+    relativeTo: BROWSER_PATH + '/',
     dir: process.cwd()
   });
 

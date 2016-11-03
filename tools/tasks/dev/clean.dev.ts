@@ -1,11 +1,13 @@
 import * as rmfr from 'rmfr';
 import { join, resolve } from 'path';
 
-import { APP_SRC } from '../../config';
+import {
+  CLIENT_APP_PATH
+} from '../../config';
 
 export = (done: any) => {
 
-  let files = join(resolve( './' + APP_SRC), '**', '*.+(js|map|css)');
+  let files = join(resolve( './' + CLIENT_APP_PATH), '**', '*.+(js|map|css)');
 
   rmfr(files, {glob: true})
     .then(() => {

@@ -1,9 +1,12 @@
 import * as rmfr from 'rmfr';
 import { join, resolve } from 'path';
-import { BROWSER_DEST } from '../../config';
+
+import {
+  DIST_BROWSER
+} from '../../config';
 
 export = (done: any) => {
-  let files = join(resolve( './' + BROWSER_DEST));
+  let files = join(resolve( './' + DIST_BROWSER));
 
   rmfr(files, {glob: true})
     .then(() => {

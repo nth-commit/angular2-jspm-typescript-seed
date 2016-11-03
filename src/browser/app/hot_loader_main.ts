@@ -1,4 +1,5 @@
 import './main';
+import { Config } from './config/env/dev.config';
 
 var htmlTag = document.getElementsByTagName('html')[0];
 var noAngularDOM;
@@ -8,7 +9,7 @@ System.trace = true;
 noAngularDOM = htmlTag.cloneNode(true);
 if ((!System.hotReloader)) {
   System.import('systemjs-hot-reloader').then(HotReloader => {
-    System.hotReloader = new HotReloader.default('http://localhost:8081/');
+    System.hotReloader = new HotReloader.default('http://localhost:' + Config.HOT_LOADER_PORT + '/');
     System.hotReloader.on('change', function(name) {
       console.log(name, 'changed');
     });

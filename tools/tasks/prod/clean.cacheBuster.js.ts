@@ -1,11 +1,13 @@
 import * as rmfr from 'rmfr';
 import { join, resolve } from 'path';
 
-import { JS_PROD_DEST } from '../../config';
+import {
+  DIST_CACHE_BUSTER
+} from '../../config';
 
 export = (done: any) => {
 
-  let files = join(resolve( './' + JS_PROD_DEST), '**', '*.+(cacheBuster).js');
+  let files = join(resolve( './' + DIST_CACHE_BUSTER), '**', '*.+(cacheBuster).js');
 
   rmfr(files, {glob: true})
     .then(() => {

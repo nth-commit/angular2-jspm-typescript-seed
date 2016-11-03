@@ -5,10 +5,10 @@ import { head } from 'lodash';
 import { compileSCSSInChildProcess } from '../../utils';
 
 import {
-  PROJECT_ROOT_BROWSER_SRC,
-  SCSS_DIR_NAME,  // scss
-  APP_DIR_NAME,   // app,
-  SCSS_MAIN_PATH  // scss/main.scss
+  CLIENT_PROJECT_ROOT_BROWSER_PATH,
+  CLIENT_SCSS_DIR,  // scss
+  CLIENT_APP_DIR,   // app,
+  CLIENT_SCSS_MAIN_PATH_FILE  // scss/main.scss
 } from '../../config';
 
 /**
@@ -16,12 +16,12 @@ import {
  * export = (done: any) => {
  */
 export = () => {
-  gulp.watch(join(PROJECT_ROOT_BROWSER_SRC, '**', '*.scss'), function(file) {
+  gulp.watch(join(CLIENT_PROJECT_ROOT_BROWSER_PATH, '**', '*.scss'), function(file) {
 
     if (isScss(file.path)) {
 
       // get file path relative to src/browser
-      let filePath = file.path.replace(PROJECT_ROOT_BROWSER_SRC + sep, '');
+      let filePath = file.path.replace(CLIENT_PROJECT_ROOT_BROWSER_PATH + sep, '');
 
       let filePathHead = head(filePath.split(sep));
 
@@ -31,16 +31,16 @@ export = () => {
        * may import variables, so we can't assume individual
        * module scss files are not impacted.
        */
-      if (filePathHead === SCSS_DIR_NAME) {
-        compileSCSSInChildProcess(SCSS_MAIN_PATH);
-        compileSCSSInChildProcess(join(APP_DIR_NAME, '**', '*.scss'));
+      if (filePathHead === CLIENT_SCSS_DIR) {
+        compileSCSSInChildProcess(CLIENT_SCSS_MAIN_PATH_FILE);
+        compileSCSSInChildProcess(join(CLIENT_APP_DIR, '**', '*.scss'));
       }
 
       /**
        * If a module scss file has changed, only compile
        * that one scss file.
        */
-      if (filePathHead === APP_DIR_NAME) {
+      if (filePathHead === CLIENT_APP_DIR) {
         compileSCSSInChildProcess(filePath);
       }
 

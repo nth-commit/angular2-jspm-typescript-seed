@@ -1,5 +1,8 @@
 import {builder} from '../../utils/build.js.prod.features';
-import { PROJECT_ROOT_BROWSER_SRC} from '../../config';
+
+import {
+  CLIENT_PROJECT_ROOT_BROWSER_PATH
+} from '../../config';
 
 
 export = (done: any) => {
@@ -9,7 +12,7 @@ export = (done: any) => {
     sourceMaps: true,
     inlineConditions: true,
     config: {
-      sourceRoot: PROJECT_ROOT_BROWSER_SRC + '/'
+      sourceRoot: CLIENT_PROJECT_ROOT_BROWSER_PATH + '/'
     },
     conditions: {
       // Resolve import to featureB if included with build.

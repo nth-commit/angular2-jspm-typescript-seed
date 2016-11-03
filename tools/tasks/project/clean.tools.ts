@@ -1,7 +1,9 @@
 import * as rmfr from 'rmfr';
 import { join, resolve } from 'path';
 
-import { TOOLS_DIR } from '../../config';
+import {
+  TOOLS_DIR
+} from '../../config';
 
 export = (done: any) => {
 

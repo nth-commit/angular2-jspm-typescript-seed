@@ -1,14 +1,17 @@
 import * as gulp from 'gulp';
 import { protractor } from 'gulp-protractor';
 import { ProtractorDevServer } from '../../utils';
-import { CLIENT_SRC } from '../../config';
+
+import {
+  BROWSER_PATH
+} from '../../config';
 
 export = (done: any) => {
   new ProtractorDevServer()
     .server()
     .then((server: any) => {
 
-      var src = './' + CLIENT_SRC + '/**/*.e2e-spec.js';
+      var src = './' + BROWSER_PATH + '/**/*.e2e-spec.js';
 
       gulp
 
