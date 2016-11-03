@@ -2,7 +2,7 @@ import * as gulp from 'gulp';
 import { join } from 'path';
 
 import {
-  DIST_ASSETS,
+  DIST_ASSETS_PATH,
   CLIENT_ASSETS_PATH
 } from '../../config';
 
@@ -10,5 +10,5 @@ import {
 export = () => {
   return gulp.src([
     join(CLIENT_ASSETS_PATH, '**', '*'),
-  ]).pipe(gulp.dest(DIST_ASSETS));
+  ]).pipe(gulp.dest(DIST_ASSETS_PATH));
 };

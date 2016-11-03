@@ -13,7 +13,7 @@ import {
   APP_BASE,
   BROWSER_PATH,
   E2E_PORT,
-  DIST_BROWSER
+  DIST_BROWSER_PATH
 } from '../config';
 
 /**
@@ -57,8 +57,8 @@ export class ProtractorProdServer {
   server() {
     let app = express();
     app.use(history({ index: `${APP_BASE}index.html` }));
-    app.use(express.static(DIST_BROWSER));
-    util.log(chalk.yellow('Serving ./' + DIST_BROWSER));
+    app.use(express.static(DIST_BROWSER_PATH));
+    util.log(chalk.yellow('Serving ./' + DIST_BROWSER_PATH));
     return new Promise((resolve, reject) => {
       let server = app.listen(E2E_PORT, () => {
         resolve(server);

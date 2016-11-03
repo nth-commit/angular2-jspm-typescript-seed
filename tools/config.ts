@@ -100,6 +100,7 @@ class Config {
   CLIENT_SCSS_DIR                         = 'scss';        // src/browser/scss
   CLIENT_ASSETS_DIR                       = 'assets';    // src/browser/assets
   CLIENT_JSPM_PACKAGES_DIR                = 'jspm_packages';
+  CLIENT_CSS                              = 'css';
 
   // TEST REPORTS DIRECTORIES
   // -------------
@@ -124,6 +125,8 @@ class Config {
   // -------------
   CLIENT_SCSS_MAIN_FILE                   = 'main.scss';
   CLIENT_MAIN_FILE                        = 'main.ts';
+  CLIENT_JSPM_CONFIG_FILE                 = 'jspm.config.js';
+  CLIENT_JSPM_KARMA_CONFIG_FILE           = 'jspm.karma.config.js';
 
   // DIST FILE NAMES
   // -------------
@@ -137,8 +140,8 @@ class Config {
 
   CLIENT_SCSS_MAIN_PATH_FILE              = join(this.CLIENT_SCSS_DIR, this.CLIENT_SCSS_MAIN_FILE);
   CLIENT_MAIN_TS_PATH_FILE                = join(this.CLIENT_APP_DIR, this.CLIENT_MAIN_FILE);
-  CLIENT_JSPM_CONFIG_PATH_FILE            = join(this.BROWSER_PATH, 'jspm.config.js');
-  CLIENT_JSPM_KARMA_CONFIG_PATH_FILE      = join(this.BROWSER_PATH, 'jspm.karma.config.js');
+  CLIENT_JSPM_CONFIG_PATH_FILE            = join(this.BROWSER_PATH, this.CLIENT_JSPM_CONFIG_FILE);
+  CLIENT_JSPM_KARMA_CONFIG_PATH_FILE      = join(this.BROWSER_PATH, this.CLIENT_JSPM_KARMA_CONFIG_FILE);
 
 
 
@@ -156,13 +159,13 @@ class Config {
   // DIST
   // -------------
 
-  DIST_BROWSER                            = join(this.DIST_DIR, this.CLIENT_BROWSER_DIR);
-  DIST_ASSETS                             = join(this.DIST_BROWSER, this.CACHE_BUSTER, 'assets');
-  DIST_CSS                                = join(this.DIST_BROWSER, this.CACHE_BUSTER, 'css');
-  DIST_CACHE_BUSTER                       = join(this.DIST_BROWSER, this.CACHE_BUSTER);
-  DIST_PROJECT_ROOT_CACHE_BUSTER          = join(this.PROJECT_ROOT, this.DIST_CACHE_BUSTER);
-  DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE  = join(this.DIST_CACHE_BUSTER, this.DIST_RAW_CACHE_BUSTER_FILE);
-  DIST_UNMINIFIED_APP_PATH_FILE           = join(this.DIST_CACHE_BUSTER, this.DIST_APP_JS_FILE);
+  DIST_BROWSER_PATH                       = join(this.DIST_DIR, this.CLIENT_BROWSER_DIR);
+  DIST_ASSETS_PATH                        = join(this.DIST_BROWSER_PATH, this.CACHE_BUSTER, this.CLIENT_ASSETS_DIR);
+  DIST_CSS_PATH                           = join(this.DIST_BROWSER_PATH, this.CACHE_BUSTER, this.CLIENT_CSS);
+  DIST_CACHE_BUSTER_PATH                  = join(this.DIST_BROWSER_PATH, this.CACHE_BUSTER);
+  DIST_PROJECT_ROOT_CACHE_BUSTER_PATH     = join(this.PROJECT_ROOT, this.DIST_CACHE_BUSTER_PATH);
+  DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE  = join(this.DIST_CACHE_BUSTER_PATH, this.DIST_RAW_CACHE_BUSTER_FILE);
+  DIST_UNMINIFIED_APP_PATH_FILE           = join(this.DIST_CACHE_BUSTER_PATH, this.DIST_APP_JS_FILE);
 
   // TEST REPORTS
   // -------------
@@ -302,14 +305,14 @@ class Config {
     files: [].concat(
       // [this.BROWSER_DEST + '/app/**/*.css'],
       // [this.BROWSER_DEST + '/app/**/*.scss'],
-      [this.DIST_BROWSER + '/app/**/*.json'],
-      [this.DIST_BROWSER + '/app/**/*.html'],
-      [this.DIST_BROWSER + '/index.html'],
-      [this.DIST_BROWSER + '/**/*.svg'],
-      [this.DIST_BROWSER + '/**/*.map']
+      [this.DIST_BROWSER_PATH + '/app/**/*.json'],
+      [this.DIST_BROWSER_PATH + '/app/**/*.html'],
+      [this.DIST_BROWSER_PATH + '/index.html'],
+      [this.DIST_BROWSER_PATH + '/**/*.svg'],
+      [this.DIST_BROWSER_PATH + '/**/*.map']
     ),
     server: {
-      baseDir: this.DIST_BROWSER + '/',
+      baseDir: this.DIST_BROWSER_PATH + '/',
       index: 'index.html'
     }
   };

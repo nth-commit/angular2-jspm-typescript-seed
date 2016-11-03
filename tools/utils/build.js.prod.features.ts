@@ -10,7 +10,7 @@ import {
   DIST_APP_JS_FILE,
   DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE,
   CLIENT_MAIN_TS_PATH_FILE,
-  DIST_PROJECT_ROOT_CACHE_BUSTER,
+  DIST_PROJECT_ROOT_CACHE_BUSTER_PATH,
   CACHE_BUSTER
 } from '../config';
 
@@ -38,7 +38,7 @@ export function builder (outputOptions: any, done: any): any {
     gulp.src(DIST_UNMINIFIED_CACHE_BUSTER_PATH_FILE)
       .pipe(plugins.replace('CACHE_BUSTER', CACHE_BUSTER))
       .pipe(plugins.rename(DIST_APP_JS_FILE))
-      .pipe(gulp.dest(DIST_PROJECT_ROOT_CACHE_BUSTER))
+      .pipe(gulp.dest(DIST_PROJECT_ROOT_CACHE_BUSTER_PATH))
       .on('finish', done);
 
     });

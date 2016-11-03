@@ -5,10 +5,10 @@ import * as slash from 'slash';
 
 import {
   APP_BASE,
-  DIST_BROWSER,
+  DIST_BROWSER_PATH,
   CACHE_BUSTER,
   BROWSER_PATH,
-  DIST_CACHE_BUSTER,
+  DIST_CACHE_BUSTER_PATH,
   // JS_PROD_APP_BUNDLE,
   DIST_APP_MIN_FILE
 } from '../../config';
@@ -23,7 +23,7 @@ export = () => {
     .pipe(plugins.template(templateLocals()))
     .pipe(plugins.replace('CACHE_BUSTER/scss', CACHE_BUSTER + '/css'))
     .pipe(plugins.rename('index.html'))
-    .pipe(gulp.dest(DIST_BROWSER));
+    .pipe(gulp.dest(DIST_BROWSER_PATH));
 };
 
 function inject(...files: Array<string>) {
@@ -34,7 +34,7 @@ function inject(...files: Array<string>) {
 }
 
 function injectJs() {
-  return inject(join(DIST_CACHE_BUSTER, DIST_APP_MIN_FILE));
+  return inject(join(DIST_CACHE_BUSTER_PATH, DIST_APP_MIN_FILE));
 }
 
 function transformPath() {

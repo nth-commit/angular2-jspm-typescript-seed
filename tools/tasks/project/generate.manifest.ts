@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 
 import {
-  DIST_BROWSER
+  DIST_BROWSER_PATH
 } from '../../config';
 
 export = () => {
@@ -9,11 +9,11 @@ export = () => {
     .gulpGenManifest({
       group: [{
         name: 'css',
-        sources: gulp.src(`${DIST_BROWSER}/**/*.css`)
+        sources: gulp.src(`${DIST_BROWSER_PATH}/**/*.css`)
       }, {
         name: 'js',
-        sources: gulp.src(`${DIST_BROWSER}/**/*.js`)
+        sources: gulp.src(`${DIST_BROWSER_PATH}/**/*.js`)
       }]
     })
-    .pipe(gulp.dest(DIST_BROWSER));
+    .pipe(gulp.dest(DIST_BROWSER_PATH));
 };
