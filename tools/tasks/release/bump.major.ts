@@ -5,6 +5,6 @@ const plugins = <any>gulpLoadPlugins();
 
 export = () => {
   gulp.src('./package.json')
-    .pipe( plugins.bump({type: "major"}))
+    .pipe( plugins.bump({type: 'major'}))
     .pipe(gulp.dest('./'));
 };

@@ -38,7 +38,7 @@ export = (done: any) => {
   }).then(function(tokens: any) {
 
     conventionalGithubReleaser({
-      type: "oauth",
+      type: 'oauth',
       token: tokens.github// change this to your own GitHub token or use an environment variable
     }, {
       preset: 'angular' // Or to any other commit message convention you use.
