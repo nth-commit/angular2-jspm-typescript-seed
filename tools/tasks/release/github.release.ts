@@ -8,6 +8,10 @@ export = (done: any) => {
   var src = './tokens.json';
 
   new Promise(function(resolve, reject) {
+
+    console.log(process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN);
+
+
     fs.readFile(src, 'utf8', function(err: any, data: any) {
 
       if (err) {
@@ -37,12 +41,12 @@ export = (done: any) => {
     });
   }).then(function(tokens: any) {
 
-    conventionalGithubReleaser({
-      type: 'oauth',
-      token: tokens.github// change this to your own GitHub token or use an environment variable
-    }, {
-      preset: 'angular' // Or to any other commit message convention you use.
-    }, done);
+    // conventionalGithubReleaser({
+    //   type: 'oauth',
+    //   token: tokens.github// change this to your own GitHub token or use an environment variable
+    // }, {
+    //   preset: 'angular' // Or to any other commit message convention you use.
+    // }, done);
 
   });
 

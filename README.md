@@ -1,4 +1,4 @@
-# Introduction
+# Angular 2.0 with JSPM, SystemJS, Gulp, and TypeScript
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 [![Build Status](https://travis-ci.org/UIUXEngineering/angular2-jspm-typescript-seed-advanced.svg?branch=master)](https://travis-ci.org/UIUXEngineering/angular2-jspm-typescript-seed-advanced)
@@ -29,10 +29,9 @@ This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](htt
 - Sample unit tests with Jasmine and Karma including code coverage via [istanbul](https://gotwarlost.github.io/istanbul/).
 - Coverage reports remapped to source files.
 - End-to-end tests with Protractor.
-- Development server with Livereload.
+- Development server with Hot Reloading.
 - Following the [best practices](https://angular.io/styleguide).
 - Manager of your type definitions using [typings](https://github.com/typings/typings).
-- Has autoprefixer and css-lint support.
 
 # How to start
 
@@ -73,12 +72,10 @@ _Does not rely on any global dependencies._
 - [Tools documentation](#tools-documentation)
 - [Cache Buster](#cache-buster)
 - [Running tests](#running-tests)
-<!-- - [Progressive Web Apps](#progressive-web-apps) -->
 - [Contributing](#contributing)
 - [Advanced Seed Option](#advanced-seed-option)
 - [Examples](#examples)
 - [Directory Structure](#directory-structure)
-<!-- - [Contributors](#contributors) -->
 - [Change Log](#change-log)
 - [License](#license)
 
@@ -164,7 +161,8 @@ The seed can generate a file `manifest.appcache` which lists all files included 
 The manifest is also annotated for use with `angular2-service-worker`. Some manual operations are currently required to enable this usage. The package must be installed, and `worker.js` manually copied into the project src directory:
 
 ```bash
-cp node_modules/angular2-service-worker/dist/worker.js src/browser
+
+    cp node_modules/angular2-service-worker/dist/worker.js src/browser
 ```
 
 In order to generate the manifest file run:

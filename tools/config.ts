@@ -248,22 +248,6 @@ class Config {
     'bb >= 10'
   ];
 
-  GIT_ADD_AND_IGNORE_FILES = [
-    './**/!(.git)*',                        // Add all, ignore .git in any directory
-    '!./tokens.json',                       // ignore to ./tokens.json
-    '!./dist{,/**/*}',                      // ignore dist directory
-    '!./node_modules{,/**/*}',              // ignore node_modules directory
-    '!./scratch{,/**/*}',                   // ignore scratch directory
-    '!./src/browser/jspm_packages{,/**/*}', // ignore src/browser/jspm_packages directory
-    '!./src/browser/**/*.css',              // ignore all .css in src/browser directory
-    '!./src/browser/jspm.karma.config.js',  // ignore src/browser/jspm.karma.config.js
-    '!./src/browser/scss/imports{,/**/*}',  // ignore src/browser/scss/imports directory
-    '!./test-reports{,/**/*}',              // ignore test-reports directory
-    '!./typings{,/**/*}',                   // ignore typings directory
-    '!./**/*.log',                          // ignore log files in any directory
-    '!./**/*.idea{,/**/*}'                  // ignore jetbrains .idea directories
-  ];
-
   /**
    * The BrowserSync configuration of the application.
    * The default open behavior is to open the browser,
