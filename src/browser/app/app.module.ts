@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { APP_BASE_HREF } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
-import { routes } from './app.routes';
+import {  NgModule  } from '@angular/core';
+import {  BrowserModule  } from '@angular/platform-browser';
+import {  APP_BASE_HREF  } from '@angular/common';
+import {  RouterModule  } from '@angular/router';
+import {  HttpModule  } from '@angular/http';
+import {  AppComponent  } from './app.component';
+import {  routes  } from './app.routes';
 
-import { AboutModule } from './_samples/about/about.module';
-import { HomeModule } from './_samples/home/home.module';
-import { CacheBusterModule } from './_samples/cacheBuster/cacheBuster.module';
-import { SharedModule } from './_samples/shared/shared.module';
+import {  AboutModule  } from './_samples/about/about.module';
+import {  HomeModule  } from './_samples/home/home.module';
+import {  CacheBusterModule  } from './_samples/cacheBuster/cacheBuster.module';
+import {  SharedModule  } from './_samples/shared/shared.module';
 import {
   FeatureModule
-} from './_samples/conditionalSubstitution/#{FEATURE|FeatureConfig.FEATURE_NAME}/feature.module';
+ } from './_samples/conditionalSubstitution/#{FEATURE|FeatureConfig.FEATURE_NAME}/feature.module';
 
 /**
  * Conditional import based on ~production flag in jspm.config:
@@ -35,7 +35,7 @@ import {
  *
  *   For more info, see http://jspm.io/0.17-beta-guide/conditional-loading.html
  */
-import {Config} from './config/env/prod.config';
+import { Config } from './config/env/prod.config';
 
 var importModules = [
   BrowserModule,

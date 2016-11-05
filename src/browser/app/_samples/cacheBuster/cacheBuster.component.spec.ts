@@ -1,4 +1,4 @@
-import {CacheBusterComponent} from './cacheBuster.component';
+import { CacheBusterComponent } from './cacheBuster.component';
 
 describe('Samples Cache Buster component', () => {
 

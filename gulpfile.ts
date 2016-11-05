@@ -1,66 +1,20 @@
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
-import { join } from 'path';
 
-import {
-  TASKS_DEV_DIR,
-  TASKS_E2E_DIR,
-  TASKS_PROD_DIR,
-  TASKS_PROJECT_DIR,
-  TASKS_REPORTS_DIR,
-  TASKS_SCSS_DIR,
-  TASKS_RELEASE_DIR,
-  TASKS_UNIT_TESTS_DIR
-} from './tools/config';
+import Config from './tools/config';
 import {loadTasks} from './tools/utils';
 
 
-loadTasks(TASKS_DEV_DIR);
-loadTasks(TASKS_PROJECT_DIR);
-loadTasks(TASKS_E2E_DIR);
-loadTasks(TASKS_PROD_DIR);
-loadTasks(TASKS_REPORTS_DIR);
-loadTasks(TASKS_UNIT_TESTS_DIR);
-loadTasks(TASKS_UNIT_TESTS_DIR);
-loadTasks(TASKS_SCSS_DIR);
-loadTasks(TASKS_RELEASE_DIR);
+loadTasks(Config.TASKS_PATH);
+
 
 /**
- * No config property since this is for demo
- * purposes only. Either comment or remove
- * when forking this repo.
+ * WORKFLOW TASKS
  */
-loadTasks(join(process.cwd(), 'tools', 'tasks', 'conditionalSubstitution'));
-
-
-// --------------
-// Build dev.
-gulp.task('build.dev', (done: any) =>
-  runSequence(
-    'scss',
-    'build.index.dev',
-    'serve.dev',
-    done));
-
 gulp.task('dev', (done: any) =>
   runSequence(
     'set.featureA',
     'build.dev',
-    done));
-
-// --------------
-// Build prod.
-
-gulp.task('build.prod', (done: any) =>
-  runSequence(
-    'tslint',
-    'build.js.prod',
-    'prod.js.uglify',
-    'clean.cacheBuster.js',
-    'copy.assets.prod',
-    'copy.favicon.prod',
-    'copy.css.prod',
-    'build.index.prod',
     done));
 
 // --------------
@@ -73,21 +27,29 @@ gulp.task('prod', (done: any) =>
     'serve.prod',
     done));
 
-// Alias for 'package' task
+gulp.task('test', (done: any) =>
+  runSequence(
+    'scss.compile.all',
+    'build.jspm.test.config',
+    'clean.unitTest.reports',
+    'karma.start',
+    done));
+
+gulp.task('test.watch', (done: any) =>
+  runSequence(
+    'scss.compile.all',
+    'build.jspm.test.config',
+    'clean.unitTest.reports',
+    'karma.start.continuous',
+    done));
+
+gulp.task('e2e', ['e2e.dev']);
+
 gulp.task('package', (done: any) =>
   runSequence(
     'clean.prod',
     'scss.compile.all',
     'build.prod',
-    done));
-
-// --------------
-// scss
-
-gulp.task('scss.compile.all', (done: any) =>
-  runSequence(
-    'scss.compile.main',
-    'scss.compile.app',
     done));
 
 gulp.task('scss', (done: any) =>
@@ -97,56 +59,30 @@ gulp.task('scss', (done: any) =>
     'scss.watch',
     done));
 
-// --------------
-// postinstall
-gulp.task('postinstall', (done: any) =>
+gulp.task('release.build', function (done: any) {
   runSequence(
-    'copy.cssimports',
-    done));
+    'bump.build',
+    '_release',
+    done);
+});
 
-// --------------
-// Test.
-gulp.task('test', (done: any) =>
+gulp.task('release.alpha', function (done: any) {
   runSequence(
-    'scss.compile.all',
-    'build.jspm.test.config',
-    'clean.unitTest.reports',
-    'karma.start',
-    done));
+    'bump.alpha',
+    '_release',
+    done);
+});
 
-// --------------
-// e2e serving dev.
-gulp.task('e2e.dev', (done: any) =>
+gulp.task('release.beta', function (done: any) {
   runSequence(
-    'clean.e2e.reports',
-    'build.index.dev',
-    'protractor.dev',
-    done));
+    'bump.beta',
+    '_release',
+    done);
+});
 
-gulp.task('e2e', ['e2e.dev']);
-
-// --------------
-// e2e serving dev.
-// Note: Don't want to use prod task because
-// browsersync intermittently interferes with
-// protractor's multicapabilities feature.
-gulp.task('e2e.prod', (done: any) =>
+gulp.task('release.rc', function (done: any) {
   runSequence(
-    'clean.e2e.reports',
-    'build.index.prod',
-    'protractor.prod',
-    done));
-
-// --------------
-// Clean all reports.
-gulp.task('clean.reports', ['clean.e2e.reports', 'clean.unitTest.reports']);
-
-// --------------
-// Release
-
-gulp.task('release.prerelease', function (done: any) {
-  runSequence(
-    'bump.prerelease',
+    'bump.rc',
     '_release',
     done);
 });
@@ -171,6 +107,79 @@ gulp.task('release.major', function (done: any) {
     '_release',
     done);
 });
+
+/**
+ * SUB-TASKS
+ */
+// --------------
+// scss
+
+gulp.task('scss.compile.all', (done: any) =>
+  runSequence(
+    'scss.compile.main',
+    'scss.compile.app',
+    done));
+
+// --------------
+// Build dev.
+gulp.task('build.dev', (done: any) =>
+  runSequence(
+    'scss',
+    'build.index.dev',
+    'serve.dev',
+    done));
+
+// --------------
+// Build prod.
+
+gulp.task('build.prod', (done: any) =>
+  runSequence(
+    'tslint',
+    'build.js.prod',
+    'prod.js.uglify',
+    'clean.cacheBuster.js',
+    'copy.assets.prod',
+    'copy.favicon.prod',
+    'copy.css.prod',
+    'build.index.prod',
+    done));
+
+// --------------
+// postinstall
+gulp.task('postinstall', (done: any) =>
+  runSequence(
+    'copy.cssimports',
+    done));
+
+
+// --------------
+// e2e serving dev.
+gulp.task('e2e.dev', (done: any) =>
+  runSequence(
+    'clean.e2e.reports',
+    'build.index.dev',
+    'protractor.dev',
+    done));
+
+
+// --------------
+// e2e serving dev.
+// Note: Don't want to use prod task because
+// browsersync intermittently interferes with
+// protractor's multicapabilities feature.
+gulp.task('e2e.prod', (done: any) =>
+  runSequence(
+    'clean.e2e.reports',
+    'build.index.prod',
+    'protractor.prod',
+    done));
+
+// --------------
+// Clean all reports.
+gulp.task('clean.reports', ['clean.e2e.reports', 'clean.unitTest.reports']);
+
+// --------------
+// Release
 
 // Sub task, do not call directly
 gulp.task('_release', function (done: any) {
@@ -201,6 +210,7 @@ gulp.task('prod.featureA', (done: any) =>
     'clean.prod',
     'build.js.prod.featureA',
     'build.prod',
+    'serve.prod',
     done));
 
 // Feature B
@@ -209,6 +219,7 @@ gulp.task('prod.featureB', (done: any) =>
     'clean.prod',
     'build.js.prod.featureB',
     'build.prod',
+    'serve.prod',
     done));
 
 // Feature A

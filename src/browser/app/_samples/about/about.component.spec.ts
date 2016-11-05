@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   async,
   TestBed
-} from '@angular/core/testing';
-import {AboutModule} from './about.module';
+ } from '@angular/core/testing';
+import { AboutModule } from './about.module';
 
 describe('Samples About component', () => {
   // Setting module for testing

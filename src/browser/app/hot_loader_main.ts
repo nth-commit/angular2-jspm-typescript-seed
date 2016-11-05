@@ -1,5 +1,5 @@
 import './main';
-import { Config } from './config/env/dev.config';
+import {  Config  } from './config/env/dev.config';
 
 var htmlTag = document.getElementsByTagName('html')[0];
 var noAngularDOM;

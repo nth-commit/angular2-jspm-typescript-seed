@@ -1,4 +1,4 @@
-import {EnvConfig} from './interfaces/EnvConfig';
+import { EnvConfig } from './interfaces/EnvConfig';
 
 /**
  * Conditionally loaded based on ~production flag in jspm.config:

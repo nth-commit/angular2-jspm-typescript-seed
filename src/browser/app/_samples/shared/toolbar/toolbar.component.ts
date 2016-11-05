@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
 import template from './toolbar.component.html!text';
 import styles from './toolbar.component.css!text';
 

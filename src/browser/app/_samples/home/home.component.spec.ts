@@ -1,19 +1,19 @@
-import {Component} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import {
   async
-} from '@angular/core/testing';
+ } from '@angular/core/testing';
 import {
   BaseRequestOptions,
   ConnectionBackend,
   Http, HttpModule
-} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+ } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
-import {NameListService} from '../shared/index';
-import {HomeModule} from './home.module';
+import { NameListService } from '../shared/index';
+import { HomeModule } from './home.module';
 
 describe('Samples Home component', () => {
   // setting module for testing

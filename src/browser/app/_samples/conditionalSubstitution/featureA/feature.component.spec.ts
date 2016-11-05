@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   async,
   TestBed
-} from '@angular/core/testing';
-import {FeatureModule} from './feature.module';
+ } from '@angular/core/testing';
+import { FeatureModule } from './feature.module';
 
 describe('Samples FeatureA component', () => {
   // Setting module for testing

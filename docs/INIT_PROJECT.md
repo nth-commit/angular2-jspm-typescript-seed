@@ -85,30 +85,30 @@ or if you set up your .bash_profile on a Mac
 6. push your commit
 
 
-## Setup token for cli
+## Setup CONVENTIONAL_GITHUB_RELEASER_TOKEN for cli
 
 [Create a new token](https://github.com/settings/tokens/new) 
 and set your environment variable `CONVENTIONAL_GITHUB_RELEASER_TOKEN` 
-to the token you just created. You can google 
-[How to set environment variable](https://www.google.com.au/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20set%20environment%20variable). 
+to the token you just created. 
+
+For Mac ( not sure about PC ), in your ```.bash_profile``` or ```.zshrc``` add the following line:
+
+```bash
+    export CONVENTIONAL_GITHUB_RELEASER_TOKEN=[your token]
+```
+
+which will look something like:
+
+```bash
+    export CONVENTIONAL_GITHUB_RELEASER_TOKEN=d4252g3532j1bc75432fm0ef125323d0fc7542c
+```
+
+For more information you can google [How to set environment variable](https://www.google.com.au/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20set%20environment%20variable). 
 The scopes for the token you need is `public_repo` or `repo` 
 (if you need to access private repos). [More details](https://developer.github.com/v3/oauth/#scopes).
 
-## Create tokens.json
 
-To push, tag, release with gulp tasks, it's easiets if you 
-create a [token](https://github.com/settings/tokens/new).
-
-Then set up a ```tokens.json``` file in the root project directory:
-
-```json
-
-{
-  "github": "[ TOKEN ]"
-}
-
-````
-
+If you have been using this project using tags but not releases, and now want to generate all previous releases, 
 From the [docs](https://github.com/conventional-changelog/conventional-github-releaser) of conventional-github-releaser:
 
     If you first time use this tool and want to generate all previous releases, you could do

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "lodash": "registry:npm/lodash#4.0.0+20160723033700",
+    "semver": "registry:npm/semver#5.0.0+20160723033700",
     "xhr2": "github:gdi2290/typed-xhr2#69f2b8d40d0cd407c1b2a2f2f41fecc6852cabbb"
   },
   "devDependencies": {},

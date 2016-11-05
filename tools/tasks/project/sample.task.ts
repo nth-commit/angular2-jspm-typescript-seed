@@ -1,16 +1,14 @@
-import * as gulp from 'gulp';
-import { join } from 'path';
-
-import {
-  DIST_BROWSER_PATH, BROWSER_PATH
-} from '../../config';
+// import * as gulp from 'gulp';
+// import { join  } from 'path';
+//
+// import Config from '../../config';
 
 /**
- * Sample tasks
- *
+ * STUBB
  */
+export = (done: any) => {
+  // return gulp.src(join(Config.BROWSER_PATH, '**/*.ts'))
+  //   .pipe(gulp.dest(Config.DIST_BROWSER_PATH));
 
-export = () => {
-  return gulp.src(join(BROWSER_PATH, '**/*.ts'))
-    .pipe(gulp.dest(DIST_BROWSER_PATH));
+  done();
 };

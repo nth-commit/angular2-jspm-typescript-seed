@@ -15,13 +15,9 @@ Provides fast, reliable and extensible starter for the development of Angular 2 
 
 This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](https://github.com/mgechev) [angular2-seed](https://github.com/mgechev/angular2-seed).
 
-# Additional documentation
-- [SystemJS Conditional Substitution](./docs/CONDITIONAL_SUBSTITUTION.md)  
-- [JSPM Features](./docs/JSPM_FEATURES.md)  
-- [Research](./docs/REASEARCH.md)  
-  
 # Features:
 
+- Uses [JSPM Features](./docs/JSPM_FEATURES.md) to install and maintain libraries.
 - Allows you to painlessly update the seed tasks of your already existing project.
 - Out of the box ServiceWorkers and AppCache support thanks to the integration with [angular/progressive](https://github.com/angular/progressive).
 - Ready to go, statically typed build system using gulp for working with TypeScript.
@@ -35,24 +31,24 @@ This is a **JSPM** seed project for Angular 2 apps based on [Minko Gechev's](htt
 
 # How to start
 
-**Note** that this seed project requires node v4.x.x or higher and npm 2.14.7.
+**Note** that this seed project requires node v4.x.x or higher and npm 2.14.7. It runs optimally with node 6.4.x and npm 3.x.
 
-**Here is how to [speed-up the build on Windows](https://github.com/mgechev/angular2-seed/wiki/Speed-up-the-build-on-Windows)**.
-
-In order to start the seed use:
-
+Additional setup is documented in [./docs/INIT_PROJECT.md](./docs/INIT_PROJECT.md)
 
 ```bash
 git clone --depth 1 https://github.com/UIUXEngineering/angular2-jspm-typescript-seed.git
+
 cd angular2-jspm-typescript-seed
-# install the project's dependencies
+
+# install npm and jspm dependencies
 npm install
+
 # watches your files and uses browsersync by default
 npm start
 
-
-# dev build
+# dev build, same as npm start.
 npm run dev
+
 # prod build
 npm run prod
 ```
@@ -64,17 +60,21 @@ _Does not rely on any global dependencies._
 # Table of Contents
 
 - [Introduction](#introduction)
-- [Additional documentation](#additional-documentation)
 - [Features](#features)
 - [How to start](#how-to-start)
 - [Table of Content](#table-of-contents)
 - [Configuration](#configuration)
-- [Tools documentation](#tools-documentation)
+- [Environment Configuration](#environment-configuration)
+- [SystemJS Conditional Substitution](#systemjs-conditional-substitution)
+- [Tools Documentation](#tools-documentation)
 - [Cache Buster](#cache-buster)
-- [Running tests](#running-tests)
+- [How to update?](#how-to-update)
+- [Running Tests](#running-tests)
+- [Releasing](#releasing)
 - [Contributing](#contributing)
 - [Advanced Seed Option](#advanced-seed-option)
 - [Examples](#examples)
+- [Research](./docs/REASEARCH.md)
 - [Directory Structure](#directory-structure)
 - [Change Log](#change-log)
 - [License](#license)
@@ -83,16 +83,46 @@ _Does not rely on any global dependencies._
 
 Default application server configuration
 
-**ENV**  
-For Enviroment config, see ```./tools/config/```.  
+```js
+var PORT             = 8000;
+```
 
-**APP**  
-For the App see the ```./src/browser/app/config``` directory. The
-```dev.config.ts``` and ```prod.config.ts``` are [conditionallly loaded](http://jspm.io/0.17-beta-guide/conditional-loading.html).
+Configure at runtime
+
+```bash
+$ npm start -- --port 8080
+```
+Because of the env and app decoupling, you have to manually set the hot reloader port if you want to change it. Set in the `src/browser/app/hot_loader_main.ts` and can override in your `tools/config/project.config.ts` file.
+
+# Environment Configuration
+
+Care is taken to have devevelop be as close to production as possible -- the primary purpose of using jspm and systemjs. The environments for development and production are the same, where development is served as it is in production with the exception of building files. 
+
+The configuration between development and production is not in the environment, but in the app itself using a SystemJS feature that conditionally loads a file based on if the app if served "as is" from `src/browser` or from the built `dist/browser` directory.
+
+See the ```./src/browser/app/config/``` directory. The
+```dev.config.ts``` and ```prod.config.ts``` are [conditionallly loaded](http://jspm.io/0.17-beta-guide/conditional-loading.html) based on the jspm.config.js setting:
+
+```json
+
+    {
+      "package": {
+        "map": {
+                "./config/env/prod.config": {
+                  "~production": "./config/env/dev.config"
+                }
+              }
+      }
+    }
+````
+
+# SystemJS Conditional Substitution 
+
+*SystemJS Feature*
 
 You can conditionally build a feature, including only the chosen feature without dead code of excluded features. See [CONDITIONAL_SUBSTITUTION](./docs/CONDITIONAL_SUBSTITUTION.md).
 
-# Tools documentation
+# Tools Documentation
 
 A documentation of the provided tools can be found in [tools/README.md](tools/README.md).
 
@@ -117,14 +147,23 @@ files served from the app directory -- with ```CACHE_BUSTER```.
 Search ```CACHE_BUSTER``` in the ```src/browser ``` directory to see 
 sample implementations.
  
+# How to update?
+ ```
+ git remote add upstream https://github.com/UIUXEngineering/angular2-jspm-typescript-seed
+ git pull upstream master
+ ```
 
-# Running tests
+# Running Tests
 
 ```bash
 npm test
 
 # To see extra logging
 npm test -- --verbose
+
+# Development. Your app will be watched by karma
+# on each change all your specs will be executed.
+$ npm run test.watch
 
 # code coverage (istanbul)
 # auto-generated at the end of `npm test`
@@ -174,7 +213,7 @@ npm run generate.manifest
 
 Then, the commented snippet in `main.ts` must be uncommented to register the worker script as a service worker. -->
 
-# Semantic Versioning
+# Releasing
 
 Gulp tasks to bump semantic versioning for major, minor, and patch. You need to be on
 the master branch, and all files should be committed and pushed to master. I.E., these 
@@ -199,7 +238,11 @@ npm bump.major
 
 Please see the [CONTRIBUTING](https://github.com/UIUXEngineering/angular2-seed/blob/master/.github/CONTRIBUTING.md) file for guidelines.
 
-# Advanced Seed Option
+# Advanced Seed Option 
+
+*TODO*
+
+The advanced seed not built yet. I want to finish more things in this seed.
 
 An [advanced option to this seed exists here](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed-advanced) which mirrors the latest changes here but adds core support for:
 
@@ -224,42 +267,249 @@ TODO
 ├── protractor.conf.js         <- e2e tests configuration
 ├── src                        <- source code of the application
 │   └── browser
-│       ├── _samples           <- sample code to experiement and learn angular
 │       ├── app
+│       │   ├── _samples
+│       │   │   ├── about
+│       │   │   │   ├── about.component.e2e-spec.ts
+│       │   │   │   ├── about.component.html
+│       │   │   │   ├── about.component.scss
+│       │   │   │   ├── about.component.spec.ts
+│       │   │   │   ├── about.component.ts
+│       │   │   │   ├── about.module.ts
+│       │   │   │   ├── about.routes.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── cacheBuster
+│       │   │   │   ├── cacheBuster.component.e2e-spec.ts
+│       │   │   │   ├── cacheBuster.component.html
+│       │   │   │   ├── cacheBuster.component.scss
+│       │   │   │   ├── cacheBuster.component.spec.ts
+│       │   │   │   ├── cacheBuster.component.ts
+│       │   │   │   ├── cacheBuster.module.ts
+│       │   │   │   ├── cacheBuster.routes.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── conditionalSubstitution
+│       │   │   │   ├── config
+│       │   │   │   │   ├── interfaces
+│       │   │   │   │   │   └── FeatureConfig.ts
+│       │   │   │   │   ├── feature.config.ts
+│       │   │   │   │   ├── featureA.config.template.locals.ts
+│       │   │   │   │   └── featureB.config.template.locals.ts
+│       │   │   │   ├── featureA
+│       │   │   │   │   ├── feature.component.e2e-spec.ts
+│       │   │   │   │   ├── feature.component.html
+│       │   │   │   │   ├── feature.component.scss
+│       │   │   │   │   ├── feature.component.spec.ts
+│       │   │   │   │   ├── feature.component.ts
+│       │   │   │   │   ├── feature.module.ts
+│       │   │   │   │   ├── feature.routes.ts
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── featureB
+│       │   │   │       ├── feature.component.e2e-spec.ts
+│       │   │   │       ├── feature.component.html
+│       │   │   │       ├── feature.component.scss
+│       │   │   │       ├── feature.component.spec.ts
+│       │   │   │       ├── feature.component.ts
+│       │   │   │       ├── feature.module.ts
+│       │   │   │       ├── feature.routes.ts
+│       │   │   │       └── index.ts
+│       │   │   ├── home
+│       │   │   │   ├── home.component.e2e-spec.ts
+│       │   │   │   ├── home.component.html
+│       │   │   │   ├── home.component.scss
+│       │   │   │   ├── home.component.spec.ts
+│       │   │   │   ├── home.component.ts
+│       │   │   │   ├── home.module.ts
+│       │   │   │   ├── home.routes.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── shared
+│       │   │       ├── index.ts
+│       │   │       ├── shared.module.ts
+│       │   │       ├── name-list
+│       │   │       │   ├── index.ts
+│       │   │       │   ├── name-list.service.spec.ts
+│       │   │       │   └── name-list.service.ts
+│       │   │       ├── navbar
+│       │   │       │   ├── index.ts
+│       │   │       │   ├── navbar.component.html
+│       │   │       │   ├── navbar.component.scss
+│       │   │       │   └── navbar.component.ts
+│       │   │       └── toolbar
+│       │   │           ├── index.ts
+│       │   │           ├── toolbar.component.html
+│       │   │           ├── toolbar.component.scss
+│       │   │           └── toolbar.component.ts
+│       │   │
+│       │   ├── config
+│       │   │   └── env
+│       │   │       ├── interfaces
+│       │   │       │   └── EnvConfig.ts
+│       │   │       ├── dev.config.ts
+│       │   │       └── prod.config.ts
+│       │   ├── app.component.spec.ts
+│       │   ├── app.component.ts
+│       │   ├── app.module.ts
+│       │   ├── app.routes.ts
+│       │   ├── hot_loader_main.ts
+│       │   └── main.ts
 │       ├── assets
+│       │   ├── data.json
+│       │   └── fonts 
+│       │   │   └── ... many font files   <-- all roboto fonts here
 │       │   └── svg
 │       │       └── more.svg
+│       │   └── images
+│       │       └── austin-texas.jpg
 │       ├── scss
-│       │   └── main.scss
-│       ├── index.html         <- generated by gulp task
-│       └── index.temp.html    <- index template for dev and prod
+│       │   ├── fonts 
+│       │   │   └── roboto 
+│       │   │       └── font.styles.scss 
+│       │   │       └── font.variables.scss
+│       │   ├── imports 
+│       │   │   └── normalize.scss       <-- copied from jspm_packages
+│       │   ├── variables 
+│       │   │   └── _colors.scss 
+│       │   │   └── index.scss 
+│       │   └── main.css
+│       │
+│       ├── favicon.ico
+│       ├── index.html
+│       ├── index.temp.html
+│       ├── jspm.config.js
+│       └── jspm.karma.config.js
+│
 ├── tools
 │   ├── README.md              <- build documentation
 │   ├── config
+│   │   ├── interfaces
+│   │   │   └── InjectableDependency.ts
 │   │   ├── project.config.ts  <- configuration of the specific project
-│   │   ├── seed.config.interfaces.ts
-│   │   └── seed.config.ts     <- generic configuration of the seed project
+│   │   ├── seed.config.ts     <- generic configuration of the seed project
+│   │   └── seed.tslint.json   <- generic tslint configuration of the seed project
 │   ├── config.ts              <- exported configuration (merge both seed.config and project.config, project.config overrides seed.config)
 │   ├── debug.ts
-│   ├── manual_typings         <- manual ambient typings
+│   ├── manual_typings
+│   │   ├── project            <- manual ambient typings for the project
+│   │   │   └── sample.package.d.ts
+│   │   └── seed               <- seed manual ambient typings
+│   │       ├── angular2-hot-loader.d.ts
+│   │       ├── autoprefixer.d.ts
+│   │       ├── chokidarSocketEmitter.d.ts
+│   │       ├── colorguard.d.ts
+│   │       ├── connect-livereload.d.ts
+│   │       ├── connectHistoryApiFallback.d.ts
+│   │       ├── conventional-github-releaser.d.ts
+│   │       ├── cssnano.d.ts
+│   │       ├── doiuse.d.ts
+│   │       ├── express-history-api-fallback.d.ts
+│   │       ├── express-history-api-fallback.d.ts
+│   │       ├── gulp-bump.d.ts
+│   │       ├── gulp-conventional-changelog.d.ts
+│   │       ├── istream.d.ts
+│   │       ├── jspm.d.ts
+│   │       ├── karma.d.ts
+│   │       ├── merge-stream.d.ts
+│   │       ├── open.d.ts
+│   │       ├── postcss-reporter.d.ts
+│   │       ├── rmfr.d.ts
+│   │       ├── serveIndex.ts
+│   │       ├── slash.d.ts
+│   │       ├── stylelint.d.ts
+│   │       ├── systemjs-builder.d.ts
+│   │       ├── tildify.d.ts
+│   │       ├── tiny-lr.d.ts
+│   │       └── walk.d.ts
 │   ├── tasks                  <- gulp tasks
+│   │   ├── project            <- project specific gulp tasks
+│   │   │   └── sample.task.ts
+│   │   └── seed               <- seed generic gulp tasks. They can be overriden by the project specific gulp tasks
+│   │       ├── conditionalSubstitution
+│   │       │   ├── build.js.prod.featureA.ts
+│   │       │   ├── build.js.prod.featureB.ts
+│   │       │   ├── set.featureA.ts
+│   │       │   └── set.featureB.ts
+│   │       ├── dev
+│   │       │   ├── build.index.dev.ts
+│   │       │   ├── clean.dev.ts
+│   │       │   ├── serve.dev.ts
+│   │       │   └── tslint.ts
+│   │       ├── e2e
+│   │       │   ├── clean.e2e.reports.ts
+│   │       │   ├── protractor.dev.ts
+│   │       │   ├── protractor.prod.ts
+│   │       │   ├── watch.e2e.dev.ts
+│   │       │   ├── watch.e2e.prod.ts
+│   │       │   └── webdriver.ts
+│   │       ├── env
+│   │       │   ├── check.versions.ts
+│   │       │   ├── clean.install.ts
+│   │       │   └── clean.tools.ts
+│   │       ├── prod
+│   │       │   ├── build.index.prod.ts
+│   │       │   ├── build.js.prod.ts
+│   │       │   ├── clean.cacheBuster.js.ts
+│   │       │   ├── clean.prod.ts
+│   │       │   ├── copy.assets.prod.ts
+│   │       │   ├── copy.css.prod.ts
+│   │       │   ├── copy.favicon.prod.ts
+│   │       │   ├── generate.manifest.ts
+│   │       │   ├── prod.js.uglify.ts
+│   │       │   └── serve.prod.ts
+│   │       ├── release
+│   │       │   ├── bump.alpha.ts
+│   │       │   ├── bump.beta.ts
+│   │       │   ├── bump.build.ts
+│   │       │   ├── bump.major.ts
+│   │       │   ├── bump.minor.ts
+│   │       │   ├── bump.patch.ts
+│   │       │   ├── bump.rc.ts
+│   │       │   ├── changelog.ts
+│   │       │   ├── commit.changes.ts
+│   │       │   ├── create.new.tag.ts
+│   │       │   ├── github.release.ts
+│   │       │   ├── push.changes.ts
+│   │       │   └── regenerate.changelog.ts
+│   │       ├── reports
+│   │       │   └── serve.reports.ts
+│   │       ├── scss
+│   │       │   ├── clean.css.ts
+│   │       │   ├── copy.cssimports.ts
+│   │       │   ├── scss.compile.app.ts
+│   │       │   ├── scss.compile.main.ts
+│   │       │   └── scss.watch.ts
+│   │       └── unitTests
+│   │           ├── build.jspm.test.config.ts
+│   │           ├── clean.unitTest.reports.ts
+│   │           ├── karma.start.continuous.ts
+│   │           └── karma.start.ts
 │   ├── utils                  <- build utils
 │   │   ├── project            <- project specific gulp utils
 │   │   │   └── sample_util.ts
 │   │   ├── project.utils.ts
 │   │   ├── seed               <- seed specific gulp utils
-│   │   │   ├── build.js.prod.features.ts
+│   │   │   ├── scss
+│   │   │   │   ├── scss.compile.ts
+│   │   │   │   ├── scss.compile.tsNodeRegister.ts
+│   │   │   │   └── scss.comple.createChildProcess.ts
+│   │   │   ├── build.js.dist.ts
+│   │   │   ├── karma.start.ts
+│   │   │   ├── readJspmConfig.ts
+│   │   │   ├── removeTrailingSlash.ts
+│   │   │   ├── semver.ts
 │   │   │   ├── server.ts
 │   │   │   ├── tasks_tools.ts
 │   │   │   ├── template_locals.ts
+│   │   │   ├── validate.extension.ts
 │   │   │   └── watch.ts
+│   │   ├── project.utils.ts
 │   │   └── seed.utils.ts
 │   └── utils.ts
 ├── tsconfig.json              <- configuration of the typescript project (ts-node, which runs the tasks defined in gulpfile.ts)
 ├── tslint.json                <- tslint configuration
-├── typings                    <- typings directory. Contains all the external typing definitions defined with typings
-├── typings.json
-└── appveyor.yml
+├── .jshintrc
+├── .stylelintrc
+├── .travis.yml
+├── appveyor.yml
+└── typings.json
 ```
 
 

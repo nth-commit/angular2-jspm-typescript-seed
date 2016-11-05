@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
 import template from './app.component.html!text';
 import styles from './app.component.css!text';
 
@@ -20,7 +20,7 @@ import styles from './app.component.css!text';
  *
  *   For more info, see http://jspm.io/0.17-beta-guide/conditional-loading.html
  */
-import {Config} from './config/env/prod.config';
+import { Config } from './config/env/prod.config';
 
 /**
  * This class represents the main application component. Within the @Routes annotation is the configuration of the

@@ -1,5 +1,5 @@
-import { Route } from '@angular/router';
-import { CacheBusterComponent } from './index';
+import {  Route  } from '@angular/router';
+import {  CacheBusterComponent  } from './index';
 
 export const CacheBusterRoutes: Route[] = [
   {

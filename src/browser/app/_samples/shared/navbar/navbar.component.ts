@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
 import navbarTemplate from './navbar.component.html!text';
 import styles from './navbar.component.css!text';
 

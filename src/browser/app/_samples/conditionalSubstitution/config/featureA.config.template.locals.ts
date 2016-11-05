@@ -1,4 +1,4 @@
-import { IFeatureConfig } from './interfaces/FeatureConfig';
+import {  IFeatureConfig  } from './interfaces/FeatureConfig';
 
 export const FeatureConfig: IFeatureConfig = {
   /**
@@ -28,8 +28,8 @@ export const FeatureConfig: IFeatureConfig = {
    * src/browser/app/app.routes.ts
    *
    * The end of the import statements appended with '#?':
-   * import { FeatureModule } from './ ... /feature.module#?FEATURE|FeatureConfig.LOAD_FEATURE';
-   * import { FeatureRoutes } from './ ... /index#?FEATURE|FeatureConfig.LOAD_FEATURE';
+   * import {  FeatureModule  } from './ ... /feature.module#?FEATURE|FeatureConfig.LOAD_FEATURE';
+   * import {  FeatureRoutes  } from './ ... /index#?FEATURE|FeatureConfig.LOAD_FEATURE';
    *
    * Will import the module or not.
    */

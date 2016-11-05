@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
 import template from './about.component.html!text';
 import styles from './about.component.css!text';
 

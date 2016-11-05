@@ -1,9 +1,9 @@
-import {ReflectiveInjector} from '@angular/core';
-import {BaseRequestOptions, ConnectionBackend, Http, Response, ResponseOptions} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
-import {Observable} from 'rxjs/Observable';
+import { ReflectiveInjector } from '@angular/core';
+import { BaseRequestOptions, ConnectionBackend, Http, Response, ResponseOptions } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { Observable } from 'rxjs/Observable';
 
-import {NameListService} from './name-list.service';
+import { NameListService } from './name-list.service';
 
 describe('Samples NameList Service', () => {
   let nameListService: NameListService;
