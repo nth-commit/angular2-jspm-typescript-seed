@@ -61,11 +61,15 @@ const config = {
   // Safari does not support direct connect
   directConnect: false,
 
-  multiCapabilities: [{
+  multiCapabilities: [
+    {
     'browserName': 'chrome'
-  }, {
-    'browserName': 'firefox'
-  }],
+  }
+  // // ,
+  //   {
+  //   'browserName': 'firefox'
+  // }
+  ],
 
   // Setup the report before any tests start
   beforeLaunch: function() {

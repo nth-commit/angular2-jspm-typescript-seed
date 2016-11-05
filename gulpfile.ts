@@ -158,7 +158,8 @@ gulp.task('e2e.dev', (done: any) =>
   runSequence(
     'clean.e2e.reports',
     'build.index.dev',
-    'protractor.dev',
+    'serve.dev.e2e',
+    'protractor',
     done));
 
 
@@ -170,8 +171,9 @@ gulp.task('e2e.dev', (done: any) =>
 gulp.task('e2e.prod', (done: any) =>
   runSequence(
     'clean.e2e.reports',
-    'build.index.prod',
-    'protractor.prod',
+    'build.prod',
+    'serve.prod.e2e',
+    'protractor',
     done));
 
 // --------------

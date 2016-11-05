@@ -270,7 +270,7 @@ export class SeedConfig {
       function (req: any, res: any, next: any) {
 
         if (req.url.indexOf('CACHE_BUSTER/') > -1) {
-          console.log(req.url);
+          // console.log(req.url);
           req.url = req.url.replace('CACHE_BUSTER/', '');
         }
 

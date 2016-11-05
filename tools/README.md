@@ -86,7 +86,9 @@ Task files are loaded recursively from the `tasks` directory.
 | `dev`  | `serve.dev.ts` | Serves  `src/browser/` with browsersync using SystemJS via `jspm.config.js` |
 | `dev`  | `tslint.ts` | Lints the TypeScript files using `codelyzer` |
 | `e2e`  | `clean.e2e.reports.ts` | Deletes `test-reports/e2e` directory |
-| `e2e`  | `protractor.dev.ts` | Runs all e2e specs seving app from dev ( `src/browser/`) using `protractor` |
+| `e2e`  | `protractor.ts` | Runs all e2e specs using `protractor` |
+| `e2e`  | `serve.dev.e2e.ts` | Serves  `src/browser/` with browsersync withouth syncing capabilities |
+| `e2e`  | `serve.prod.e2e.ts` | Serves  `dist/browser/` with browsersync withouth syncing capabilities |
 | `e2e`  | `watch.e2e.dev.ts` | Watches for code changes in `src/browser/` and reruns e2e-spec files |
 | `e2e`  | `watch.e2e.prod.ts` | Watches for code changes in `dist/browser/` and reruns e2e-spec files |
 | `e2e`  | `protractor.prod.ts` | Runs all e2e specs seving app from dist ( `dist/browser/`) using `protractor` |
