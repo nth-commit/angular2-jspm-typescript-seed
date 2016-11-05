@@ -125,6 +125,7 @@ Task files are loaded recursively from the `tasks` directory.
 | `unitTests`  | `build.jspm.test.config.ts` | Build the `jdpm.karma.config.js` based on `jspm.config.js`, remapping angular 2.0 files to their umd versions |
 | `unitTests`  | `clean.unitTest.reports.ts` | remove reports in `test-reports/unit/` directory |
 | `unitTests`  | `clean.unitTest.reports.ts` | remove reports in `test-reports/unit/` directory |
+| `unitTests`  | `karma.start.continuous.ts` | start karma in singleRun mode false - continous |
 | `unitTests`  | `karma.start.ts` | start karma in singleRun mode |
 
  
