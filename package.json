@@ -96,7 +96,7 @@
     "jasmine-core": "~2.4.1",
     "jasmine-reporters": "^2.2.0",
     "jasmine-spec-reporter": "^2.4.0",
-    "jspm": "^0.17.0-beta.29",
+    "jspm": "^0.17.0-beta.31",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "~1.0.1",
     "karma-coverage": "^1.0.0",
@@ -150,10 +150,10 @@
       "baseURL": "src/browser"
     },
     "dependencies": {
-      "@angular/forms": "npm:@angular/forms@^2.1.1",
-      "@angular/http": "npm:@angular/http@^2.1.1",
-      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.1.1",
-      "@angular/router": "npm:@angular/router@^3.1.1",
+      "@angular/forms": "npm:@angular/forms@^2.1.2",
+      "@angular/http": "npm:@angular/http@^2.1.2",
+      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.1.2",
+      "@angular/router": "npm:@angular/router@^3.1.2",
       "es6-shim": "github:es-shims/es6-shim@^0.35.1",
       "normalize.css": "github:necolas/normalize.css@^5.0.0",
       "reflect-metadata": "npm:reflect-metadata@^0.1.8",
@@ -168,10 +168,10 @@
       "url": "npm:jspm-nodelibs-url@^0.2.0"
     },
     "peerDependencies": {
-      "@angular/common": "npm:@angular/common@2.1.1",
-      "@angular/compiler": "npm:@angular/compiler@2.1.1",
-      "@angular/core": "npm:@angular/core@2.1.1",
-      "@angular/platform-browser": "npm:@angular/platform-browser@2.1.1",
+      "@angular/common": "npm:@angular/common@2.1.2",
+      "@angular/compiler": "npm:@angular/compiler@2.1.2",
+      "@angular/core": "npm:@angular/core@2.1.2",
+      "@angular/platform-browser": "npm:@angular/platform-browser@2.1.2",
       "assert": "npm:jspm-nodelibs-assert@^0.2.0",
       "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
       "constants": "npm:jspm-nodelibs-constants@^0.2.0",
@@ -193,7 +193,7 @@
       "github:socketio/socket.io-client@1.5.1": {
         "main": "socket.io.js"
       },
-      "npm:@angular/common@2.1.1": {
+      "npm:@angular/common@2.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -207,7 +207,7 @@
           "./testing": "./bundles/common-testing.umd.js"
         }
       },
-      "npm:@angular/compiler@2.1.1": {
+      "npm:@angular/compiler@2.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -221,7 +221,7 @@
           "./testing": "./bundles/compiler-testing.umd.js"
         }
       },
-      "npm:@angular/core@2.1.1": {
+      "npm:@angular/core@2.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -235,7 +235,7 @@
           "./testing": "./bundles/core-testing.umd.js"
         }
       },
-      "npm:@angular/http@2.1.1": {
+      "npm:@angular/http@2.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -249,7 +249,7 @@
           "./testing": "./bundles/http-testing.umd.js"
         }
       },
-      "npm:@angular/platform-browser-dynamic@2.1.1": {
+      "npm:@angular/platform-browser-dynamic@2.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -263,7 +263,7 @@
           "./testing": "./bundles/platform-browser-dynamic-testing.umd.js"
         }
       },
-      "npm:@angular/platform-browser@2.1.1": {
+      "npm:@angular/platform-browser@2.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
@@ -277,7 +277,7 @@
           "./testing": "./bundles/platform-browser-testing.umd.js"
         }
       },
-      "npm:@angular/router@3.1.1": {
+      "npm:@angular/router@3.1.2": {
         "meta": {
           "src/*.js": {
             "deps": [
