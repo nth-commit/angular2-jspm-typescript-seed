@@ -223,7 +223,7 @@ and npm publish ( if configured ).
 ```bash
 
 # To release any version passed by --bump param
-npm run release --bump [version]
+npm run release -- --bump [version]
 
 # To bump and release build: 
 # 1.2.3 to 1.2.3-build.0
