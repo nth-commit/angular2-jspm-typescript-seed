@@ -1,3 +1,8 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1...v2.1.1) (2016-11-06)
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.1.0...0.2.0) (2016-10-31)
 
