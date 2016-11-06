@@ -6,7 +6,7 @@ const plugins = <any>gulpLoadPlugins();
 
 export = () => {
 
-  var version = argv['version'];
+  var version = argv['bump'];
 
   gulp.src('./package.json')
     .pipe( plugins.bump({version: version}))

@@ -46,7 +46,7 @@ The file ```./gulpfile.ts``` provides all major task workflows.
 | `serve.reports` | Serves all generated code coverage reports -- unit and e2e -- in a browser. |
 | `package` | Same as ```prod``` but does not serve in a browser.
 | `scss` | Compiles scss files. This is already accomplished when running ```dev``` and a watch, but for convenience when focusing on css development. |
-| `release` | Pass --version with command to set semver, commit, tag, push to master, push tag, push release to git server. |
+| `release` | Pass --bump with command to set semver, commit, tag, push to master, push tag, push release to git server. |
 | `release.build` | Bump the package.json semver version to a pattern ```1.2.3-build.1```, commit, tag, push to master, push tag, push release to git server. |
 | `release.alpha` | Bump the package.json semver version to a pattern ```1.2.3-alpha.1```, commit, tag, push to master, push tag, push release to git server. |
 | `release.beta` | Bump the package.json semver version to a pattern ```1.2.3-beta.1```, commit, tag, push to master, push tag, push release to git server. |
@@ -114,7 +114,7 @@ Task files are loaded recursively from the `tasks` directory.
 | `release`  | `bump.minor.ts` | Bump the package.json semver version to a pattern from ```1.2.3``` to ```1.3.0``` |
 | `release`  | `bump.patch.ts` | Bump the package.json semver version to a pattern from ```1.2.3``` to ```1.2.4``` |
 | `release`  | `bump.rc.ts` | Bump the package.json semver version to a pattern ```1.2.3-rc.1``` |
-| `release`  | `bump.ts` | Bump the package.json semver version passed by the --version param |
+| `release`  | `bump.ts` | Bump the package.json semver version passed by the --bump param |
 | `release`  | `changelog.ts` | Update `CHANGELOG.md` based on release and commits |
 | `release`  | `commit.changes.ts` | Git commit changes from semver update |
 | `release`  | `create.new.tag.ts` | Create a new git tag based on semver in `package.sjon`, push changes to master and push tag |
