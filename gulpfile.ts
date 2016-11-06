@@ -61,7 +61,7 @@ gulp.task('scss', (done: any) =>
 
 gulp.task('release', function (done: any) {
   runSequence(
-    'bump.build',
+    'bump',
     '_release',
     done);
 });
