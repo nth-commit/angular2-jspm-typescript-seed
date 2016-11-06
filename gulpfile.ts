@@ -7,7 +7,6 @@ import {loadTasks} from './tools/utils';
 
 loadTasks(Config.TASKS_PATH);
 
-
 /**
  * WORKFLOW TASKS
  */

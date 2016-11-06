@@ -3,7 +3,7 @@
  */
 export * from './seed/build.js.dist';
 export * from './seed/karma.start';
-export * from './seed/readJspmConfig';
+export * from './seed/parseJspmConfig';
 export * from './seed/server';
 export * from './seed/tasks_tools';
 export * from './seed/template_locals';
