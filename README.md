@@ -218,19 +218,48 @@ Then, the commented snippet in `main.ts` must be uncommented to register the wor
 Gulp tasks to bump semantic versioning for major, minor, and patch. You need to be on
 the master branch, and all files should be committed and pushed to master. I.E., these 
 tasks will only bump semver in the package.json, push to master, push tag to github, 
-and npm publish ( if configured ). Currently, npm publish is commented -- see ```./tools/utils/server.ts``` 
-to change this behavior.
+and npm publish ( if configured ). 
 
 ```bash
 
-# To bump patch version
-npm bump.patch
+# To release any version passed by --version param
+npm run release --version [version]
 
-# To bump minor version
-npm bump.minor
+# To bump and release build: 
+# 1.2.3 to 1.2.3-build.0
+# 1.2.3-build.0 to 1.2.3-build.1
+npm run release.build
 
-# To bump major version
-npm bump.major
+# To bump and release alpha: 
+# 1.2.3 to 1.2.3-alpha.0
+# 1.2.3-alpha.0 to 1.2.3-alpha.1
+npm run release.alpha
+
+# To bump and release beta: 
+# 1.2.3 to 1.2.3-beta.0
+# 1.2.3-beta.0 to 1.2.3-beta.1
+npm run release.beta
+
+# To bump and release rc: 
+# 1.2.3 to 1.2.3-beta.0
+# 1.2.3-beta.0 to 1.2.3-beta.1
+npm run release.rc
+
+# To bump and release patch 
+# 1.2.3 to 1.2.4
+# 1.2.3-rc.0 to 1.2.4
+npm run release.patch
+
+# To bump and release minor 
+# 1.2.3 to 1.3.0
+# 1.2.3-rc.0 to 1.3.0
+npm run release.minor
+
+# To bump and release major 
+# 1.2.3 to 2.0.0
+# 1.2.3-rc.0 to 2.0.0
+npm run release.major
+
 
 ```
 
@@ -462,6 +491,7 @@ TODO
 │   │       │   ├── bump.minor.ts
 │   │       │   ├── bump.patch.ts
 │   │       │   ├── bump.rc.ts
+│   │       │   ├── bump.ts
 │   │       │   ├── changelog.ts
 │   │       │   ├── commit.changes.ts
 │   │       │   ├── create.new.tag.ts

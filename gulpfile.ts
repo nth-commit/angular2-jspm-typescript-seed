@@ -59,6 +59,13 @@ gulp.task('scss', (done: any) =>
     'scss.watch',
     done));
 
+gulp.task('release', function (done: any) {
+  runSequence(
+    'bump.build',
+    '_release',
+    done);
+});
+
 gulp.task('release.build', function (done: any) {
   runSequence(
     'bump.build',
