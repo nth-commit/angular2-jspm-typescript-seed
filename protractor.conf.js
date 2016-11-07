@@ -45,7 +45,7 @@ const config = {
 
   jasmineNodeOpts: {
     // onComplete will be called just before the driver quits.
-    onComplete: null,
+    // onComplete: true,
 
     // showTiming: true,
     showColors: true,
@@ -59,7 +59,7 @@ const config = {
   },
 
   // Safari does not support direct connect
-  directConnect: false,
+  directConnect: true,
 
   multiCapabilities: [
     {
@@ -130,10 +130,15 @@ const config = {
 
   // Close the report after all tests finish
   afterLaunch: function(exitCode) {
-    return new Promise(function(resolve) {
-      screenReporter.afterLaunch(resolve.bind(this, exitCode));
-    });
-
+    if (!process.env.TRAVIS && !process.env.APPVEYOR) {
+      return new Promise(function(resolve) {
+        screenReporter.afterLaunch(resolve.bind(this, exitCode));
+      });
+    } else {
+      return new Promise(function(resolve) {
+        resolve.bind(this, exitCode);
+      });
+    }
   },
 
   /**
