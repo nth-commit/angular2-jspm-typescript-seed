@@ -14,7 +14,17 @@ export = (done: any) => {
    * though not written to file system.
    */
     .src(src)
-    .pipe(protractor({ configFile: 'protractor.conf.js' }))
+    .pipe(protractor({
+      configFile: 'protractor.conf.js' }))
     // .on('error', (error: string) => { throw error; })
-    .on('end', done);
+    .on('end', function() {
+      console.log('E2E Testing complete');
+      process.exit();
+      done();
+    })
+    .on('error', function(error) {
+      console.log('E2E Tests failed');
+      process.exit(1);
+      done();
+    });
 };

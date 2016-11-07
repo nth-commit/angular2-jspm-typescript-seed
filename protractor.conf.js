@@ -45,7 +45,7 @@ const config = {
 
   jasmineNodeOpts: {
     // onComplete will be called just before the driver quits.
-    onComplete: null,
+    // onComplete: true,
 
     // showTiming: true,
     showColors: true,
@@ -59,16 +59,16 @@ const config = {
   },
 
   // Safari does not support direct connect
-  directConnect: false,
+  directConnect: true,
 
   multiCapabilities: [
     {
-    'browserName': 'chrome'
-  }
-  // // ,
-  //   {
-  //   'browserName': 'firefox'
-  // }
+      'browserName': 'chrome'
+    }
+    // // ,
+    //   {
+    //   'browserName': 'firefox'
+    // }
   ],
 
   // Setup the report before any tests start
@@ -120,16 +120,25 @@ const config = {
     //   savePath: './test-reports/e2e'
     // }));
 
-    jasmine.getEnv().addReporter(screenReporter);
+    if (!process.env.TRAVIS && !process.env.APPVEYOR) {
+      jasmine.getEnv().addReporter(screenReporter);
+    }
+
+
 
   },
 
   // Close the report after all tests finish
   afterLaunch: function(exitCode) {
-    return new Promise(function(resolve) {
-      screenReporter.afterLaunch(resolve.bind(this, exitCode));
-    });
-
+    if (!process.env.TRAVIS && !process.env.APPVEYOR) {
+      return new Promise(function(resolve) {
+        screenReporter.afterLaunch(resolve.bind(this, exitCode));
+      });
+    } else {
+      return new Promise(function(resolve) {
+        resolve.bind(this, exitCode);
+      });
+    }
   },
 
   /**
@@ -142,9 +151,15 @@ const config = {
 };
 
 if (process.env.TRAVIS) {
-  config.capabilities = {
-    browserName: 'firefox'
-  };
+  config.multiCapabilities = [
+    {
+      'browserName': 'firefox'
+    }
+    // // ,
+    //   {
+    //   'browserName': 'chrome'
+    // }
+  ];
 }
 
 exports.config = config;

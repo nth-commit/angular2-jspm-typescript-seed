@@ -18,7 +18,7 @@ export = () => {
     .pipe(gulp.dest(Config.DIST_BROWSER_PATH));
 };
 
-function inject(...files: Array<string>) {
+function inject(files: Array<string>) {
     return plugins.inject(gulp.src(files, { read: false }), {
         files,
         transform: transformPath()
@@ -26,7 +26,10 @@ function inject(...files: Array<string>) {
 }
 
 function injectJs() {
-  return inject(join(Config.DIST_CACHE_BUSTER_PATH, Config.DIST_APP_MIN_FILE));
+
+  let files: Array<string> = [join(Config.DIST_CACHE_BUSTER_PATH, Config.DIST_APP_MIN_FILE)];
+
+  return inject(files);
 }
 
 function transformPath() {

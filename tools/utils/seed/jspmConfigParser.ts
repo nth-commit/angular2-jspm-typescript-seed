@@ -1,8 +1,3 @@
-/**
- * Reads jspm.config.js and returns SystemJS
- * config object.
- */
-
 import { join  } from 'path';
 import * as fs from 'fs';
 import * as vm from 'vm';
@@ -10,31 +5,21 @@ import { forEach, extend, forIn } from 'lodash';
 
 import Config from '../../config';
 
-/**
- *
- * @param callback: returns systejs config
- * @param parseConfig: object
- *
- * {
- *    mapJspmPackages: true | false - normalize map paths to jspm_packages/
- * }
- *
- */
-export function readSystemJSConfig (callback: any, parseConfig: any) {
+export function parseSystemJSConfig (callback: any, parseConfig: any): void {
 
   let file: string = join(process.cwd(),  Config.CLIENT_JSPM_CONFIG_PATH_FILE);
 
   // Mock SystemJS to extract paths
-  var SystemJS = {
+  let SystemJS = {
     configs: {
       transpilerConfig: {},
       packageConfigPathsConfig: {},
     },
     merged: {},
-    config: function(cfg: any) {
+    config: function(cfg: any[]) {
 
       var merged = this.merged;
-      forEach(cfg, function(value, key) {
+      forEach(cfg, function(value: string, key: any) {
         if (merged[key]) {
           extend(merged[key], cfg[key]);
         } else {
@@ -53,11 +38,10 @@ export function readSystemJSConfig (callback: any, parseConfig: any) {
     forEach: forEach
   };
 
-  // Read jspm.config.js
-  readModuleFile(file, function (err: any, jspmConfig: any) {
-    var c: any = vm.runInNewContext(jspmConfig, context);
+  function readModuleFileCallback(err: any, jspmConfig: any) {
+    let c: any = vm.runInNewContext(jspmConfig, context);
 
-    c.map = forIn(c.map, function(value, key) {
+    c.map = forIn(c.map, function(value: string, key: string) {
       value = value.replace('github:', 'github/');
       value = value.replace('npm:', 'npm/');
 
@@ -69,15 +53,17 @@ export function readSystemJSConfig (callback: any, parseConfig: any) {
     });
 
     callback.call(null, c);
-  });
-
-  function readModuleFile(path: string, callback: any) {
-    try {
-      var filename: string = require.resolve(path);
-      fs.readFile(filename, 'utf8', callback);
-    } catch (e) {
-      callback(e);
-    }
   }
 
-};
+  // Read jspm.config.js
+  readModuleFile(file, readModuleFileCallback);
+}
+
+function readModuleFile(path: string, cb: any): void {
+  try {
+    let filename: string = require.resolve(path);
+    fs.readFile(filename, 'utf8', cb);
+  } catch (e) {
+    cb(e);
+  }
+}

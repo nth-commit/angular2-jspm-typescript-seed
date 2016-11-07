@@ -7,7 +7,6 @@ import {loadTasks} from './tools/utils';
 
 loadTasks(Config.TASKS_PATH);
 
-
 /**
  * WORKFLOW TASKS
  */
@@ -169,12 +168,6 @@ gulp.task('e2e.dev', (done: any) =>
     'protractor',
     done));
 
-
-// --------------
-// e2e serving dev.
-// Note: Don't want to use prod task because
-// browsersync intermittently interferes with
-// protractor's multicapabilities feature.
 gulp.task('e2e.prod', (done: any) =>
   runSequence(
     'clean.e2e.reports',
