@@ -63,12 +63,12 @@ const config = {
 
   multiCapabilities: [
     {
-    'browserName': 'chrome'
-  }
-  // // ,
-  //   {
-  //   'browserName': 'firefox'
-  // }
+      'browserName': 'chrome'
+    }
+    // // ,
+    //   {
+    //   'browserName': 'firefox'
+    // }
   ],
 
   // Setup the report before any tests start
@@ -142,9 +142,15 @@ const config = {
 };
 
 if (process.env.TRAVIS) {
-  config.capabilities = {
-    browserName: 'firefox'
-  };
+  config.multiCapabilities = [
+    {
+      'browserName': 'firefox'
+    }
+    // // ,
+    //   {
+    //   'browserName': 'chrome'
+    // }
+  ];
 }
 
 exports.config = config;
