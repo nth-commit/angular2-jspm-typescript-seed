@@ -170,6 +170,7 @@ gulp.task('e2e.dev', (done: any) =>
 
 gulp.task('e2e.prod', (done: any) =>
   runSequence(
+    'clean.prod',
     'clean.e2e.reports',
     'build.prod',
     'serve.prod.e2e',
