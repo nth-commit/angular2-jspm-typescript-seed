@@ -49,4 +49,4 @@ cache:
   directories: node_modules
 
 script:
-  - npm test.all
+  - npm run test.all
