@@ -145,7 +145,7 @@ The seed provides the following utilities:
 | :--------------------- | :---------- |
 | `/scss` | Compiles scss files using node child processes. Provides capability to compile a single scss file in dev mode. |
 | `build.js.prod.features.ts` | |
-| `parseJspmConfig.ts` | Read and parse the contents of jspm config javascript files |
+| `jspmConfigParser.ts` | Read and parse the contents of jspm config javascript files |
 | `removeTrailingSlash.ts` | Remove trailing file system slash on paths for Mac or PC |
 | `semver.ts` | Read package.json and increments various semver patterns. Does not write to package.json; bump tasks write the semver result. |
 | `incSemver.ts` | Launch express server for ```./test-reports``` |
