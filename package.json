@@ -1,6 +1,6 @@
 {
   "name": "@uiuxengineering/angular2-jspm-typescript-seed",
-  "version": "2.1.2-build.0",
+  "version": "2.1.2-build.1",
   "description": "Modular seed project for Angular 2 apps with fast, statically typed build",
   "repository": {
     "url": "https://github.com/UIUXEngineering/angular2-jspm-typescript-seed"

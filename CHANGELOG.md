@@ -1,5 +1,62 @@
-<a name="2.1.1"></a>
-## [2.1.1](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1...v2.1.1) (2016-11-06)
+<a name="2.1.2-build.0"></a>
+## [2.1.2-build.0](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/2.1.2...2.1.2-build.0) (2016-11-07)
+
+
+### Bug Fixes
+
+* **tsconfic:** noImplicitAny set to false ([de9bb2f](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/de9bb2f))
+
+
+### Performance Improvements
+
+* **types:** use [@types](https://github.com/types) ([663899d](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/663899d)), closes [#34](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/issues/34)
+
+
+
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1...2.1.2) (2016-11-06)
+
+
+
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1-build.0...0.2.1) (2016-11-06)
+
+
+### Bug Fixes
+
+* **release task:** change bump.build to bump ([b22ffa5](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/b22ffa5))
+
+
+
+<a name="0.2.1-build.0"></a>
+## [0.2.1-build.0](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1-2...0.2.1-build.0) (2016-11-06)
+
+
+### Bug Fixes
+
+* **e2e tests:** enable CACHE_BUSTER feature for e2e servers ([12baaa3](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/12baaa3)), closes [#31](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/issues/31)
+* **release:** change bump tasks to release tasks ([7e01226](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/7e01226))
+
+
+
+<a name="0.2.1-2"></a>
+## [0.2.1-2](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1-1...0.2.1-2) (2016-11-04)
+
+
+
+<a name="0.2.1-1"></a>
+## [0.2.1-1](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.1-0...0.2.1-1) (2016-11-04)
+
+
+
+<a name="0.2.1-0"></a>
+## [0.2.1-0](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/0.2.0...0.2.1-0) (2016-11-03)
+
+
+### Features
+
+* **gulp tasks:** add release tasks ([4b7fe43](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/4b7fe43))
+* **scss:** while running dev, only comple scss files that change ([6623b11](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/6623b11)), closes [#25](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/issues/25)
 
 
 
