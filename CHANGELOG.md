@@ -1,4 +1,14 @@
 <a name="2.1.2-build.1"></a>
+## [2.1.2-build.1](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/2.1.2-build.1.1...v2.1.2-build.1) (2016-11-07)
+
+
+### Bug Fixes
+
+* **semver:** fix increment ([6bce406](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/commit/6bce406))
+
+
+
+<a name="2.1.2-build.1"></a>
 ## [2.1.2-build.1](https://github.com/UIUXEngineering/angular2-jspm-typescript-seed/compare/2.1.2-build.0...2.1.2-build.1) (2016-11-07)
 
 
