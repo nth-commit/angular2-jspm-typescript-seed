@@ -120,7 +120,11 @@ const config = {
     //   savePath: './test-reports/e2e'
     // }));
 
-    jasmine.getEnv().addReporter(screenReporter);
+    if (!process.env.TRAVIS && !process.env.APPVEYOR) {
+      jasmine.getEnv().addReporter(screenReporter);
+    }
+
+
 
   },
 
