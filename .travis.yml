@@ -1,7 +1,9 @@
 # docs: https://docs.travis-ci.com/user/customizing-the-build/#Building-Specific-Branches
 
 language: node_js
-node_js: stable
+node_js:
+  - "5"
+  - "6"
 
 sudo: false
 
@@ -11,6 +13,13 @@ addons:
 os:
   - linux
   - osx
+
+matrix:
+  exclude:
+    - os: osx
+      node_js: "5"
+    - os: osx
+      node_js: "6"
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
