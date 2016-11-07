@@ -26,7 +26,7 @@ export function incSemverBuild(): string {
 
   if (version.indexOf('build') !== -1) {
     // get build number and increment
-    buildNumber = Number(regexExt(version)) + 1;
+    buildNumber = Number(regexExt(version)[0].replace('.', '')) + 1;
   } else {
     buildNumber = 0;
   }
@@ -52,7 +52,7 @@ export function incSemverAlpha(): string {
 
   if (version.indexOf('alpha') !== -1) {
     // get build number and increment
-    buildNumber = Number(regexExt(version)) + 1;
+    buildNumber = Number(regexExt(version)[0].replace('.', '')) + 1;
   } else {
     buildNumber = 0;
   }
@@ -78,7 +78,7 @@ export function incSemverBeta(): string {
 
   if (version.indexOf('beta') !== -1) {
     // get build number and increment
-    buildNumber = Number(regexExt(version)) + 1;
+    buildNumber = Number(regexExt(version)[0].replace('.', '')) + 1;
   } else {
     buildNumber = 0;
   }
@@ -104,7 +104,7 @@ export function incSemveRC(): string {
 
   if (version.indexOf('rc') !== -1) {
     // get build number and increment
-    buildNumber = Number(regexExt(version)) + 1;
+    buildNumber = Number(regexExt(version)[0].replace('.', '')) + 1;
   } else {
     buildNumber = 0;
   }
