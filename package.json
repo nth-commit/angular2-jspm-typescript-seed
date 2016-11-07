@@ -44,7 +44,7 @@
     "tasks.list": "gulp --tasks-simple --color",
     "test": "gulp test --color",
     "test.watch": "gulp test.watch --color",
-    "test.all": "npm test && npm run e2e",
+    "test.all": "npm test && npm run e2e.prod",
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
   },
