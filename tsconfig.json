@@ -18,9 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules",
-      "./tools/manual_typings/project",
-      "./tools/manual_typings/seed"
+      "./node_modules"
     ],
     "types": [
       "node"
