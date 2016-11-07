@@ -14,6 +14,7 @@
     "allowUnusedLabels": false,
     "allowJs": true,
     "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
