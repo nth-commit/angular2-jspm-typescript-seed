@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import {join} from 'path';
-import {parseSystemJSConfig} from '../../../utils';
+import { join } from 'path';
+import { parseSystemJSConfig } from '../../../utils';
 
 import Config from '../../../config';
 
