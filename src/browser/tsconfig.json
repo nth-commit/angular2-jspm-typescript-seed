@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "target": "es5",
+        "declaration": false,
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "pretty": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true
+    }
+}
